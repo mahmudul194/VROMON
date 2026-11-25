@@ -170,7 +170,7 @@ function LoginInner() {
               Welcome back
             </h1>
             <p className="text-[16px] text-[#557945]">
-              Sign in to access saved trips, personalized AI defaults, and itineraries.
+              Sign in to access saved trips, personalized AI defaults, and day-by-day plans.
             </p>
           </div>
 

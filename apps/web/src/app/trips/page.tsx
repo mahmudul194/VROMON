@@ -228,7 +228,7 @@ export default function TripsPage() {
                           href={`/itinerary?destId=${trip.destination_id}&days=${qp.days || 2}&usable=${snap.usable_hours || 14}&totalCost=${totalCost}&status=${encodeURIComponent(snap.feasibility_status || 'Fits')}&score=${score || 85}&budget=${qp.budget || totalCost}&travelers=${qp.travelers || 2}&month=${qp.travel_month || 12}&city=${encodeURIComponent(qp.starting_city || 'Dhaka')}`}
                           className="rounded-full bg-[#2F6B2F] px-3.5 py-1.5 text-[14px] font-bold text-white hover:bg-[#145219]"
                         >
-                          Itinerary
+                          Day Plan
                         </Link>
                       )}
                     </div>

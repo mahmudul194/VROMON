@@ -529,7 +529,7 @@ function RegisterInner() {
               Why Join VROMON
             </span>
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight">
-              Realistic Bangladesh itineraries in under 10 seconds.
+              Realistic Bangladesh trip plans in under 10 seconds.
             </h2>
             <p className="text-[16px] leading-relaxed text-[#D5E6CF]">
               Unlike generic chatbots, VROMON calculates exact bus/train/ferry travel hours, hotel tiers, and crowd indices before recommending a single route.

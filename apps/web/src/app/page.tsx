@@ -451,7 +451,7 @@ export default function HomePage() {
               },
               {
                 num: '04',
-                title: 'Get your itinerary',
+                title: 'Get your trip plan',
                 desc: 'Receives ranked matches with live budget breakdowns, daily pacing, and instant PDF export.',
                 bg: 'bg-[#1F2A1F] text-white',
                 iconBg: 'bg-white/15 text-[#FFCB3D]',
@@ -675,7 +675,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Tile F: Shareable Itinerary */}
+          {/* Tile F: Shareable Trip Plan */}
           <div className="lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-[#1B3519] p-7 text-white shadow-[0_20px_48px_rgba(31,42,31,0.25)]">
             <img
               src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
@@ -687,7 +687,7 @@ export default function HomePage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur">
                   <Share2 className="h-5 w-5 text-[#FFCB3D]" />
                 </div>
-                <h3 className="text-[24px] font-semibold tracking-tight">Shareable itinerary</h3>
+                <h3 className="text-[24px] font-semibold tracking-tight">Shareable trip plan</h3>
               </div>
               <p className="text-[16px] font-normal text-white/85">
                 30-day shareable links and one-click PDF export for travel companions.
@@ -703,7 +703,7 @@ export default function HomePage() {
               className="relative z-10 mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white text-[14px] font-semibold text-[#1F2A1F] shadow-lg hover:bg-[#F6FAF3]"
             >
               {copiedDemoLink ? <Copy className="h-4 w-4 text-[#2F6B2F]" /> : <Link2 className="h-4 w-4" />}
-              <span>{copiedDemoLink ? 'Ready on any itinerary!' : 'Try itinerary generator'}</span>
+              <span>{copiedDemoLink ? 'Ready on any trip plan!' : 'Try trip plan builder'}</span>
             </button>
           </div>
         </div>

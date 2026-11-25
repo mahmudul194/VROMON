@@ -181,7 +181,7 @@ function ItineraryInner() {
       <div className="mx-auto max-w-4xl space-y-4 px-4 py-20 text-center">
         <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#2F6B2F]" />
         <h2 className="text-xl font-extrabold text-[#1F2A1F]">
-          Building Day-by-Day Grounded Itinerary
+          Building Your Day-by-Day Plan
         </h2>
         <p className="text-[16px] text-[#557945]">
           Scheduling verified attractions within your {usableHours} usable daylight hours...
@@ -193,7 +193,7 @@ function ItineraryInner() {
   if (!itinerary) {
     return (
       <div className="mx-auto max-w-xl space-y-4 p-16 text-center">
-        <h2 className="text-xl font-extrabold text-[#1F2A1F]">Could not generate itinerary</h2>
+        <h2 className="text-xl font-extrabold text-[#1F2A1F]">Could not create trip plan</h2>
         <Link
           href="/plan"
           className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-[14px] font-bold text-white"

@@ -14,7 +14,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'VROMON — Smart Trip Feasibility & Risk-Aware Travel Recommender',
   description:
-    'Discover verified destinations across all 64 districts of Bangladesh with transparent cost math, seasonal weather checks, and grounded AI itineraries.',
+    'Discover verified destinations across all 64 districts of Bangladesh with transparent cost math, seasonal weather checks, and grounded AI day-by-day plans.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

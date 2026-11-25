@@ -582,7 +582,7 @@ export default function DestinationDetailPage() {
               href={`/itinerary?destId=${dest.destination_id}&days=${days}&usable=${timeCheck.usable_hours}&totalCost=${budgetCheck.cost_breakdown.total_cost}&status=${encodeURIComponent(budgetCheck.feasibility_status)}&score=${compositeScore}&budget=${budget}&travelers=${travelers}&month=${month}&city=${encodeURIComponent(startingCity)}`}
               className="flex h-12 w-full items-center justify-between rounded-full bg-[#FFCB3D] pl-6 pr-2.5 text-[14px] font-extrabold text-[#1F2A1F] shadow-md transition hover:brightness-95"
             >
-              <span>Generate Day-by-Day Itinerary</span>
+              <span>Build Day-by-Day Plan</span>
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1F2A1F] text-white">
                 <ArrowRight className="h-4 w-4" />
               </span>

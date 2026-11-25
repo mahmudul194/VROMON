@@ -604,7 +604,7 @@ function ResultsInner() {
                           href={`/itinerary?destId=${item.destination_id}&days=${effectiveQuery.days}&usable=${item.usable_hours}&totalCost=${item.cost_breakdown.total_cost}&status=${encodeURIComponent(item.feasibility_status)}&score=${item.scores.final_score}&budget=${sliderBudget}&travelers=${effectiveQuery.travelers}&month=${effectiveQuery.travel_month}&city=${encodeURIComponent(effectiveQuery.starting_city)}`}
                           className="inline-flex h-8 items-center gap-1 rounded-full bg-[#2F6B2F] px-3.5 text-[14px] font-bold text-white hover:bg-[#145219]"
                         >
-                          Itinerary
+                          Day Plan
                           <ArrowRight className="h-3 w-3" />
                         </Link>
                       </div>
