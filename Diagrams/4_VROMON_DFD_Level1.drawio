@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Antigravity SE331" version="24.7.17">
+  <diagram id="page_dfd_level1" name="DFD Level 1 (Component C)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1980" pageHeight="1350" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_banner" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;color:#0F172A;'&gt;&lt;div style='font-size:20px;font-weight:bold;color:#1E3A8A;'&gt;Component C: Data Flow Diagram — Level 1 DFD (System Decomposition)&lt;/div&gt;&lt;div style='font-size:12px;color:#475569;margin-top:4px;'&gt;Decomposition of VROMON into 5 core action-based processes, 6 persistent data stores, and verified external interfaces.&lt;/div&gt;&lt;div style='font-size:11px;color:#64748B;margin-top:2px;'&gt;&lt;b&gt;Project:&lt;/b&gt; VROMON — Bangladesh Smart Trip Feasibility &amp;amp; Risk-Aware Travel Recommender | &lt;b&gt;Course:&lt;/b&gt; SE331 Software Engineering Design Capstone Project | &lt;b&gt;Semester:&lt;/b&gt; Fall 2026 | &lt;b&gt;Institution:&lt;/b&gt; Daffodil International University&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="50" y="30" width="1700" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;color:#0F172A;padding:4px;'&gt;&lt;div style='font-weight:bold;font-size:12px;color:#1E3A8A;border-bottom:1px solid #CBD5E1;padding-bottom:3px;margin-bottom:5px;'&gt;DFD Level 1 Standards&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Processes (1.0 - 5.0):&lt;/b&gt; Action-based processes (Gane &amp;amp; Sarson notation)&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Stores (D1 - D6):&lt;/b&gt; Persistent relational/vector repositories&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;External Entities:&lt;/b&gt; User, Admin, External AI API, Map Tile CDN&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Flows:&lt;/b&gt; Directed solid arrows with white halo label backgrounds&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Integrity Rule:&lt;/b&gt; Entities NEVER connect directly to data stores&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1540" y="30" width="390" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_user" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#129491;&amp;#8205;&amp;#9794;&amp;#65039;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;Traveler / End User&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;Tourist, student, trip planner&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#EFF6FF;strokeColor=#2563EB;" parent="1" vertex="1">
+          <mxGeometry x="40" y="220" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_admin" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#128187;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;System Administrator&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;Tourism data maintainer&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#F8FAFC;strokeColor=#475569;" parent="1" vertex="1">
+          <mxGeometry x="40" y="810" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_ai" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#129302;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;External AI API&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;Gemini 1.5 / Embedding Models&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#FAF5FF;strokeColor=#9333EA;" parent="1" vertex="1">
+          <mxGeometry x="1740" y="220" width="190" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_map" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#128506;&amp;#65039;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;Map Tile Service&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;OpenStreetMap / Leaflet CDN&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#FFFBEB;strokeColor=#D97706;" parent="1" vertex="1">
+          <mxGeometry x="1740" y="520" width="190" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d4" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D4&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Trip Queries &amp;amp;amp; Recs Cache&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="45" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d2" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D2&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Transport Routes &amp;amp;amp; Tariffs&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="830" y="45" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d3" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D3&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Monthly Climate &amp;amp;amp; Crowd Matrix&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="45" width="290" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d5" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D5&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Saved Shared Plans &amp;amp;amp; Itineraries&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="620" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d1" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D1&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Destinations &amp;amp;amp; Attractions Catalog&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="410" width="290" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d6" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D6&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Admin &amp;amp;amp; Data Ingestion Logs&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="830" y="835" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_1" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 1.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Capture &amp;amp;amp; Parse Travel Intent&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Receive user text wishes, invoke AI 1 for tag/mood extraction &amp;amp;amp; build query vector&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="210" width="270" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_2" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Evaluate Feasibility &amp;amp;amp; Score Destinations&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Execute deterministic cost, time, weather &amp;amp;amp; crowd calculators; compute vector match &amp;amp;amp; rank&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="820" y="195" width="290" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_3" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 3.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Synthesize Explanations &amp;amp;amp; Itinerary&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Generate RAG reasoning on verified facts; build day-by-day plan using attractions&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="205" width="280" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_4" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 4.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Manage Comparisons, Slider &amp;amp;amp; Sharing&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Handle side-by-side comparison, instant slider updates, PDF export &amp;amp;amp; 30-day share links&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="415" width="280" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_5" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 5.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Ingest Dataset &amp;amp;amp; Maintain Catalog&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Validate JSON schema, coordinate boundaries &amp;amp;amp; tariffs; compute vector embeddings &amp;amp;amp; log audit&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="795" width="280" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="df_u_p1" value="Travel wishes, budget cap, travelers, duration, month &amp;amp; starting city" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ent_user" target="proc_1">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p1_ai_req" value="Unstructured wish text prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="proc_1" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="505" y="170" />
+              <mxPoint x="1600" y="170" />
+              <mxPoint x="1600" y="240" />
+              <mxPoint x="1740" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p1_ai_res" value="Extracted semantic tags, mood &amp;amp; 1536-d query vector" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="ent_ai" target="proc_1">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1740" y="270" />
+              <mxPoint x="1630" y="270" />
+              <mxPoint x="1630" y="140" />
+              <mxPoint x="530" y="140" />
+              <mxPoint x="530" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p1_d4" value="Store parsed search session &amp;amp; vector" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_1" target="ds_d4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d4_p2" value="Query parameters &amp;amp; budget constraint" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d4" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="505" y="95" />
+              <mxPoint x="505" y="125" />
+              <mxPoint x="880" y="125" />
+              <mxPoint x="880" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p2" value="Candidate destinations, tariffs &amp;amp; min hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d1" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1260" y="430" />
+              <mxPoint x="1140" y="430" />
+              <mxPoint x="1140" y="300" />
+              <mxPoint x="1110" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d2_p2" value="Inter-district transit fares &amp;amp; travel hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d2" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d3_p2" value="Monthly climate rating &amp;amp; crowd level matrix" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d3" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1260" y="70" />
+              <mxPoint x="1030" y="70" />
+              <mxPoint x="1030" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p2_d4" value="Ranked recommendations with 6 subscores &amp;amp; alternatives" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#059669;" parent="1" edge="1" source="proc_2" target="ds_d4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="910" y="195" />
+              <mxPoint x="910" y="145" />
+              <mxPoint x="640" y="145" />
+              <mxPoint x="640" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p3" value="Top scored candidates &amp;amp; verified metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d4" target="proc_3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="640" y="65" />
+              <mxPoint x="1180" y="65" />
+              <mxPoint x="1180" y="230" />
+              <mxPoint x="1260" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p3" value="Attractions, landmarks &amp;amp; operating hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d1" target="proc_3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1400" y="410" />
+              <mxPoint x="1400" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_ai_req" value="RAG prompt (stored facts &amp;amp; calculated numbers)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="proc_3" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1540" y="240" />
+              <mxPoint x="1740" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_ai_res" value="Natural language reasons &amp;amp; daily itinerary text" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="ent_ai" target="proc_3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1740" y="275" />
+              <mxPoint x="1600" y="275" />
+              <mxPoint x="1600" y="295" />
+              <mxPoint x="1540" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_user" value="Ranked places, feasibility status, score breakdown &amp;amp; daily plan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#2563EB;strokeWidth=2;" parent="1" edge="1" source="proc_3" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1260" y="310" />
+              <mxPoint x="1160" y="310" />
+              <mxPoint x="1160" y="370" />
+              <mxPoint x="240" y="370" />
+              <mxPoint x="240" y="280" />
+              <mxPoint x="220" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_d5" value="Initial generated itinerary plan &amp;amp; cost breakdown" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_3" target="ds_d5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1330" y="340" />
+              <mxPoint x="1330" y="645" />
+              <mxPoint x="650" y="645" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_p4" value="Comparison selection, budget slider adjustments &amp;amp; share trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ent_user" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="130" y="315" />
+              <mxPoint x="130" y="450" />
+              <mxPoint x="370" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_user" value="Side-by-side comparison matrix, recalculated costs &amp;amp; share URL/PDF" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#2563EB;" parent="1" edge="1" source="proc_4" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="370" y="480" />
+              <mxPoint x="110" y="480" />
+              <mxPoint x="110" y="315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p4" value="Cached scores &amp;amp; metrics for slider recalculation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d4" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="370" y="75" />
+              <mxPoint x="320" y="75" />
+              <mxPoint x="320" y="435" />
+              <mxPoint x="370" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_d5" value="Persist public share token (30-day TTL)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_4" target="ds_d5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d5_p4" value="Retrieve saved itinerary for public view" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d5" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="530" y="620" />
+              <mxPoint x="530" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_map_req" value="Destination WGS84 coordinates &amp;amp; zoom levels" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#D97706;" parent="1" edge="1" source="proc_4" target="ent_map">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="500" />
+              <mxPoint x="1500" y="500" />
+              <mxPoint x="1500" y="545" />
+              <mxPoint x="1740" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_map_res" value="Interactive map tiles, route lines &amp;amp; overlays" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#D97706;" parent="1" edge="1" source="ent_map" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1740" y="575" />
+              <mxPoint x="1480" y="575" />
+              <mxPoint x="1480" y="525" />
+              <mxPoint x="650" y="525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_adm_p5" value="JSON dataset upload, manual edits &amp;amp; schema triggers" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ent_admin" target="proc_5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p5_adm" value="Validation summary, error report &amp;amp; diff preview" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#475569;" parent="1" edge="1" source="proc_5" target="ent_admin">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="370" y="880" />
+              <mxPoint x="220" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_ai_req" value="Destination text descriptions for embedding" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="proc_5" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="830" />
+              <mxPoint x="1660" y="830" />
+              <mxPoint x="1660" y="290" />
+              <mxPoint x="1740" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_ai_res" value="1536-d dense text embeddings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="ent_ai" target="proc_5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1835" y="315" />
+              <mxPoint x="1835" y="870" />
+              <mxPoint x="650" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d1" value="Upsert verified destinations &amp;amp; POIs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d1">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="810" />
+              <mxPoint x="1200" y="810" />
+              <mxPoint x="1200" y="440" />
+              <mxPoint x="1260" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d2" value="Upsert transit routes &amp;amp; tariffs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="785" />
+              <mxPoint x="800" y="785" />
+              <mxPoint x="800" y="75" />
+              <mxPoint x="830" y="75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d3" value="Upsert monthly climate &amp;amp; crowd records" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="765" />
+              <mxPoint x="1220" y="765" />
+              <mxPoint x="1220" y="75" />
+              <mxPoint x="1260" y="75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d6" value="Record ingestion audit logs &amp;amp; latency metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d6">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

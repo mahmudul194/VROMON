@@ -1,0 +1,887 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Antigravity SE331" version="24.7.17">
+  <diagram id="page_logical_erd" name="Logical ERD (Component A)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1300" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_banner" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;color:#0F172A;'&gt;&lt;div style='font-size:20px;font-weight:bold;color:#1E3A8A;'&gt;Component A: Entity Relationship Diagram (Logical ERD)&lt;/div&gt;&lt;div style='font-size:12px;color:#475569;margin-top:4px;'&gt;High-level conceptual/logical data entities, key attributes, relationships, cardinalities, and business rules.&lt;/div&gt;&lt;div style='font-size:11px;color:#64748B;margin-top:2px;'&gt;&lt;b&gt;Project:&lt;/b&gt; VROMON — Bangladesh Smart Trip Feasibility &amp;amp; Risk-Aware Travel Recommender | &lt;b&gt;Course:&lt;/b&gt; SE331 Software Engineering Design Capstone Project | &lt;b&gt;Semester:&lt;/b&gt; Fall 2026 | &lt;b&gt;Institution:&lt;/b&gt; Daffodil International University&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="50" y="30" width="1700" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;color:#0F172A;padding:4px;'&gt;&lt;div style='font-weight:bold;font-size:12px;color:#1E3A8A;border-bottom:1px solid #CBD5E1;padding-bottom:3px;margin-bottom:5px;'&gt;Diagram Legend&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;&amp;#128273; PK:&lt;/b&gt; Primary Key (Unique Identifier)&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;&amp;#128279; FK:&lt;/b&gt; Foreign Key (Referential link)&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;1 : N:&lt;/b&gt; One-to-Many Relationship (Crow's foot)&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;1 : 1:&lt;/b&gt; One-to-One Mandatory Relationship&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;M : N:&lt;/b&gt; Many-to-Many Relationship&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1420" y="30" width="330" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="e_travel_query" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;TRAVEL_QUERY&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;query_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; session_token&lt;/div&gt;&lt;div&gt;&amp;#8226; free_text_wishes&lt;/div&gt;&lt;div&gt;&amp;#8226; budget_taka&lt;/div&gt;&lt;div&gt;&amp;#8226; num_travelers&lt;/div&gt;&lt;div&gt;&amp;#8226; num_days&lt;/div&gt;&lt;div&gt;&amp;#8226; travel_month&lt;/div&gt;&lt;div&gt;&amp;#8226; starting_city&lt;/div&gt;&lt;div&gt;&amp;#8226; is_weekend_holiday&lt;/div&gt;&lt;div&gt;&amp;#8226; extracted_tags&lt;/div&gt;&lt;div&gt;&amp;#8226; extracted_mood&lt;/div&gt;&lt;div&gt;&amp;#8226; query_vector_1536d&lt;/div&gt;&lt;div&gt;&amp;#8226; created_at&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="50" y="160" width="240" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rec_result" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;RECOMMENDATION_RESULT&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;result_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;query_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;destination_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;alt_to_dest_id (opt)&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; final_score (0-100)&lt;/div&gt;&lt;div&gt;&amp;#8226; meaning_match_score (30%)&lt;/div&gt;&lt;div&gt;&amp;#8226; interest_match_score (15%)&lt;/div&gt;&lt;div&gt;&amp;#8226; budget_fit_score (20%)&lt;/div&gt;&lt;div&gt;&amp;#8226; time_fit_score (10%)&lt;/div&gt;&lt;div&gt;&amp;#8226; weather_fit_score (15%)&lt;/div&gt;&lt;div&gt;&amp;#8226; crowd_fit_score (10%)&lt;/div&gt;&lt;div&gt;&amp;#8226; total_trip_cost_est&lt;/div&gt;&lt;div&gt;&amp;#8226; travel_hours_roundtrip&lt;/div&gt;&lt;div&gt;&amp;#8226; available_hours_at_dest&lt;/div&gt;&lt;div&gt;&amp;#8226; feasibility_status (Fits/Tight/Over)&lt;/div&gt;&lt;div&gt;&amp;#8226; rank_position&lt;/div&gt;&lt;div&gt;&amp;#8226; is_alternative_flag&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="420" y="160" width="270" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ai_explanation" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;AI_EXPLANATION&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;explanation_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;result_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; match_summary_reason&lt;/div&gt;&lt;div&gt;&amp;#8226; tradeoffs_and_watchouts&lt;/div&gt;&lt;div&gt;&amp;#8226; generated_by_model&lt;/div&gt;&lt;div&gt;&amp;#8226; is_fallback_template&lt;/div&gt;&lt;div&gt;&amp;#8226; created_at&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="420" y="580" width="270" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="e_destination" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;DESTINATION&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;destination_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; name_en&lt;/div&gt;&lt;div&gt;&amp;#8226; name_bn&lt;/div&gt;&lt;div&gt;&amp;#8226; division&lt;/div&gt;&lt;div&gt;&amp;#8226; district_upazila&lt;/div&gt;&lt;div&gt;&amp;#8226; latitude (WGS84)&lt;/div&gt;&lt;div&gt;&amp;#8226; longitude (WGS84)&lt;/div&gt;&lt;div&gt;&amp;#8226; description&lt;/div&gt;&lt;div&gt;&amp;#8226; min_hours_needed&lt;/div&gt;&lt;div&gt;&amp;#8226; cost_tier (Budget/Mod/Prem)&lt;/div&gt;&lt;div&gt;&amp;#8226; hotel_rate_per_night&lt;/div&gt;&lt;div&gt;&amp;#8226; food_rate_per_day&lt;/div&gt;&lt;div&gt;&amp;#8226; semantic_tags&lt;/div&gt;&lt;div&gt;&amp;#8226; embedding_vector_1536d&lt;/div&gt;&lt;div&gt;&amp;#8226; is_active&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="840" y="160" width="270" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="e_attraction" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;ATTRACTION_POI&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;attraction_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;destination_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; attraction_name&lt;/div&gt;&lt;div&gt;&amp;#8226; category&lt;/div&gt;&lt;div&gt;&amp;#8226; description&lt;/div&gt;&lt;div&gt;&amp;#8226; entry_fee_bdt&lt;/div&gt;&lt;div&gt;&amp;#8226; opening_time&lt;/div&gt;&lt;div&gt;&amp;#8226; closing_time&lt;/div&gt;&lt;div&gt;&amp;#8226; requires_guide&lt;/div&gt;&lt;div&gt;&amp;#8226; est_visit_hours&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="160" width="250" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="e_transport" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;TRANSPORT_ROUTE&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;route_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;destination_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; origin_city&lt;/div&gt;&lt;div&gt;&amp;#8226; transport_mode (Bus/Train/Launch)&lt;/div&gt;&lt;div&gt;&amp;#8226; transit_operator_note&lt;/div&gt;&lt;div&gt;&amp;#8226; fare_per_person_bdt&lt;/div&gt;&lt;div&gt;&amp;#8226; travel_hours&lt;/div&gt;&lt;div&gt;&amp;#8226; is_cheapest_option&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="420" width="250" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="e_climate" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;MONTHLY_CLIMATE&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;climate_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;destination_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; month_num (1-12)&lt;/div&gt;&lt;div&gt;&amp;#8226; monsoon_severity (1-5)&lt;/div&gt;&lt;div&gt;&amp;#8226; weather_rating (1-5)&lt;/div&gt;&lt;div&gt;&amp;#8226; comfort_score (0-100)&lt;/div&gt;&lt;div&gt;&amp;#8226; weather_advisory_note&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="660" width="250" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="e_crowd" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;MONTHLY_CROWD&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;crowd_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;destination_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; month_num (1-12)&lt;/div&gt;&lt;div&gt;&amp;#8226; base_crowd_level (Low/Med/High)&lt;/div&gt;&lt;div&gt;&amp;#8226; holiday_crowd_level&lt;/div&gt;&lt;div&gt;&amp;#8226; crowd_factor_score (0-100)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="890" width="250" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="e_itinerary" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;ITINERARY_PLAN&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;itinerary_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;query_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;destination_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; trip_title&lt;/div&gt;&lt;div&gt;&amp;#8226; total_estimated_cost_bdt&lt;/div&gt;&lt;div&gt;&amp;#8226; transport_cost_bdt&lt;/div&gt;&lt;div&gt;&amp;#8226; accommodation_cost_bdt&lt;/div&gt;&lt;div&gt;&amp;#8226; food_cost_bdt&lt;/div&gt;&lt;div&gt;&amp;#8226; local_activities_cost_bdt&lt;/div&gt;&lt;div&gt;&amp;#8226; buffer_cost_bdt (10%)&lt;/div&gt;&lt;div&gt;&amp;#8226; share_token (Unique)&lt;/div&gt;&lt;div&gt;&amp;#8226; share_url&lt;/div&gt;&lt;div&gt;&amp;#8226; expires_at (30 days TTL)&lt;/div&gt;&lt;div&gt;&amp;#8226; created_at&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="50" y="560" width="250" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="e_activity" value="&lt;div style='background-color:#1E3A8A;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;ITINERARY_DAY_ACTIVITY&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;activity_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;itinerary_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;attraction_id (opt)&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; day_number (1..N)&lt;/div&gt;&lt;div&gt;&amp;#8226; time_slot (Morn/Aft/Eve)&lt;/div&gt;&lt;div&gt;&amp;#8226; activity_title&lt;/div&gt;&lt;div&gt;&amp;#8226; activity_description&lt;/div&gt;&lt;div&gt;&amp;#8226; estimated_cost_bdt&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="50" y="930" width="250" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="e_admin" value="&lt;div style='background-color:#334155;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;ADMIN_USER&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;admin_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; email (Unique)&lt;/div&gt;&lt;div&gt;&amp;#8226; password_hash&lt;/div&gt;&lt;div&gt;&amp;#8226; full_name&lt;/div&gt;&lt;div&gt;&amp;#8226; role (Data Maintainer)&lt;/div&gt;&lt;div&gt;&amp;#8226; is_active&lt;/div&gt;&lt;div&gt;&amp;#8226; last_login_at&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="430" y="880" width="250" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ingestion_log" value="&lt;div style='background-color:#334155;color:#FFFFFF;padding:7px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;letter-spacing:0.5px;'&gt;DATA_INGESTION_LOG&lt;/div&gt;&lt;div style='padding:6px 10px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='font-weight:bold;color:#1E3A8A;'&gt;&amp;#128273; &lt;u&gt;log_id&lt;/u&gt; &lt;span style='color:#64748B;font-weight:normal;'&gt;[PK]&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0369A1;'&gt;&amp;#128279; &lt;i&gt;admin_id&lt;/i&gt; &lt;span style='color:#64748B;font-size:10px;'&gt;[FK]&lt;/span&gt;&lt;/div&gt;&lt;hr style='border:none;border-top:1px solid #E2E8F0;margin:4px 0;'/&gt;&lt;div&gt;&amp;#8226; source_filename&lt;/div&gt;&lt;div&gt;&amp;#8226; records_count&lt;/div&gt;&lt;div&gt;&amp;#8226; valid_records_count&lt;/div&gt;&lt;div&gt;&amp;#8226; invalid_records_count&lt;/div&gt;&lt;div&gt;&amp;#8226; vector_index_count&lt;/div&gt;&lt;div&gt;&amp;#8226; ingestion_status&lt;/div&gt;&lt;div&gt;&amp;#8226; execution_latency_sec&lt;/div&gt;&lt;div&gt;&amp;#8226; ingested_at&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#1E3A8A;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="790" y="880" width="260" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_tq_rr" value="evaluates to (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_travel_query" target="e_rec_result">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_dest_rr" value="evaluated for (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_destination" target="e_rec_result">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_rr_ai" value="explained by (1:1)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmandOne;endFill=0;" parent="1" edge="1" source="e_rec_result" target="e_ai_explanation">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_dest_att" value="contains (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_destination" target="e_attraction">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_dest_tr" value="accessible via (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_destination" target="e_transport">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_dest_clim" value="climate pattern (1:12)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_destination" target="e_climate">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_dest_crw" value="crowd profile (1:12)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_destination" target="e_crowd">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_tq_itin" value="compiles into (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_travel_query" target="e_itinerary">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_dest_itin" value="target of (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_destination" target="e_itinerary">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="975" y="530" />
+              <mxPoint x="330" y="530" />
+              <mxPoint x="330" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_itin_act" value="composed of (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_itinerary" target="e_activity">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_att_act" value="scheduled at (0..1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeDasharray=3 3;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_attraction" target="e_activity">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1385" y="1150" />
+              <mxPoint x="175" y="1150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_adm_log" value="triggers (1:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_admin" target="e_ingestion_log">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rel_log_dest" value="updates catalog (M:N)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;startArrow=ERmany;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="e_ingestion_log" target="e_destination">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_physical_erd" name="Physical ERD / Schema (Component B)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1350" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_banner" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;color:#0F172A;'&gt;&lt;div style='font-size:20px;font-weight:bold;color:#1E3A8A;'&gt;Component B: Relational Database Schema / Physical ERD&lt;/div&gt;&lt;div style='font-size:12px;color:#475569;margin-top:4px;'&gt;Physical relational tables, SQL data types, Primary/Foreign Keys, referential integrity constraints, and domain checks.&lt;/div&gt;&lt;div style='font-size:11px;color:#64748B;margin-top:2px;'&gt;&lt;b&gt;Project:&lt;/b&gt; VROMON — Bangladesh Smart Trip Feasibility &amp;amp; Risk-Aware Travel Recommender | &lt;b&gt;Course:&lt;/b&gt; SE331 Software Engineering Design Capstone Project | &lt;b&gt;Semester:&lt;/b&gt; Fall 2026 | &lt;b&gt;Institution:&lt;/b&gt; Daffodil International University&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="50" y="30" width="1700" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;color:#0F172A;padding:4px;'&gt;&lt;div style='font-weight:bold;font-size:12px;color:#1E3A8A;border-bottom:1px solid #CBD5E1;padding-bottom:3px;margin-bottom:5px;'&gt;Schema &amp;amp; Constraint Legend&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;&amp;#128273; [PK]:&lt;/b&gt; Primary Key (NOT NULL, UNIQUE)&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;&amp;#128279; [FK]:&lt;/b&gt; Foreign Key with referenced table &amp;amp; column&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Constraints:&lt;/b&gt; NOT NULL, CHECK, DEFAULT, UNIQUE&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Connectors:&lt;/b&gt; Solid Crow's Foot indicates 1:N Foreign Key relationship&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Types:&lt;/b&gt; BIGINT, INT, VARCHAR, DECIMAL, TEXT, JSON, VECTOR(1536)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1500" y="30" width="350" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_travel_queries" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;travel_queries&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;query_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;session_token&lt;/b&gt;: &lt;i&gt;VARCHAR(64)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, UNIQUE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;free_text_wishes&lt;/b&gt;: &lt;i&gt;TEXT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;budget_taka&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK &amp;gt;= 1000)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;num_travelers&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK &amp;gt;= 1)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;num_days&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 1..30)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;travel_month&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 1..12)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;starting_city&lt;/b&gt;: &lt;i&gt;VARCHAR(50)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;is_weekend_holiday&lt;/b&gt;: &lt;i&gt;BOOLEAN&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT FALSE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;extracted_tags&lt;/b&gt;: &lt;i&gt;JSON&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;extracted_mood&lt;/b&gt;: &lt;i&gt;VARCHAR(100)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;query_vector&lt;/b&gt;: &lt;i&gt;VECTOR(1536)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;created_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT NOW())&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="40" y="160" width="270" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_destinations" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;destinations&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;destination_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;name_en&lt;/b&gt;: &lt;i&gt;VARCHAR(100)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, UNIQUE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;name_bn&lt;/b&gt;: &lt;i&gt;VARCHAR(100)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;division&lt;/b&gt;: &lt;i&gt;VARCHAR(50)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;district_upazila&lt;/b&gt;: &lt;i&gt;VARCHAR(100)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;latitude&lt;/b&gt;: &lt;i&gt;DECIMAL(9,6)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK -90..90)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;longitude&lt;/b&gt;: &lt;i&gt;DECIMAL(9,6)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK -180..180)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;description&lt;/b&gt;: &lt;i&gt;TEXT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;min_hours_needed&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK &amp;gt; 0)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;cost_tier&lt;/b&gt;: &lt;i&gt;VARCHAR(20)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, IN (&amp;#x27;Budget&amp;#x27;,&amp;#x27;Mod&amp;#x27;,&amp;#x27;Prem&amp;#x27;))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;hotel_rate_per_night&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK &amp;gt;= 0)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;food_rate_per_day&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK &amp;gt;= 0)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;semantic_tags&lt;/b&gt;: &lt;i&gt;JSON&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;embedding_vector&lt;/b&gt;: &lt;i&gt;VECTOR(1536)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;is_active&lt;/b&gt;: &lt;i&gt;BOOLEAN&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT TRUE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;updated_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT NOW())&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="850" y="160" width="320" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_recommendation_results" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;recommendation_results&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;result_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;query_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: travel_queries.query_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;destination_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: destinations.destination_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;alt_to_dest_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: destinations.destination_id (NULL)]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;final_score&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 0..100)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;meaning_match_score&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (30%))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;interest_match_score&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (15%))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;budget_fit_score&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (20%))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;time_fit_score&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (10%))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;weather_fit_score&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (15%))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;crowd_fit_score&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (10%))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;total_trip_cost_est&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;travel_hours_roundtrip&lt;/b&gt;: &lt;i&gt;DECIMAL(4,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;available_hours_at_dest&lt;/b&gt;: &lt;i&gt;DECIMAL(5,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;feasibility_status&lt;/b&gt;: &lt;i&gt;VARCHAR(20)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, IN (&amp;#x27;Fits&amp;#x27;,&amp;#x27;Tight&amp;#x27;,&amp;#x27;Over&amp;#x27;))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;rank_position&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;is_alternative_flag&lt;/b&gt;: &lt;i&gt;BOOLEAN&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT FALSE)&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="430" y="160" width="320" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_ai_explanations" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;ai_explanations&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;explanation_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;result_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: recommendation_results.result_id]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(UNIQUE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;match_summary_reason&lt;/b&gt;: &lt;i&gt;TEXT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;tradeoffs_and_watchouts&lt;/b&gt;: &lt;i&gt;TEXT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;generated_by_model&lt;/b&gt;: &lt;i&gt;VARCHAR(50)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT &amp;#x27;Gemini&amp;#x27;)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;is_fallback_template&lt;/b&gt;: &lt;i&gt;BOOLEAN&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT FALSE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;created_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT NOW())&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="430" y="600" width="320" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_attractions" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;attractions&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;attraction_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;destination_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: destinations.destination_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;attraction_name&lt;/b&gt;: &lt;i&gt;VARCHAR(150)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;category&lt;/b&gt;: &lt;i&gt;VARCHAR(50)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;description&lt;/b&gt;: &lt;i&gt;TEXT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;entry_fee_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(8,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT 0.00)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;opening_time&lt;/b&gt;: &lt;i&gt;TIME&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;closing_time&lt;/b&gt;: &lt;i&gt;TIME&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;requires_guide&lt;/b&gt;: &lt;i&gt;BOOLEAN&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT FALSE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;est_visit_hours&lt;/b&gt;: &lt;i&gt;DECIMAL(4,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT 2.0)&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1270" y="160" width="280" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_transport_routes" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;transport_routes&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;route_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;destination_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: destinations.destination_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;origin_city&lt;/b&gt;: &lt;i&gt;VARCHAR(50)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;transport_mode&lt;/b&gt;: &lt;i&gt;VARCHAR(20)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, IN (&amp;#x27;Bus&amp;#x27;,&amp;#x27;Train&amp;#x27;,&amp;#x27;Launch&amp;#x27;))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;transit_operator_note&lt;/b&gt;: &lt;i&gt;VARCHAR(150)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;fare_per_person_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(8,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK &amp;gt; 0)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;travel_hours&lt;/b&gt;: &lt;i&gt;DECIMAL(4,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK &amp;gt; 0)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;is_cheapest_option&lt;/b&gt;: &lt;i&gt;BOOLEAN&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT FALSE)&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1270" y="440" width="280" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_monthly_climates" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;monthly_climates&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;climate_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;destination_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: destinations.destination_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;month_num&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 1..12)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;monsoon_severity&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 1..5)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;weather_rating&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 1..5)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;comfort_score&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 0..100)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;weather_advisory_note&lt;/b&gt;: &lt;i&gt;VARCHAR(255)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1270" y="690" width="280" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_monthly_crowds" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;monthly_crowds&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;crowd_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;destination_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: destinations.destination_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;month_num&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 1..12)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;base_crowd_level&lt;/b&gt;: &lt;i&gt;VARCHAR(10)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, IN (&amp;#x27;Low&amp;#x27;,&amp;#x27;Med&amp;#x27;,&amp;#x27;High&amp;#x27;))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;holiday_crowd_level&lt;/b&gt;: &lt;i&gt;VARCHAR(10)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, IN (&amp;#x27;Low&amp;#x27;,&amp;#x27;Med&amp;#x27;,&amp;#x27;High&amp;#x27;))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;crowd_factor_score&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 0..100)&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1270" y="920" width="280" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_itinerary_plans" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;itinerary_plans&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;itinerary_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;query_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: travel_queries.query_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;destination_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: destinations.destination_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;trip_title&lt;/b&gt;: &lt;i&gt;VARCHAR(150)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;total_estimated_cost_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;transport_cost_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;accommodation_cost_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;food_cost_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;local_activities_cost_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;buffer_cost_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(10,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (10%))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;share_token&lt;/b&gt;: &lt;i&gt;VARCHAR(32)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, UNIQUE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;share_url&lt;/b&gt;: &lt;i&gt;VARCHAR(255)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;expires_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL (30d TTL))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;created_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT NOW())&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="40" y="520" width="280" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_itinerary_activities" value="&lt;div style='background-color:#0F172A;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;itinerary_activities&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;activity_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;itinerary_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: itinerary_plans.itinerary_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;day_number&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, CHECK 1..30)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;time_slot&lt;/b&gt;: &lt;i&gt;VARCHAR(20)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, IN (&amp;#x27;Morn&amp;#x27;,&amp;#x27;Aft&amp;#x27;,&amp;#x27;Eve&amp;#x27;))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;activity_title&lt;/b&gt;: &lt;i&gt;VARCHAR(150)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;activity_description&lt;/b&gt;: &lt;i&gt;TEXT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;attraction_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: attractions.attraction_id (NULL)]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;estimated_cost_bdt&lt;/b&gt;: &lt;i&gt;DECIMAL(8,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT 0.00)&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="40" y="900" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_admin_users" value="&lt;div style='background-color:#334155;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;admin_users&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;admin_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;email&lt;/b&gt;: &lt;i&gt;VARCHAR(100)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, UNIQUE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;password_hash&lt;/b&gt;: &lt;i&gt;VARCHAR(255)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;full_name&lt;/b&gt;: &lt;i&gt;VARCHAR(100)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;role&lt;/b&gt;: &lt;i&gt;VARCHAR(30)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT &amp;#x27;Data Maintainer&amp;#x27;)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;is_active&lt;/b&gt;: &lt;i&gt;BOOLEAN&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT TRUE)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;last_login_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;created_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT NOW())&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="430" y="840" width="270" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl_data_ingestion_logs" value="&lt;div style='background-color:#334155;color:#FFFFFF;padding:6px;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-weight:bold;font-size:12px;text-align:center;'&gt;data_ingestion_logs&lt;/div&gt;&lt;div style='padding:6px 8px;font-family:Consolas, monospace;font-size:10.5px;line-height:1.45;text-align:left;background-color:#FFFFFF;color:#0F172A;'&gt;&lt;div style='color:#B45309;font-weight:bold;white-space:nowrap;'&gt;&amp;#128273; &lt;b&gt;log_id&lt;/b&gt;: &lt;i&gt;BIGINT&lt;/i&gt; &lt;span style='color:#B45309;font-weight:bold;'&gt;[PK]&lt;/span&gt;  &lt;span style='color:#64748B;'&gt;(AUTO_INCREMENT)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#1D4ED8;font-weight:bold;white-space:nowrap;'&gt;&amp;#128279; &lt;b&gt;admin_id&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt; &lt;span style='color:#1D4ED8;'&gt;[FK: admin_users.admin_id]&lt;/span&gt; &lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;source_filename&lt;/b&gt;: &lt;i&gt;VARCHAR(150)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;records_count&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;valid_records_count&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;invalid_records_count&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;vector_index_count&lt;/b&gt;: &lt;i&gt;INT&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;ingestion_status&lt;/b&gt;: &lt;i&gt;VARCHAR(20)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, IN (&amp;#x27;Completed&amp;#x27;,&amp;#x27;Failed&amp;#x27;,&amp;#x27;Partial&amp;#x27;))&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;execution_latency_sec&lt;/b&gt;: &lt;i&gt;DECIMAL(6,2)&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL)&lt;/span&gt;&lt;/div&gt;&lt;div style='color:#0F172A;white-space:nowrap;'&gt;&amp;#8226; &lt;b&gt;ingested_at&lt;/b&gt;: &lt;i&gt;TIMESTAMP&lt;/i&gt;  &lt;span style='color:#64748B;'&gt;(NOT NULL, DEFAULT NOW())&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;whiteSpace=wrap;html=1;overflow=fill;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=1.5;shadow=1;points=[[0,0.15],[0,0.35],[0,0.5],[0,0.65],[0,0.85],[1,0.15],[1,0.35],[1,0.5],[1,0.65],[1,0.85],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="780" y="840" width="310" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="fk_tq_rr" value="FK: query_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_travel_queries" target="tbl_recommendation_results">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_dest_rr" value="FK: destination_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_destinations" target="tbl_recommendation_results">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_rr_ai" value="FK: result_id (1:1)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmandOne;endFill=0;" parent="1" edge="1" source="tbl_recommendation_results" target="tbl_ai_explanations">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_dest_att" value="FK: destination_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_destinations" target="tbl_attractions">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_dest_tr" value="FK: destination_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_destinations" target="tbl_transport_routes">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_dest_clim" value="FK: destination_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_destinations" target="tbl_monthly_climates">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_dest_crw" value="FK: destination_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_destinations" target="tbl_monthly_crowds">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_tq_itin" value="FK: query_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_travel_queries" target="tbl_itinerary_plans">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_dest_itin" value="FK: destination_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_destinations" target="tbl_itinerary_plans">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1010" y="560" />
+              <mxPoint x="350" y="560" />
+              <mxPoint x="350" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk_itin_act" value="FK: itinerary_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_itinerary_plans" target="tbl_itinerary_activities">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk_att_act" value="FK: attraction_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748B;strokeDasharray=3 3;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#475569;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_attractions" target="tbl_itinerary_activities">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1410" y="1160" />
+              <mxPoint x="180" y="1160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fk_adm_log" value="FK: admin_id" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=1.5;fontFamily=Segoe UI;fontSize=9;fontColor=#1E3A8A;startArrow=ERmandOne;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1" source="tbl_admin_users" target="tbl_data_ingestion_logs">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_dfd_context" name="DFD Context Diagram (Level 0)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_banner" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;color:#0F172A;'&gt;&lt;div style='font-size:20px;font-weight:bold;color:#1E3A8A;'&gt;Component C: Data Flow Diagram — Context Diagram (Level 0)&lt;/div&gt;&lt;div style='font-size:12px;color:#475569;margin-top:4px;'&gt;System boundary overview: entire software treated as single central process interacting with external entities.&lt;/div&gt;&lt;div style='font-size:11px;color:#64748B;margin-top:2px;'&gt;&lt;b&gt;Project:&lt;/b&gt; VROMON — Bangladesh Smart Trip Feasibility &amp;amp; Risk-Aware Travel Recommender | &lt;b&gt;Course:&lt;/b&gt; SE331 Software Engineering Design Capstone Project | &lt;b&gt;Semester:&lt;/b&gt; Fall 2026 | &lt;b&gt;Institution:&lt;/b&gt; Daffodil International University&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="50" y="30" width="1700" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;color:#0F172A;padding:4px;'&gt;&lt;div style='font-weight:bold;font-size:12px;color:#1E3A8A;border-bottom:1px solid #CBD5E1;padding-bottom:3px;margin-bottom:5px;'&gt;DFD Context Notation&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;External Entity:&lt;/b&gt; Blue/Purple rectangles representing human actors or external APIs&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;System Process:&lt;/b&gt; Emerald rounded container (0.0 VROMON System)&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Flows:&lt;/b&gt; Directed solid arrows with detailed descriptive labels&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Rule:&lt;/b&gt; No data stores are exposed at the Context Level (pure system boundary)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1420" y="30" width="330" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_0" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:10px;'&gt;&lt;div style='font-size:16px;font-weight:bold;color:#047857;'&gt;0.0&lt;/div&gt;&lt;div style='font-size:14px;font-weight:bold;color:#0F172A;margin-top:4px;'&gt;VROMON&lt;/div&gt;&lt;div style='font-size:11px;color:#334155;margin-top:2px;'&gt;Bangladesh Smart Trip Feasibility &amp;amp;&lt;br/&gt;Risk-Aware Travel Recommender System&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2.5;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="420" width="380" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_user" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:18px;'&gt;&amp;#129491;&amp;#8205;&amp;#9794;&amp;#65039;&lt;/div&gt;&lt;div style='font-size:13px;font-weight:bold;color:#1E3A8A;'&gt;Traveler / End User&lt;/div&gt;&lt;div style='font-size:10px;color:#475569;'&gt;Tourists, students, budget explorers&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;strokeWidth=2;shadow=1;fillColor=#EFF6FF;strokeColor=#2563EB;" parent="1" vertex="1">
+          <mxGeometry x="80" y="220" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_admin" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:18px;'&gt;&amp;#128187;&lt;/div&gt;&lt;div style='font-size:13px;font-weight:bold;color:#0F172A;'&gt;System Administrator&lt;/div&gt;&lt;div style='font-size:10px;color:#475569;'&gt;Data maintainer &amp;amp; curator&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;strokeWidth=2;shadow=1;fillColor=#F8FAFC;strokeColor=#475569;" parent="1" vertex="1">
+          <mxGeometry x="80" y="720" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_ai" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:18px;'&gt;&amp;#129302;&lt;/div&gt;&lt;div style='font-size:13px;font-weight:bold;color:#6B21A8;'&gt;External AI / LLM API&lt;/div&gt;&lt;div style='font-size:10px;color:#581C87;'&gt;Gemini / OpenAI Embedding &amp;amp; Generation&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;strokeWidth=2;shadow=1;fillColor=#FAF5FF;strokeColor=#9333EA;" parent="1" vertex="1">
+          <mxGeometry x="1420" y="220" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_map" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:18px;'&gt;&amp;#128506;&amp;#65039;&lt;/div&gt;&lt;div style='font-size:13px;font-weight:bold;color:#92400E;'&gt;Map &amp;amp; Tile Service&lt;/div&gt;&lt;div style='font-size:10px;color:#78350F;'&gt;OpenStreetMap / Leaflet Tile CDN&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;strokeWidth=2;shadow=1;fillColor=#FFFBEB;strokeColor=#D97706;" parent="1" vertex="1">
+          <mxGeometry x="1420" y="720" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="df_user_in_1" value="1. Travel Wishes &amp;amp; Constraints (Text, budget, party size, month, city)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_user" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="310" y="250" />
+              <mxPoint x="520" y="250" />
+              <mxPoint x="520" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_in_2" value="2. Destination Comparison Selection &amp;amp; What-If Budget Slider Values" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_user" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="310" y="290" />
+              <mxPoint x="480" y="290" />
+              <mxPoint x="480" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_in_3" value="3. Plan Export &amp;amp; Share Request (PDF / 30-day link)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_user" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="310" y="320" />
+              <mxPoint x="440" y="320" />
+              <mxPoint x="440" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_out_1" value="1. Ranked Destination Recommendations &amp;amp; Feasibility Status (Fits/Tight/Over)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#2563EB;" parent="1" edge="1" source="proc_0" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="690" y="450" />
+              <mxPoint x="400" y="450" />
+              <mxPoint x="400" y="230" />
+              <mxPoint x="310" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_out_2" value="2. Score Breakdown, Explainable Reasons &amp;amp; Seasonal Risk Notes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#2563EB;" parent="1" edge="1" source="proc_0" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="720" y="430" />
+              <mxPoint x="360" y="430" />
+              <mxPoint x="360" y="270" />
+              <mxPoint x="310" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_out_3" value="3. Side-by-Side Comparison Matrix, Detailed Cost Chart &amp;amp; Alternatives" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#2563EB;" parent="1" edge="1" source="proc_0" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="760" y="420" />
+              <mxPoint x="330" y="420" />
+              <mxPoint x="330" y="305" />
+              <mxPoint x="310" y="305" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_out_4" value="4. Customized Day-by-Day Itinerary, Downloadable PDF &amp;amp; Share URL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#2563EB;" parent="1" edge="1" source="proc_0" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="700" y="600" />
+              <mxPoint x="440" y="600" />
+              <mxPoint x="440" y="340" />
+              <mxPoint x="310" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_adm_in_1" value="1. Ingestion Dataset JSON (Destinations, transit routes, climate &amp;amp; crowd matrix)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_admin" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="310" y="750" />
+              <mxPoint x="520" y="750" />
+              <mxPoint x="520" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_adm_in_2" value="2. Destination Attribute Edits, Route Updates &amp;amp; Validation Triggers" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_admin" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="310" y="785" />
+              <mxPoint x="470" y="785" />
+              <mxPoint x="470" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_adm_out_1" value="1. Schema Validation Report, Coordinate Bounds Check &amp;amp; Diff Preview" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#475569;" parent="1" edge="1" source="proc_0" target="ent_admin">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="630" />
+              <mxPoint x="420" y="630" />
+              <mxPoint x="420" y="800" />
+              <mxPoint x="310" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_adm_out_2" value="2. Vector Index Sync Confirmation &amp;amp; Ingestion Audit Logs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#475569;" parent="1" edge="1" source="proc_0" target="ent_admin">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="730" y="640" />
+              <mxPoint x="380" y="640" />
+              <mxPoint x="380" y="825" />
+              <mxPoint x="310" y="825" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_ai_out_1" value="1. Unstructured User Travel Wishes &amp;amp; Intent Extraction Prompts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#9333EA;" parent="1" edge="1" source="proc_0" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1030" y="460" />
+              <mxPoint x="1220" y="460" />
+              <mxPoint x="1220" y="240" />
+              <mxPoint x="1420" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_ai_out_2" value="2. Verified Destination Metrics &amp;amp; Stored POIs for RAG Context" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#9333EA;" parent="1" edge="1" source="proc_0" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1040" y="490" />
+              <mxPoint x="1260" y="490" />
+              <mxPoint x="1260" y="280" />
+              <mxPoint x="1420" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_ai_in_1" value="1. Extracted Travel Tags, Mood Classification &amp;amp; 1536-d Intent Vector" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_ai" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1420" y="260" />
+              <mxPoint x="1240" y="260" />
+              <mxPoint x="1240" y="440" />
+              <mxPoint x="1010" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_ai_in_2" value="2. Natural Language Feasibility Explanations, Trade-offs &amp;amp; Itinerary Text" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_ai" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1420" y="310" />
+              <mxPoint x="1290" y="310" />
+              <mxPoint x="1290" y="520" />
+              <mxPoint x="1050" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_map_out" value="1. Destination Coordinates (WGS84 Lat/Lng) &amp;amp; Display Zoom Levels" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;strokeColor=#D97706;" parent="1" edge="1" source="proc_0" target="ent_map">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1040" y="560" />
+              <mxPoint x="1240" y="560" />
+              <mxPoint x="1240" y="750" />
+              <mxPoint x="1420" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_map_in" value="1. Interactive Map Tiles, Regional Cluster Overlays &amp;amp; Road Geometries" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=10;fontColor=#0F172A;" parent="1" edge="1" source="ent_map" target="proc_0">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1420" y="780" />
+              <mxPoint x="1210" y="780" />
+              <mxPoint x="1210" y="600" />
+              <mxPoint x="1010" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_dfd_level1" name="DFD Level 1 (Component C)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1980" pageHeight="1350" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_banner" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;color:#0F172A;'&gt;&lt;div style='font-size:20px;font-weight:bold;color:#1E3A8A;'&gt;Component C: Data Flow Diagram — Level 1 DFD (System Decomposition)&lt;/div&gt;&lt;div style='font-size:12px;color:#475569;margin-top:4px;'&gt;Decomposition of VROMON into 5 core action-based processes, 6 persistent data stores, and verified external interfaces.&lt;/div&gt;&lt;div style='font-size:11px;color:#64748B;margin-top:2px;'&gt;&lt;b&gt;Project:&lt;/b&gt; VROMON — Bangladesh Smart Trip Feasibility &amp;amp; Risk-Aware Travel Recommender | &lt;b&gt;Course:&lt;/b&gt; SE331 Software Engineering Design Capstone Project | &lt;b&gt;Semester:&lt;/b&gt; Fall 2026 | &lt;b&gt;Institution:&lt;/b&gt; Daffodil International University&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="50" y="30" width="1700" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;color:#0F172A;padding:4px;'&gt;&lt;div style='font-weight:bold;font-size:12px;color:#1E3A8A;border-bottom:1px solid #CBD5E1;padding-bottom:3px;margin-bottom:5px;'&gt;DFD Level 1 Standards&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Processes (1.0 - 5.0):&lt;/b&gt; Action-based processes (Gane &amp;amp; Sarson notation)&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Stores (D1 - D6):&lt;/b&gt; Persistent relational/vector repositories&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;External Entities:&lt;/b&gt; User, Admin, External AI API, Map Tile CDN&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Flows:&lt;/b&gt; Directed solid arrows with white halo label backgrounds&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Integrity Rule:&lt;/b&gt; Entities NEVER connect directly to data stores&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1540" y="30" width="390" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_user" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#129491;&amp;#8205;&amp;#9794;&amp;#65039;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;Traveler / End User&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;Tourist, student, trip planner&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#EFF6FF;strokeColor=#2563EB;" parent="1" vertex="1">
+          <mxGeometry x="40" y="220" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_admin" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#128187;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;System Administrator&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;Tourism data maintainer&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#F8FAFC;strokeColor=#475569;" parent="1" vertex="1">
+          <mxGeometry x="40" y="810" width="180" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_ai" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#129302;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;External AI API&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;Gemini 1.5 / Embedding Models&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#FAF5FF;strokeColor=#9333EA;" parent="1" vertex="1">
+          <mxGeometry x="1740" y="220" width="190" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ent_map" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:8px;'&gt;&lt;div style='font-size:20px;margin-bottom:2px;'&gt;&amp;#128506;&amp;#65039;&lt;/div&gt;&lt;div style='font-size:12px;font-weight:bold;color:#0F172A;'&gt;Map Tile Service&lt;/div&gt;&lt;div style='font-size:9.5px;color:#475569;margin-top:2px;'&gt;OpenStreetMap / Leaflet CDN&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;shadow=1;points=[[0,0.25],[0,0.5],[0,0.75],[1,0.25],[1,0.5],[1,0.75],[0.5,0],[0.5,1]];fillColor=#FFFBEB;strokeColor=#D97706;" parent="1" vertex="1">
+          <mxGeometry x="1740" y="520" width="190" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d4" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D4&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Trip Queries &amp;amp;amp; Recs Cache&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="45" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d2" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D2&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Transport Routes &amp;amp;amp; Tariffs&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="830" y="45" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d3" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D3&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Monthly Climate &amp;amp;amp; Crowd Matrix&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="45" width="290" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d5" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D5&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Saved Shared Plans &amp;amp;amp; Itineraries&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="620" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d1" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D1&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Destinations &amp;amp;amp; Attractions Catalog&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="410" width="290" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d6" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D6&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Admin &amp;amp;amp; Data Ingestion Logs&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;left=1;right=0;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2.5;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;points=[[0,0.5],[1,0.5],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="830" y="835" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_1" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 1.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Capture &amp;amp;amp; Parse Travel Intent&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Receive user text wishes, invoke AI 1 for tag/mood extraction &amp;amp;amp; build query vector&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="210" width="270" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_2" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Evaluate Feasibility &amp;amp;amp; Score Destinations&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Execute deterministic cost, time, weather &amp;amp;amp; crowd calculators; compute vector match &amp;amp;amp; rank&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="820" y="195" width="290" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_3" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 3.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Synthesize Explanations &amp;amp;amp; Itinerary&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Generate RAG reasoning on verified facts; build day-by-day plan using attractions&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="1260" y="205" width="280" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_4" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 4.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Manage Comparisons, Slider &amp;amp;amp; Sharing&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Handle side-by-side comparison, instant slider updates, PDF export &amp;amp;amp; 30-day share links&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="415" width="280" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_5" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 5.0&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Ingest Dataset &amp;amp;amp; Maintain Catalog&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Validate JSON schema, coordinate boundaries &amp;amp;amp; tariffs; compute vector embeddings &amp;amp;amp; log audit&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=8;whiteSpace=wrap;html=1;overflow=fill;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;shadow=1;points=[[0,0.2],[0,0.35],[0,0.5],[0,0.65],[0,0.8],[1,0.2],[1,0.35],[1,0.5],[1,0.65],[1,0.8],[0.5,0],[0.5,1]];" parent="1" vertex="1">
+          <mxGeometry x="370" y="795" width="280" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="df_u_p1" value="Travel wishes, budget cap, travelers, duration, month &amp;amp; starting city" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ent_user" target="proc_1">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p1_ai_req" value="Unstructured wish text prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="proc_1" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="505" y="170" />
+              <mxPoint x="1600" y="170" />
+              <mxPoint x="1600" y="240" />
+              <mxPoint x="1740" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p1_ai_res" value="Extracted semantic tags, mood &amp;amp; 1536-d query vector" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="ent_ai" target="proc_1">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1740" y="270" />
+              <mxPoint x="1630" y="270" />
+              <mxPoint x="1630" y="140" />
+              <mxPoint x="530" y="140" />
+              <mxPoint x="530" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p1_d4" value="Store parsed search session &amp;amp; vector" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_1" target="ds_d4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d4_p2" value="Query parameters &amp;amp; budget constraint" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d4" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="505" y="95" />
+              <mxPoint x="505" y="125" />
+              <mxPoint x="880" y="125" />
+              <mxPoint x="880" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p2" value="Candidate destinations, tariffs &amp;amp; min hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d1" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1260" y="430" />
+              <mxPoint x="1140" y="430" />
+              <mxPoint x="1140" y="300" />
+              <mxPoint x="1110" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d2_p2" value="Inter-district transit fares &amp;amp; travel hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d2" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d3_p2" value="Monthly climate rating &amp;amp; crowd level matrix" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d3" target="proc_2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1260" y="70" />
+              <mxPoint x="1030" y="70" />
+              <mxPoint x="1030" y="195" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p2_d4" value="Ranked recommendations with 6 subscores &amp;amp; alternatives" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#059669;" parent="1" edge="1" source="proc_2" target="ds_d4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="910" y="195" />
+              <mxPoint x="910" y="145" />
+              <mxPoint x="640" y="145" />
+              <mxPoint x="640" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p3" value="Top scored candidates &amp;amp; verified metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d4" target="proc_3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="640" y="65" />
+              <mxPoint x="1180" y="65" />
+              <mxPoint x="1180" y="230" />
+              <mxPoint x="1260" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p3" value="Attractions, landmarks &amp;amp; operating hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d1" target="proc_3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1400" y="410" />
+              <mxPoint x="1400" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_ai_req" value="RAG prompt (stored facts &amp;amp; calculated numbers)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="proc_3" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1540" y="240" />
+              <mxPoint x="1740" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_ai_res" value="Natural language reasons &amp;amp; daily itinerary text" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="ent_ai" target="proc_3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1740" y="275" />
+              <mxPoint x="1600" y="275" />
+              <mxPoint x="1600" y="295" />
+              <mxPoint x="1540" y="295" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_user" value="Ranked places, feasibility status, score breakdown &amp;amp; daily plan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#2563EB;strokeWidth=2;" parent="1" edge="1" source="proc_3" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1260" y="310" />
+              <mxPoint x="1160" y="310" />
+              <mxPoint x="1160" y="370" />
+              <mxPoint x="240" y="370" />
+              <mxPoint x="240" y="280" />
+              <mxPoint x="220" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p3_d5" value="Initial generated itinerary plan &amp;amp; cost breakdown" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_3" target="ds_d5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1330" y="340" />
+              <mxPoint x="1330" y="645" />
+              <mxPoint x="650" y="645" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_user_p4" value="Comparison selection, budget slider adjustments &amp;amp; share trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ent_user" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="130" y="315" />
+              <mxPoint x="130" y="450" />
+              <mxPoint x="370" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_user" value="Side-by-side comparison matrix, recalculated costs &amp;amp; share URL/PDF" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#2563EB;" parent="1" edge="1" source="proc_4" target="ent_user">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="370" y="480" />
+              <mxPoint x="110" y="480" />
+              <mxPoint x="110" y="315" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p4" value="Cached scores &amp;amp; metrics for slider recalculation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d4" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="370" y="75" />
+              <mxPoint x="320" y="75" />
+              <mxPoint x="320" y="435" />
+              <mxPoint x="370" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_d5" value="Persist public share token (30-day TTL)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_4" target="ds_d5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d5_p4" value="Retrieve saved itinerary for public view" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ds_d5" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="530" y="620" />
+              <mxPoint x="530" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_map_req" value="Destination WGS84 coordinates &amp;amp; zoom levels" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#D97706;" parent="1" edge="1" source="proc_4" target="ent_map">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="500" />
+              <mxPoint x="1500" y="500" />
+              <mxPoint x="1500" y="545" />
+              <mxPoint x="1740" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p4_map_res" value="Interactive map tiles, route lines &amp;amp; overlays" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#D97706;" parent="1" edge="1" source="ent_map" target="proc_4">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1740" y="575" />
+              <mxPoint x="1480" y="575" />
+              <mxPoint x="1480" y="525" />
+              <mxPoint x="650" y="525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_adm_p5" value="JSON dataset upload, manual edits &amp;amp; schema triggers" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="ent_admin" target="proc_5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p5_adm" value="Validation summary, error report &amp;amp; diff preview" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#475569;" parent="1" edge="1" source="proc_5" target="ent_admin">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="370" y="880" />
+              <mxPoint x="220" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_ai_req" value="Destination text descriptions for embedding" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="proc_5" target="ent_ai">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="830" />
+              <mxPoint x="1660" y="830" />
+              <mxPoint x="1660" y="290" />
+              <mxPoint x="1740" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_ai_res" value="1536-d dense text embeddings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;strokeColor=#9333EA;" parent="1" edge="1" source="ent_ai" target="proc_5">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1835" y="315" />
+              <mxPoint x="1835" y="870" />
+              <mxPoint x="650" y="870" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d1" value="Upsert verified destinations &amp;amp; POIs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d1">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="810" />
+              <mxPoint x="1200" y="810" />
+              <mxPoint x="1200" y="440" />
+              <mxPoint x="1260" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d2" value="Upsert transit routes &amp;amp; tariffs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d2">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="785" />
+              <mxPoint x="800" y="785" />
+              <mxPoint x="800" y="75" />
+              <mxPoint x="830" y="75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d3" value="Upsert monthly climate &amp;amp; crowd records" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d3">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="650" y="765" />
+              <mxPoint x="1220" y="765" />
+              <mxPoint x="1220" y="75" />
+              <mxPoint x="1260" y="75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p5_d6" value="Record ingestion audit logs &amp;amp; latency metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CBD5E1;spacing=3;" parent="1" edge="1" source="proc_5" target="ds_d6">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page_dfd_level2" name="DFD Level 2 - Process 2.0 (Component C)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1350" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_banner" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;color:#0F172A;'&gt;&lt;div style='font-size:20px;font-weight:bold;color:#1E3A8A;'&gt;Component C: Data Flow Diagram — Level 2 DFD (Process 2.0 Decomposition)&lt;/div&gt;&lt;div style='font-size:12px;color:#475569;margin-top:4px;'&gt;Detailed internal architecture of Process 2.0: Feasibility Calculation &amp;amp; Multi-Factor Recommendation Engine.&lt;/div&gt;&lt;div style='font-size:11px;color:#64748B;margin-top:2px;'&gt;&lt;b&gt;Project:&lt;/b&gt; VROMON — Bangladesh Smart Trip Feasibility &amp;amp; Risk-Aware Travel Recommender | &lt;b&gt;Course:&lt;/b&gt; SE331 Software Engineering Design Capstone Project | &lt;b&gt;Semester:&lt;/b&gt; Fall 2026 | &lt;b&gt;Institution:&lt;/b&gt; Daffodil International University&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="50" y="30" width="1700" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;color:#0F172A;padding:4px;'&gt;&lt;div style='font-weight:bold;font-size:12px;color:#1E3A8A;border-bottom:1px solid #CBD5E1;padding-bottom:3px;margin-bottom:5px;'&gt;DFD Level 2 Architecture&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Subprocesses (2.1 - 2.6):&lt;/b&gt; Atomic calculation &amp;amp; scoring steps&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Stores (D1 - D4):&lt;/b&gt; Persistent database sources accessed by engine&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Formula Callouts:&lt;/b&gt; Exact mathematical models for cost, time, and scoring&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Interface Boundaries:&lt;/b&gt; Strictly balanced with inputs/outputs of Level 1 Process 2.0&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1500" y="30" width="370" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d4_in" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D4&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Trip Queries (Input Constraints)&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="220" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d4_out" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D4&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Recommendation Cache (Scored Results)&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1580" y="800" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d1" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D1&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Destinations &amp;amp; Attractions&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="830" y="40" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d2" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D2&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Transport Routes &amp;amp; Tariffs&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="420" y="40" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d3" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px 6px;'&gt;&lt;span style='background-color:#D97706;color:#FFFFFF;font-weight:bold;font-size:11px;padding:2px 6px;border-radius:4px;'&gt;D3&lt;/span&gt; &lt;span style='font-size:11px;color:#78350F;font-weight:bold;margin-left:4px;'&gt;Monthly Climate &amp;amp; Crowd Matrix&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="40" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_21" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.1&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Calculate Transport &amp;amp; Travel Time&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Select cheapest transit mode (bus/train/launch) &amp;amp; compute roundtrip fare + transit hours&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="180" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_22" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.2&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Calculate Time Feasibility&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;usable_hours = (days * 12) - travel_hours. Filter if &amp;lt; min_hours_needed &amp;amp; score time fit&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="180" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_23" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.3&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Calculate Budget &amp;amp; Feasibility&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Total = Transport + Stay + Food + Local + 10%. Classify: Fits / Tight / Over / Discard (&amp;gt;25%)&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="180" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_24" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.4&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Evaluate Climate &amp;amp; Crowd Index&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Normalize 1-5 weather rating &amp;amp; crowd density (adjust +1 step for holiday/weekend)&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="500" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_25" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.5&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Compute Vector &amp;amp; Tag Match (AI 2)&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Cosine similarity on 1536-d vectors (meaning match) + Jaccard tag overlap (interest match)&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="500" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_26" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;height:100%;box-sizing:border-box;'&gt;&lt;div style='background-color:#059669;color:#FFFFFF;font-weight:bold;font-size:13px;padding:5px 8px;border-top-left-radius:8px;border-top-right-radius:8px;letter-spacing:0.5px;'&gt;Process 2.6&lt;/div&gt;&lt;div style='padding:8px 10px;background-color:#ECFDF5;border-bottom-left-radius:8px;border-bottom-right-radius:8px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#064E3B;margin-bottom:4px;'&gt;Multi-Factor Scoring &amp;amp; Alternatives&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.35;color:#047857;'&gt;Apply weights (Meaning 30%, Interest 15%, Budget 20%, Time 10%, Weather 15%, Crowd 10%) &amp;amp; cluster search&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="480" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="df_d4_p21" value="Origin city &amp; traveler count" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_21">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d2_p21" value="Route fares &amp; transit hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d2" target="proc_21">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p21_p22" value="Roundtrip travel hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_21" target="proc_22">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d4_p22" value="Trip duration (days)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_22">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="170" y="220" />
+              <mxPoint x="170" y="140" />
+              <mxPoint x="740" y="140" />
+              <mxPoint x="740" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p22" value="min_hours_needed per place" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d1" target="proc_22">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="900" y="90" />
+              <mxPoint x="900" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p21_p23" value="Roundtrip transport cost" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_21" target="proc_23">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="530" y="300" />
+              <mxPoint x="530" y="340" />
+              <mxPoint x="1120" y="340" />
+              <mxPoint x="1120" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p23" value="Budget cap, travelers, duration" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_23">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="170" y="220" />
+              <mxPoint x="170" y="120" />
+              <mxPoint x="1120" y="120" />
+              <mxPoint x="1120" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p23" value="Hotel tariffs, food rates &amp; entry fees" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d1" target="proc_23">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1030" y="90" />
+              <mxPoint x="1030" y="140" />
+              <mxPoint x="1285" y="140" />
+              <mxPoint x="1285" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p22_p26" value="Time fit score (10%) &amp; usable hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_22" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="900" y="300" />
+              <mxPoint x="900" y="420" />
+              <mxPoint x="1130" y="420" />
+              <mxPoint x="1130" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p23_p26" value="Budget score (20%), feasibility status &amp; breakdown" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_23" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d4_p24" value="Travel month &amp; weekend/holiday flag" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_24">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="170" y="270" />
+              <mxPoint x="170" y="560" />
+              <mxPoint x="400" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d3_p24" value="Monthly climate scores &amp; crowd density matrix" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d3" target="proc_24">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1400" y="90" />
+              <mxPoint x="1400" y="400" />
+              <mxPoint x="370" y="400" />
+              <mxPoint x="370" y="520" />
+              <mxPoint x="400" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p24_p26" value="Weather score (15%) &amp; crowd score (10%)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_24" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="530" y="620" />
+              <mxPoint x="1130" y="620" />
+              <mxPoint x="1130" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p25" value="Query 1536-d vector &amp; extracted tags" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_25">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="210" y="270" />
+              <mxPoint x="210" y="530" />
+              <mxPoint x="770" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p25" value="Destination 1536-d vectors &amp; tags" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d1" target="proc_25">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="965" y="90" />
+              <mxPoint x="965" y="380" />
+              <mxPoint x="850" y="380" />
+              <mxPoint x="850" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p25_p26" value="Meaning score (30%) &amp; Interest score (15%)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_25" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p26_d4" value="Ranked recommendations with 6 subscores &amp; alternatives" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;strokeColor=#059669;strokeWidth=2;" parent="1" edge="1" source="proc_26" target="ds_d4_out">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1290" y="630" />
+              <mxPoint x="1290" y="825" />
+              <mxPoint x="1580" y="825" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="callout_54144" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:6px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#14532D;border-bottom:1px solid #BBF7D0;padding-bottom:3px;margin-bottom:5px;'&gt;Budget Feasibility Mathematical Model&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.45;color:#0F172A;'&gt;&lt;b&gt;Accommodation:&lt;/b&gt; ceil(travelers / 2) &amp;times; (days &amp;minus; 1) &amp;times; hotel_rate&lt;br/&gt;&lt;b&gt;Food:&lt;/b&gt; travelers &amp;times; days &amp;times; daily_food_rate&lt;br/&gt;&lt;b&gt;Transport:&lt;/b&gt; cheapest_fare &amp;times; 2 &amp;times; travelers&lt;br/&gt;&lt;b&gt;Subtotal:&lt;/b&gt; Transport + Stay + Food + Local POI Fees&lt;br/&gt;&lt;b&gt;Total Cost:&lt;/b&gt; Subtotal + 10% Extra Buffer&lt;br/&gt;&lt;hr style='border:none;border-top:1px solid #BBF7D0;margin:3px 0;'/&gt;&lt;b&gt;Tiers:&lt;/b&gt;&lt;br/&gt;&amp;#8226; &lt;b&gt;Fits:&lt;/b&gt; Total &amp;le; Budget (Score = 100)&lt;br/&gt;&amp;#8226; &lt;b&gt;Tight:&lt;/b&gt; Budget &amp;lt; Total &amp;le; 1.10&amp;times;Budget (Score = 70-99)&lt;br/&gt;&amp;#8226; &lt;b&gt;Over:&lt;/b&gt; 1.10&amp;times;Budget &amp;lt; Total &amp;le; 1.25&amp;times;Budget (Score = 0-69)&lt;br/&gt;&amp;#8226; &lt;b&gt;Discard:&lt;/b&gt; Total &amp;gt; 1.25&amp;times;Budget (Excluded)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="720" width="340" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="callout_64969" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:6px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#14532D;border-bottom:1px solid #BBF7D0;padding-bottom:3px;margin-bottom:5px;'&gt;Available Time &amp;amp; Duration Model&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.45;color:#0F172A;'&gt;&lt;b&gt;Daily Usable Hours:&lt;/b&gt; 12 hours/day&lt;br/&gt;&lt;b&gt;Gross Available Hours:&lt;/b&gt; days &amp;times; 12&lt;br/&gt;&lt;b&gt;Hours at Destination:&lt;/b&gt; Gross &amp;minus; Roundtrip_Travel_Hours&lt;br/&gt;&lt;hr style='border:none;border-top:1px solid #BBF7D0;margin:3px 0;'/&gt;&lt;b&gt;Time Rule:&lt;/b&gt;&lt;br/&gt;If Available_Hours &amp;lt; min_hours_needed &amp;rarr; &lt;b&gt;Filter Out&lt;/b&gt;&lt;br/&gt;Else Time_Fit_Score = min(100, (Available / min_needed) &amp;times; 100)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="720" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="callout_87663" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:6px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#14532D;border-bottom:1px solid #BBF7D0;padding-bottom:3px;margin-bottom:5px;'&gt;Multi-Factor Recommendation Weights&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.45;color:#0F172A;'&gt;&lt;table style='width:100%;font-size:9.5px;border-collapse:collapse;color:#0F172A;'&gt;&lt;tr style='background-color:#DCFCE7;font-weight:bold;'&gt;&lt;td&gt;Factor&lt;/td&gt;&lt;td style='text-align:right;'&gt;Weight&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Meaning Match (AI 2 Vector Cosine)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;30%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Interest Match (AI 1 Tag Overlap)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;15%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Budget Fit (Total vs. Budget Cap)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;20%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time Fit (Available vs. Min Needed)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;10%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Weather Fit (Monthly Rating 1-5)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;15%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Crowd Fit (Low 100, Med 60, High 20)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;10%&lt;/td&gt;&lt;/tr&gt;&lt;tr style='border-top:1px solid #16A34A;font-weight:bold;'&gt;&lt;td&gt;Total Composite Score&lt;/td&gt;&lt;td style='text-align:right;'&gt;100%&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;div style='margin-top:4px;font-size:9px;color:#166534;'&gt;&lt;i&gt;Alternatives triggered if top 3 results are Over Budget or High Crowd.&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="720" width="380" height="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

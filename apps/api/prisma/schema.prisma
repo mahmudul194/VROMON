@@ -1,0 +1,239 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  TRAVELER
+  ADMIN
+}
+
+enum OtpPurpose {
+  REGISTER
+  RESET_PASSWORD
+}
+
+enum CostLevel {
+  Low
+  Medium
+  High
+}
+
+enum CrowdLevel {
+  Low
+  Medium
+  High
+}
+
+enum TransportMode {
+  Bus
+  Train
+  Launch
+}
+
+enum FeasibilityStatus {
+  Fits
+  Tight
+  Over_budget @map("Over budget")
+}
+
+enum ImportStatus {
+  Success
+  Partial
+  Failed
+}
+
+model user {
+  id             String       @id @default(uuid())
+  email          String       @unique
+  name           String
+  password_hash  String?
+  google_id      String?      @unique
+  avatar_url     String?
+  role           UserRole     @default(TRAVELER)
+  is_verified    Boolean      @default(false)
+  preferred_city String?      @default("Dhaka")
+  budget_tier    String?      @default("Medium")
+  created_at     DateTime     @default(now())
+  updated_at     DateTime     @updatedAt
+
+  saved_trips    saved_trip[]
+}
+
+model otp_verification {
+  id         String     @id @default(uuid())
+  email      String
+  code_hash  String
+  purpose    OtpPurpose
+  attempts   Int        @default(0)
+  verified   Boolean    @default(false)
+  expires_at DateTime
+  created_at DateTime   @default(now())
+
+  @@index([email, purpose])
+}
+
+model division {
+  division_id  Int           @id @default(autoincrement())
+  name         String        @unique
+  destinations destination[]
+}
+
+model destination {
+  destination_id             Int                 @id @default(autoincrement())
+  division_id                Int
+  name                       String              @unique
+  name_bn                    String?
+  district                   String
+  description                String              @db.Text
+  latitude                   Decimal             @db.Decimal(9, 6)
+  longitude                  Decimal             @db.Decimal(9, 6)
+  cost_level                 CostLevel
+  best_months                Int[]
+  min_hours_needed           Int
+  hotel_cost_per_room_night  Decimal             @db.Decimal(10, 2)
+  food_cost_per_person_day   Decimal             @db.Decimal(10, 2)
+  local_fees_per_person      Decimal             @db.Decimal(10, 2)
+  image_url                  String?
+  embedding                  Float[]
+
+  division                   division            @relation(fields: [division_id], references: [division_id], onDelete: Restrict)
+  tags                       destination_tag[]
+  attractions                attraction[]
+  monthly_conditions         monthly_condition[]
+  transport_options          transport_option[]
+  shared_plans               shared_plan[]
+  saved_trips                saved_trip[]
+
+  @@index([division_id])
+}
+
+model tag {
+  tag_id           Int               @id @default(autoincrement())
+  tag_name         String            @unique
+  destination_tags destination_tag[]
+}
+
+model destination_tag {
+  destination_id Int
+  tag_id         Int
+
+  destination    destination @relation(fields: [destination_id], references: [destination_id], onDelete: Cascade)
+  tag            tag         @relation(fields: [tag_id], references: [tag_id], onDelete: Cascade)
+
+  @@id([destination_id, tag_id])
+}
+
+model attraction {
+  attraction_id  Int         @id @default(autoincrement())
+  destination_id Int
+  name           String
+  description    String?     @db.Text
+  est_hours      Decimal     @db.Decimal(4, 2)
+
+  destination    destination @relation(fields: [destination_id], references: [destination_id], onDelete: Cascade)
+
+  @@index([destination_id])
+}
+
+model monthly_condition {
+  destination_id Int
+  month_no       Int
+  weather_rating Int
+  weather_note   String?     @db.Text
+  crowd_level    CrowdLevel
+
+  destination    destination @relation(fields: [destination_id], references: [destination_id], onDelete: Cascade)
+
+  @@id([destination_id, month_no])
+}
+
+model starting_city {
+  city_id           Int                @id @default(autoincrement())
+  name              String             @unique
+  transport_options transport_option[]
+  shared_plans      shared_plan[]
+}
+
+model transport_option {
+  transport_id     Int           @id @default(autoincrement())
+  destination_id   Int
+  city_id          Int
+  mode             TransportMode
+  fare_per_person  Decimal       @db.Decimal(10, 2)
+  travel_hours     Decimal       @db.Decimal(4, 2)
+
+  destination      destination   @relation(fields: [destination_id], references: [destination_id], onDelete: Cascade)
+  city             starting_city @relation(fields: [city_id], references: [city_id], onDelete: Cascade)
+
+  @@unique([destination_id, city_id, mode])
+  @@index([city_id])
+}
+
+model shared_plan {
+  share_id           String            @id @db.Char(12)
+  destination_id     Int
+  city_id            Int
+  budget             Decimal           @db.Decimal(10, 2)
+  travelers          Int
+  days               Int
+  travel_month       Int
+  has_holiday        Boolean
+  total_cost         Decimal           @db.Decimal(10, 2)
+  feasibility_status FeasibilityStatus
+  final_score        Decimal           @db.Decimal(5, 2)
+  reason_text        String            @db.Text
+  itinerary          Json
+  created_at         DateTime          @default(now())
+  expires_at         DateTime
+
+  destination        destination       @relation(fields: [destination_id], references: [destination_id], onDelete: Cascade)
+  city               starting_city     @relation(fields: [city_id], references: [city_id], onDelete: Cascade)
+
+  @@index([expires_at])
+}
+
+model saved_trip {
+  id                      String      @id @default(uuid())
+  user_id                 String
+  destination_id          Int
+  title                   String
+  query_params            Json
+  recommendation_snapshot Json
+  itinerary               Json?
+  created_at              DateTime    @default(now())
+
+  user                    user        @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  destination             destination @relation(fields: [destination_id], references: [destination_id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+model query_log {
+  id            Int      @id @default(autoincrement())
+  wishes        String   @db.Text
+  budget        Decimal  @db.Decimal(10, 2)
+  travelers     Int
+  days          Int
+  starting_city String
+  results_count Int
+  top_match     String?
+  latency_ms    Int
+  created_at    DateTime @default(now())
+}
+
+model import_log {
+  import_id    Int          @id @default(autoincrement())
+  file_name    String
+  records_read Int
+  loaded       Int
+  failed       Int
+  status       ImportStatus
+  errors       Json?
+  created_at   DateTime     @default(now())
+}

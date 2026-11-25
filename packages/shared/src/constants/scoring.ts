@@ -1,0 +1,21 @@
+export const SCORING_WEIGHTS = {
+  MEANING_MATCH: 0.30,
+  INTEREST_MATCH: 0.15,
+  BUDGET_FIT: 0.20,
+  TIME_FIT: 0.10,
+  WEATHER_FIT: 0.15,
+  CROWD_FIT: 0.10,
+} as const;
+
+export const FEASIBILITY_THRESHOLDS = {
+  USABLE_HOURS_PER_DAY: 12,
+  SAFETY_BUFFER_RATIO: 0.10,
+  TIGHT_LIMIT_MULTIPLIER: 1.10,
+  OVER_LIMIT_MULTIPLIER: 1.25,
+} as const;
+
+export const CROWD_SCORES = {
+  Low: 100,
+  Medium: 60,
+  High: 20,
+} as const;

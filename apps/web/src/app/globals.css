@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    background-color: #f0fdec;
+    color: #131e14;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.glass-surface {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+/* Crisp custom range slider following Stitch Amber Thumb & Bengal Green track */
+input[type='range'].vromon-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: #d5e6cf;
+  outline: none;
+}
+
+input[type='range'].vromon-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: #ffcb3d;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 3px 10px rgba(31, 42, 31, 0.22);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type='range'].vromon-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}

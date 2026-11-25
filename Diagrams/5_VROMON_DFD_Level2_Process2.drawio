@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Antigravity SE331" version="24.7.17">
+  <diagram id="page_dfd_level2" name="DFD Level 2 - Process 2.0 (Component C)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1350" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header_banner" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;color:#0F172A;'&gt;&lt;div style='font-size:20px;font-weight:bold;color:#1E3A8A;'&gt;Component C: Data Flow Diagram — Level 2 DFD (Process 2.0 Decomposition)&lt;/div&gt;&lt;div style='font-size:12px;color:#475569;margin-top:4px;'&gt;Detailed internal architecture of Process 2.0: Feasibility Calculation &amp;amp; Multi-Factor Recommendation Engine.&lt;/div&gt;&lt;div style='font-size:11px;color:#64748B;margin-top:2px;'&gt;&lt;b&gt;Project:&lt;/b&gt; VROMON — Bangladesh Smart Trip Feasibility &amp;amp; Risk-Aware Travel Recommender | &lt;b&gt;Course:&lt;/b&gt; SE331 Software Engineering Design Capstone Project | &lt;b&gt;Semester:&lt;/b&gt; Fall 2026 | &lt;b&gt;Institution:&lt;/b&gt; Daffodil International University&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="50" y="30" width="1700" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;font-size:11px;color:#0F172A;padding:4px;'&gt;&lt;div style='font-weight:bold;font-size:12px;color:#1E3A8A;border-bottom:1px solid #CBD5E1;padding-bottom:3px;margin-bottom:5px;'&gt;DFD Level 2 Architecture&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Subprocesses (2.1 - 2.6):&lt;/b&gt; Atomic calculation &amp;amp; scoring steps&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Data Stores (D1 - D4):&lt;/b&gt; Persistent database sources accessed by engine&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Formula Callouts:&lt;/b&gt; Exact mathematical models for cost, time, and scoring&lt;/div&gt;&lt;div style='margin-bottom:3px;'&gt;&lt;b&gt;Interface Boundaries:&lt;/b&gt; Strictly balanced with inputs/outputs of Level 1 Process 2.0&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#FFFFFF;strokeColor=#94A3B8;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1500" y="30" width="370" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d4_in" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:3px;'&gt;&lt;span style='font-weight:bold;color:#B45309;font-size:11px;'&gt;[D4]&lt;/span&gt; &lt;span style='font-size:11px;color:#0F172A;font-weight:bold;'&gt;Trip Queries (Input Constraints)&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="220" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d4_out" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:3px;'&gt;&lt;span style='font-weight:bold;color:#B45309;font-size:11px;'&gt;[D4]&lt;/span&gt; &lt;span style='font-size:11px;color:#0F172A;font-weight:bold;'&gt;Recommendation Cache (Scored Results)&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1580" y="800" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d1" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:3px;'&gt;&lt;span style='font-weight:bold;color:#B45309;font-size:11px;'&gt;[D1]&lt;/span&gt; &lt;span style='font-size:11px;color:#0F172A;font-weight:bold;'&gt;Destinations &amp;amp; Attractions&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="830" y="40" width="270" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d2" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:3px;'&gt;&lt;span style='font-weight:bold;color:#B45309;font-size:11px;'&gt;[D2]&lt;/span&gt; &lt;span style='font-size:11px;color:#0F172A;font-weight:bold;'&gt;Transport Routes &amp;amp; Tariffs&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="420" y="40" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ds_d3" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:3px;'&gt;&lt;span style='font-weight:bold;color:#B45309;font-size:11px;'&gt;[D3]&lt;/span&gt; &lt;span style='font-size:11px;color:#0F172A;font-weight:bold;'&gt;Monthly Climate &amp;amp; Crowd Matrix&lt;/span&gt;&lt;/div&gt;" style="shape=partialRectangle;top=0;bottom=0;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Segoe UI;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1260" y="40" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_21" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px;'&gt;&lt;div style='font-size:13px;font-weight:bold;color:#047857;'&gt;2.1&lt;/div&gt;&lt;div style='font-size:11px;font-weight:bold;color:#0F172A;margin-top:2px;'&gt;Calculate Transport &amp;amp; Travel Time&lt;/div&gt;&lt;div style='font-size:9.5px;color:#334155;margin-top:2px;'&gt;Select cheapest transit mode (bus/train/launch) &amp;amp; compute roundtrip fare + transit hours&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="180" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_22" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px;'&gt;&lt;div style='font-size:13px;font-weight:bold;color:#047857;'&gt;2.2&lt;/div&gt;&lt;div style='font-size:11px;font-weight:bold;color:#0F172A;margin-top:2px;'&gt;Calculate Time Feasibility&lt;/div&gt;&lt;div style='font-size:9.5px;color:#334155;margin-top:2px;'&gt;usable_hours = (days * 12) - travel_hours. Filter if &amp;lt; min_hours_needed &amp;amp; score time fit&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="180" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_23" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px;'&gt;&lt;div style='font-size:13px;font-weight:bold;color:#047857;'&gt;2.3&lt;/div&gt;&lt;div style='font-size:11px;font-weight:bold;color:#0F172A;margin-top:2px;'&gt;Calculate Budget &amp;amp; Feasibility&lt;/div&gt;&lt;div style='font-size:9.5px;color:#334155;margin-top:2px;'&gt;Total = Transport + Stay + Food + Local + 10%. Classify: Fits / Tight / Over / Discard (&amp;gt;25%)&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="180" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_24" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px;'&gt;&lt;div style='font-size:13px;font-weight:bold;color:#047857;'&gt;2.4&lt;/div&gt;&lt;div style='font-size:11px;font-weight:bold;color:#0F172A;margin-top:2px;'&gt;Evaluate Climate &amp;amp; Crowd Index&lt;/div&gt;&lt;div style='font-size:9.5px;color:#334155;margin-top:2px;'&gt;Normalize 1-5 weather rating &amp;amp; crowd density (adjust +1 step for holiday/weekend)&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="500" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_25" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px;'&gt;&lt;div style='font-size:13px;font-weight:bold;color:#047857;'&gt;2.5&lt;/div&gt;&lt;div style='font-size:11px;font-weight:bold;color:#0F172A;margin-top:2px;'&gt;Compute Vector &amp;amp; Tag Match (AI 2)&lt;/div&gt;&lt;div style='font-size:9.5px;color:#334155;margin-top:2px;'&gt;Cosine similarity on 1536-d vectors (meaning match) + Jaccard tag overlap (interest match)&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="500" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="proc_26" value="&lt;div style='text-align:center;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:4px;'&gt;&lt;div style='font-size:13px;font-weight:bold;color:#047857;'&gt;2.6&lt;/div&gt;&lt;div style='font-size:11px;font-weight:bold;color:#0F172A;margin-top:2px;'&gt;Multi-Factor Scoring &amp;amp; Alternatives&lt;/div&gt;&lt;div style='font-size:9.5px;color:#334155;margin-top:2px;'&gt;Apply weights (Meaning 30%, Interest 15%, Budget 20%, Time 10%, Weather 15%, Crowd 10%) &amp;amp; cluster search&lt;/div&gt;&lt;/div&gt;" style="shape=ellipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;fontFamily=Segoe UI;strokeWidth=2;fillColor=#ECFDF5;strokeColor=#059669;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="480" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="df_d4_p21" value="Origin city &amp; traveler count" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_21">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d2_p21" value="Route fares &amp; transit hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d2" target="proc_21">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p21_p22" value="Roundtrip travel hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_21" target="proc_22">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d4_p22" value="Trip duration (days)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_22">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="170" y="220" />
+              <mxPoint x="170" y="140" />
+              <mxPoint x="740" y="140" />
+              <mxPoint x="740" y="210" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p22" value="min_hours_needed per place" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d1" target="proc_22">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="900" y="90" />
+              <mxPoint x="900" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p21_p23" value="Roundtrip transport cost" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_21" target="proc_23">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="530" y="300" />
+              <mxPoint x="530" y="340" />
+              <mxPoint x="1120" y="340" />
+              <mxPoint x="1120" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p23" value="Budget cap, travelers, duration" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_23">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="170" y="220" />
+              <mxPoint x="170" y="120" />
+              <mxPoint x="1120" y="120" />
+              <mxPoint x="1120" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p23" value="Hotel tariffs, food rates &amp; entry fees" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d1" target="proc_23">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1030" y="90" />
+              <mxPoint x="1030" y="140" />
+              <mxPoint x="1285" y="140" />
+              <mxPoint x="1285" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p22_p26" value="Time fit score (10%) &amp; usable hours" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_22" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="900" y="300" />
+              <mxPoint x="900" y="420" />
+              <mxPoint x="1130" y="420" />
+              <mxPoint x="1130" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p23_p26" value="Budget score (20%), feasibility status &amp; breakdown" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_23" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_d4_p24" value="Travel month &amp; weekend/holiday flag" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_24">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="170" y="270" />
+              <mxPoint x="170" y="560" />
+              <mxPoint x="400" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d3_p24" value="Monthly climate scores &amp; crowd density matrix" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d3" target="proc_24">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1400" y="90" />
+              <mxPoint x="1400" y="400" />
+              <mxPoint x="370" y="400" />
+              <mxPoint x="370" y="520" />
+              <mxPoint x="400" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p24_p26" value="Weather score (15%) &amp; crowd score (10%)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_24" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="530" y="620" />
+              <mxPoint x="1130" y="620" />
+              <mxPoint x="1130" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d4_p25" value="Query 1536-d vector &amp; extracted tags" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d4_in" target="proc_25">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="210" y="270" />
+              <mxPoint x="210" y="530" />
+              <mxPoint x="770" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_d1_p25" value="Destination 1536-d vectors &amp; tags" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="ds_d1" target="proc_25">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="965" y="90" />
+              <mxPoint x="965" y="380" />
+              <mxPoint x="850" y="380" />
+              <mxPoint x="850" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="df_p25_p26" value="Meaning score (30%) &amp; Interest score (15%)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;" parent="1" edge="1" source="proc_25" target="proc_26">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="df_p26_d4" value="Ranked recommendations with 6 subscores &amp; alternatives" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Segoe UI;fontSize=9.5;fontColor=#0F172A;strokeColor=#059669;strokeWidth=2;" parent="1" edge="1" source="proc_26" target="ds_d4_out">
+          <mxGeometry x="0" y="0" width="0" height="0" as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1290" y="630" />
+              <mxPoint x="1290" y="825" />
+              <mxPoint x="1580" y="825" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="callout_18348" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:6px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#14532D;border-bottom:1px solid #BBF7D0;padding-bottom:3px;margin-bottom:5px;'&gt;Budget Feasibility Mathematical Model&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.45;color:#0F172A;'&gt;&lt;b&gt;Accommodation:&lt;/b&gt; ceil(travelers / 2) &amp;times; (days &amp;minus; 1) &amp;times; hotel_rate&lt;br/&gt;&lt;b&gt;Food:&lt;/b&gt; travelers &amp;times; days &amp;times; daily_food_rate&lt;br/&gt;&lt;b&gt;Transport:&lt;/b&gt; cheapest_fare &amp;times; 2 &amp;times; travelers&lt;br/&gt;&lt;b&gt;Subtotal:&lt;/b&gt; Transport + Stay + Food + Local POI Fees&lt;br/&gt;&lt;b&gt;Total Cost:&lt;/b&gt; Subtotal + 10% Extra Buffer&lt;br/&gt;&lt;hr style='border:none;border-top:1px solid #BBF7D0;margin:3px 0;'/&gt;&lt;b&gt;Tiers:&lt;/b&gt;&lt;br/&gt;&amp;#8226; &lt;b&gt;Fits:&lt;/b&gt; Total &amp;le; Budget (Score = 100)&lt;br/&gt;&amp;#8226; &lt;b&gt;Tight:&lt;/b&gt; Budget &amp;lt; Total &amp;le; 1.10&amp;times;Budget (Score = 70-99)&lt;br/&gt;&amp;#8226; &lt;b&gt;Over:&lt;/b&gt; 1.10&amp;times;Budget &amp;lt; Total &amp;le; 1.25&amp;times;Budget (Score = 0-69)&lt;br/&gt;&amp;#8226; &lt;b&gt;Discard:&lt;/b&gt; Total &amp;gt; 1.25&amp;times;Budget (Excluded)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="720" width="340" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="callout_5819" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:6px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#14532D;border-bottom:1px solid #BBF7D0;padding-bottom:3px;margin-bottom:5px;'&gt;Available Time &amp;amp; Duration Model&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.45;color:#0F172A;'&gt;&lt;b&gt;Daily Usable Hours:&lt;/b&gt; 12 hours/day&lt;br/&gt;&lt;b&gt;Gross Available Hours:&lt;/b&gt; days &amp;times; 12&lt;br/&gt;&lt;b&gt;Hours at Destination:&lt;/b&gt; Gross &amp;minus; Roundtrip_Travel_Hours&lt;br/&gt;&lt;hr style='border:none;border-top:1px solid #BBF7D0;margin:3px 0;'/&gt;&lt;b&gt;Time Rule:&lt;/b&gt;&lt;br/&gt;If Available_Hours &amp;lt; min_hours_needed &amp;rarr; &lt;b&gt;Filter Out&lt;/b&gt;&lt;br/&gt;Else Time_Fit_Score = min(100, (Available / min_needed) &amp;times; 100)&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="770" y="720" width="340" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="callout_66634" value="&lt;div style='text-align:left;font-family:Segoe UI, Helvetica, Arial, sans-serif;padding:6px;'&gt;&lt;div style='font-size:12px;font-weight:bold;color:#14532D;border-bottom:1px solid #BBF7D0;padding-bottom:3px;margin-bottom:5px;'&gt;Multi-Factor Recommendation Weights&lt;/div&gt;&lt;div style='font-size:10px;line-height:1.45;color:#0F172A;'&gt;&lt;table style='width:100%;font-size:9.5px;border-collapse:collapse;color:#0F172A;'&gt;&lt;tr style='background-color:#DCFCE7;font-weight:bold;'&gt;&lt;td&gt;Factor&lt;/td&gt;&lt;td style='text-align:right;'&gt;Weight&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Meaning Match (AI 2 Vector Cosine)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;30%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Interest Match (AI 1 Tag Overlap)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;15%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Budget Fit (Total vs. Budget Cap)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;20%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time Fit (Available vs. Min Needed)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;10%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Weather Fit (Monthly Rating 1-5)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;15%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Crowd Fit (Low 100, Med 60, High 20)&lt;/td&gt;&lt;td style='text-align:right;font-weight:bold;'&gt;10%&lt;/td&gt;&lt;/tr&gt;&lt;tr style='border-top:1px solid #16A34A;font-weight:bold;'&gt;&lt;td&gt;Total Composite Score&lt;/td&gt;&lt;td style='text-align:right;'&gt;100%&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;div style='margin-top:4px;font-size:9px;color:#166534;'&gt;&lt;i&gt;Alternatives triggered if top 3 results are Over Budget or High Crowd.&lt;/i&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=rectangle;rounded=1;arcSize=4;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=1.5;html=1;whiteSpace=wrap;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="720" width="380" height="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
