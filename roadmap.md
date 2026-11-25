@@ -17,7 +17,8 @@
      - Add an entry to the **Collaboration Activity Log** at the bottom of this file.
      - Add any newly discovered follow-up tasks under the relevant Phase as `[ ]`.
 2. **Branch & Git Workflow:**
-   - Pull latest `main` before starting: `git pull origin main`
+   - **Feature / Owner Branches:** Rifat + Agent work on **`rifat`** branch (`git checkout rifat`), push to `origin/rifat`, and merge cleanly into **`main`** after verification (`git checkout main && git merge rifat && git push origin main`). Collaborators should work on their own named branch (e.g. `<collaborator-name>`) and merge into `main` after `npm` verification checks pass.
+   - Pull latest `main` before starting new work: `git pull origin main`
    - Never push raw `.env` files, personal API keys, `images/` media dumps (unless approved), or `node_modules`. Document new env keys as placeholders in `.env.example`.
 3. **Package Manager & Commands (`npm` Workspaces Only):**
    - Always use **`npm`** (do **not** introduce `pnpm-lock.yaml` or `yarn.lock`).
@@ -153,7 +154,7 @@
 
 | Task / Area | Owner | Branch | Status | Notes |
 |---|---|---|---|---|
-| Phases 0 – 4 (Core Monorepo, API, Seed, 14 Stitch Pages) | Rifat + Agent | `main` | `[x]` Done | Verify locally with `npm run dev:api` & `npm run dev:web` |
+| Phases 0 – 4 (Core Monorepo, API, Seed, 14 Stitch Pages) | Rifat + Agent | `rifat` -> `main` | `[x]` Done | Pushed to `rifat` and merged cleanly into `main` |
 | Phase 4.5 (Stitch Error/Offline/Skeleton/Modal Screens) | Unassigned | — | `[ ]` Open | Available for collaborator |
 | Phase 5 (Google Console URIs + Live E2E Browser QA) | Unassigned | — | `[ ]` Open | Coordinate here before claiming |
 | Phase 6 (Local 64 Photos Wiring + Mobile `375px` Polish) | Unassigned | — | `[ ]` Open | `images/` + `credits.csv` already downloaded locally |
@@ -165,7 +166,8 @@
 
 | Date | Commit / Ref | Author / Agent | Summary of Changes |
 |---|---|---|---|
-| 2026-11-26 | `main` | Rifat + Agent | Audited all **62** Stitch entries (`projects/3572637668389846387`) and added explicit screen-by-screen table + Phase 4.5 for missing Stitch utility/modal screens to `roadmap.md` |
+| 2026-11-26 | `rifat` -> `main` | Rifat + Agent | Created `rifat` branch, updated branch/merge workflow in `roadmap.md`, pushed `origin/rifat`, and merged into `main` |
+| 2026-11-26 | `bc503ec` | Rifat + Agent | Audited all **62** Stitch entries (`projects/3572637668389846387`) and added explicit screen-by-screen table + Phase 4.5 for missing Stitch utility/modal screens to `roadmap.md` |
 | 2026-11-26 | `ba8736a` | Rifat + Agent | Routed Navbar `Get started` button to `/register` and rebuilt `/login` & `/register` (with Step 2 Vibes/Budget Preferences) to exact Stitch `02_login`, `03_register_1`, and `04_register_2` visual layouts |
 | 2026-11-26 | `fbbb6f1` | Rifat + Agent | Cleared hardcoded pre-filled prompts on Hero `/` & `/plan` + ran Wikimedia photo downloader (64/64 districts downloaded) |
 | 2026-11-26 | `704d771` | Rifat + Agent | Replaced visible `"itinerary"` UI copy with plain English (`Trip Plan`, `Day Plan`); verified clean build (15/15 routes) |
