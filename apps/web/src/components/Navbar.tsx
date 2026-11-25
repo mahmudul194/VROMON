@@ -40,7 +40,13 @@ export function Navbar() {
   const initial = user?.name?.trim().charAt(0).toUpperCase() || 'V';
 
   return (
-    <header className="sticky top-0 z-50 w-full px-4 pt-4 sm:px-6">
+    <header
+      className={
+        isLanding
+          ? 'fixed top-0 left-0 right-0 z-50 w-full px-4 pt-5 sm:px-6'
+          : 'sticky top-0 z-50 w-full px-4 pt-4 sm:px-6'
+      }
+    >
       <nav className="glass-surface mx-auto flex h-[70px] max-w-[1180px] items-center justify-between rounded-full px-4 pl-5 shadow-[0_20px_60px_rgba(31,42,31,0.10)]">
         {/* Left: Single-line Brand */}
         <Link href="/" className="flex items-center gap-3 shrink-0">

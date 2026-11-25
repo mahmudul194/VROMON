@@ -144,25 +144,25 @@ export default function HomePage() {
 
   return (
     <div className="relative overflow-hidden bg-[#E5F0E0]">
-      {/* Ambient Blurred Background Blobs */}
-      <div className="pointer-events-none absolute top-0 left-0 right-0 h-[1050px] overflow-hidden z-0">
-        <div className="absolute -top-32 -left-24 h-[580px] w-[580px] rounded-full bg-[#5D9253] opacity-30 blur-[130px]" />
-        <div className="absolute -top-20 -right-24 h-[540px] w-[540px] rounded-full bg-[#FFCB3D] opacity-35 blur-[140px]" />
+      {/* Ambient Blurred Background Blobs starting right from y=0 behind navbar */}
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-[1120px] overflow-hidden z-0">
+        <div className="absolute -top-44 -left-24 h-[640px] w-[640px] rounded-full bg-[#5D9253] opacity-30 blur-[130px]" />
+        <div className="absolute -top-36 -right-24 h-[600px] w-[600px] rounded-full bg-[#FFCB3D] opacity-35 blur-[140px]" />
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 h-[480px] w-[680px] rounded-full bg-[#557945] opacity-20 blur-[150px]" />
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative z-10 mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-6 lg:px-10 text-center">
+      <section className="relative z-10 mx-auto max-w-7xl px-4 pt-32 pb-16 sm:px-6 lg:px-10 text-center">
         {/* Sub-badge */}
         <div className="inline-flex items-center gap-2.5 rounded-full bg-white px-5 py-2 shadow-[0_10px_30px_rgba(31,42,31,0.08)] border border-white/80 mb-7">
           <span className="h-2.5 w-2.5 rounded-full bg-[#FFCB3D] animate-pulse" />
-          <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#1F2A1F]">
+          <span className="text-[13px] font-medium tracking-tight text-[#1F2A1F]">
             AI travel recommender for Bangladesh
           </span>
         </div>
 
         {/* 3-line Editorial Display Headline: 48px mobile -> 112px desktop, 800, lh 1.0, ls -4% */}
-        <h1 className="mx-auto max-w-7xl text-[48px] md:text-[80px] xl:text-[112px] font-extrabold leading-none tracking-[-0.04em] text-[#1F2A1F]">
+        <h1 className="mx-auto max-w-7xl text-[48px] md:text-[80px] xl:text-[112px] font-extrabold leading-[1.0] tracking-[-0.04em] text-[#1F2A1F]">
           Tell us your vibe.
           <br />
           We&apos;ll find your
@@ -170,7 +170,7 @@ export default function HomePage() {
           <span className="relative inline-block text-[#2F6B2F] whitespace-nowrap">
             destination.
             <svg
-              className="pointer-events-none absolute -bottom-3 left-0 w-full h-5"
+              className="pointer-events-none absolute -bottom-2.5 left-0 w-full h-4"
               fill="none"
               viewBox="0 0 460 28"
               preserveAspectRatio="none"
@@ -186,7 +186,7 @@ export default function HomePage() {
           </span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-2xl text-[16px] md:text-[18px] font-normal leading-relaxed text-[#1F2A1F]/80">
+        <p className="mx-auto mt-8 max-w-[560px] text-[16px] md:text-[18px] font-normal leading-relaxed text-[#1F2A1F]/75">
           Describe your trip in plain words. Our AI checks your budget, time, weather and crowds,
           then ranks the places that truly fit.
         </p>
@@ -312,7 +312,7 @@ export default function HomePage() {
                 setWishes(chip.label);
                 launchSearch(chip.label);
               }}
-              className="inline-flex items-center gap-2 rounded-full bg-white/85 border border-white px-4 py-2 text-[14px] font-normal text-[#1F2A1F] shadow-[0_4px_14px_rgba(31,42,31,0.04)] hover:bg-white hover:border-[#5D9253] hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 rounded-full bg-white/85 border border-white px-4 py-2 text-[14px] font-normal whitespace-nowrap text-[#1F2A1F] shadow-[0_4px_14px_rgba(31,42,31,0.04)] hover:bg-white hover:border-[#5D9253] hover:-translate-y-0.5 transition-all"
             >
               {chip.tag === 'budget' && (
                 <span className="font-bold text-[#2F6B2F]">৳</span>
