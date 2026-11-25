@@ -124,6 +124,8 @@
 
 | Date | Commit / Ref | Author / Agent | Summary of Changes |
 |---|---|---|---|
+| 2026-11-26 | `main` | Rifat + Agent | Routed Navbar `Get started` button to `/register` and rebuilt `/login` & `/register` (with Step 2 Vibes/Budget Preferences) to exact Stitch `02_login`, `03_register_1`, and `04_register_2` visual layouts |
+| 2026-11-26 | `fbbb6f1` | Rifat + Agent | Cleared hardcoded pre-filled prompts on Hero `/` & `/plan` + ran Wikimedia photo downloader (64/64 districts downloaded) |
 | 2026-11-26 | `704d771` | Rifat + Agent | Replaced visible `"itinerary"` UI copy with plain English (`Trip Plan`, `Day Plan`); verified clean build (15/15 routes) |
 | 2026-11-26 | `1f58902` | Rifat + Agent | Switched `vromon_logo.png` to standalone horizontal rendering (removed circle crop and duplicate `VROMON` text) |
 | 2026-11-26 | `03f160a` | Rifat + Agent | Self-hosted `Inter` font via `next/font/google` (fixing serif fallback) and floated landing navbar cleanly over hero gradient |

@@ -112,7 +112,7 @@ export function Navbar() {
                 Log in
               </Link>
               <Link
-                href="/plan"
+                href="/register"
                 className="group inline-flex h-12 items-center gap-3.5 rounded-full bg-[#2F6B2F] pl-5 pr-2 text-[15px] font-semibold text-white shadow-[0_8px_24px_rgba(47,107,47,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(47,107,47,0.32)] whitespace-nowrap"
               >
                 <span>Get started</span>
@@ -175,7 +175,7 @@ export function Navbar() {
                   Log in
                 </Link>
                 <Link
-                  href="/plan"
+                  href="/register"
                   onClick={() => setMobileOpen(false)}
                   className="rounded-full bg-[#2F6B2F] py-3 text-center text-[14px] font-semibold text-white"
                 >
