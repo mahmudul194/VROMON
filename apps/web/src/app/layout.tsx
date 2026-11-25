@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="font-sans">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-vromon-canvas font-sans text-vromon-ink">
+      <body className="min-h-screen flex flex-col bg-[#E5F0E0] font-sans text-[16px] md:text-[18px] font-normal text-[#1F2A1F]">
         <AuthProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

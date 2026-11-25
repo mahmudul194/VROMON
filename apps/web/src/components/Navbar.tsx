@@ -49,7 +49,7 @@ export function Navbar() {
             alt="VROMON Logo"
             className="h-10 w-10 rounded-full object-cover shadow-[0_4px_12px_rgba(47,107,47,0.22)] border border-white"
           />
-          <span className="text-[19px] font-extrabold tracking-[0.08em] text-[#1F2A1F] whitespace-nowrap">
+          <span className="text-[20px] font-bold tracking-[0.08em] text-[#1F2A1F] whitespace-nowrap">
             VROMON
           </span>
         </Link>
@@ -64,10 +64,10 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-full px-4 py-2 text-[14px] whitespace-nowrap transition-all ${
+                className={`rounded-full px-4 py-2 text-[15px] font-medium whitespace-nowrap transition-all ${
                   active
                     ? 'bg-[#E5F0E0] font-semibold text-[#2F6B2F]'
-                    : 'font-medium text-[#1F2A1F] hover:bg-white/70'
+                    : 'text-[#1F2A1F] hover:bg-white/70'
                 }`}
               >
                 {link.label}
@@ -82,7 +82,7 @@ export function Navbar() {
             <div className="flex items-center gap-2.5">
               <Link
                 href="/profile"
-                className="flex h-11 items-center gap-2.5 rounded-full bg-[#F6FAF3] border border-[#D5E6CF] pl-3.5 pr-1.5 text-xs font-bold tracking-wider uppercase text-[#1F2A1F] hover:bg-[#E5F0E0] transition-colors"
+                className="flex h-11 items-center gap-2.5 rounded-full bg-[#F6FAF3] border border-[#D5E6CF] pl-3.5 pr-1.5 text-[13px] font-semibold tracking-[0.06em] uppercase text-[#1F2A1F] hover:bg-[#E5F0E0] transition-colors"
               >
                 {user.role === 'ADMIN' && (
                   <ShieldCheck className="h-3.5 w-3.5 text-[#2F6B2F]" />
@@ -140,7 +140,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#1F2A1F] hover:bg-[#E5F0E0]"
+                className="rounded-2xl px-4 py-3 text-[14px] font-semibold text-[#1F2A1F] hover:bg-[#E5F0E0]"
               >
                 {link.label}
               </Link>
@@ -151,13 +151,13 @@ export function Navbar() {
                 <Link
                   href="/profile"
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#1F2A1F] hover:bg-[#E5F0E0]"
+                  className="rounded-2xl px-4 py-3 text-[14px] font-semibold text-[#1F2A1F] hover:bg-[#E5F0E0]"
                 >
                   {user.name} (Profile)
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="rounded-2xl px-4 py-3 text-left text-sm font-semibold text-[#c62828] hover:bg-red-50"
+                  className="rounded-2xl px-4 py-3 text-left text-[14px] font-semibold text-[#c62828] hover:bg-red-50"
                 >
                   Sign Out
                 </button>
@@ -167,14 +167,14 @@ export function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-full border border-[#D5E6CF] py-3 text-center text-sm font-semibold text-[#1F2A1F]"
+                  className="rounded-full border border-[#D5E6CF] py-3 text-center text-[14px] font-semibold text-[#1F2A1F]"
                 >
                   Log in
                 </Link>
                 <Link
                   href="/plan"
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-full bg-[#2F6B2F] py-3 text-center text-sm font-semibold text-white"
+                  className="rounded-full bg-[#2F6B2F] py-3 text-center text-[14px] font-semibold text-white"
                 >
                   Get started
                 </Link>

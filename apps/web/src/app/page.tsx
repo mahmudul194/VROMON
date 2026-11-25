@@ -156,13 +156,13 @@ export default function HomePage() {
         {/* Sub-badge */}
         <div className="inline-flex items-center gap-2.5 rounded-full bg-white px-5 py-2 shadow-[0_10px_30px_rgba(31,42,31,0.08)] border border-white/80 mb-7">
           <span className="h-2.5 w-2.5 rounded-full bg-[#FFCB3D] animate-pulse" />
-          <span className="text-[13px] font-semibold tracking-tight text-[#1F2A1F]">
+          <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#1F2A1F]">
             AI travel recommender for Bangladesh
           </span>
         </div>
 
-        {/* 3-line Editorial Headline (Responsive sizing, never breaks mid-word) */}
-        <h1 className="mx-auto max-w-5xl text-4xl sm:text-6xl lg:text-[82px] font-extrabold leading-[1.03] tracking-[-0.04em] text-[#1F2A1F]">
+        {/* 3-line Editorial Display Headline: 48px mobile -> 112px desktop, 800, lh 1.0, ls -4% */}
+        <h1 className="mx-auto max-w-7xl text-[48px] md:text-[80px] xl:text-[112px] font-extrabold leading-none tracking-[-0.04em] text-[#1F2A1F]">
           Tell us your vibe.
           <br />
           We&apos;ll find your
@@ -186,7 +186,7 @@ export default function HomePage() {
           </span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-xl text-base sm:text-[19px] leading-relaxed text-[#1F2A1F]/75">
+        <p className="mx-auto mt-8 max-w-2xl text-[16px] md:text-[18px] font-normal leading-relaxed text-[#1F2A1F]/80">
           Describe your trip in plain words. Our AI checks your budget, time, weather and crowds,
           then ranks the places that truly fit.
         </p>
@@ -202,7 +202,7 @@ export default function HomePage() {
               value={wishes}
               onChange={(e) => setWishes(e.target.value)}
               placeholder="e.g., quiet hill place with tea gardens under 15,000 BDT for 2 people..."
-              className="flex-1 min-w-0 bg-transparent text-sm sm:text-base text-[#1F2A1F] placeholder:text-[#1F2A1F]/45 focus:outline-none px-2"
+              className="flex-1 min-w-0 bg-transparent text-[16px] font-normal text-[#1F2A1F] placeholder:text-[#1F2A1F]/45 focus:outline-none px-2"
             />
             <button
               type="button"
@@ -214,7 +214,7 @@ export default function HomePage() {
             </button>
             <button
               type="submit"
-              className="inline-flex h-12 sm:h-14 shrink-0 items-center gap-2 rounded-full bg-[#2F6B2F] px-5 sm:px-7 text-sm sm:text-[15px] font-semibold text-white shadow-[0_8px_20px_rgba(47,107,47,0.25)] hover:bg-[#265726] transition-all"
+              className="inline-flex h-12 sm:h-14 shrink-0 items-center gap-2 rounded-full bg-[#2F6B2F] px-5 sm:px-7 text-[15px] font-semibold text-white shadow-[0_8px_20px_rgba(47,107,47,0.25)] hover:bg-[#265726] transition-all"
             >
               <span>Recommend</span>
               <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
@@ -225,7 +225,7 @@ export default function HomePage() {
           {showFilters && (
             <div className="mt-3 grid grid-cols-2 sm:grid-cols-5 gap-3 rounded-3xl bg-white/95 p-4 shadow-soft border border-[#D5E6CF] text-left">
               <div>
-                <label className="block text-[11px] font-bold uppercase text-[#557945] mb-1">
+                <label className="block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945] mb-1">
                   Budget (BDT)
                 </label>
                 <input
@@ -234,11 +234,11 @@ export default function HomePage() {
                   step={500}
                   value={budget}
                   onChange={(e) => setBudget(Number(e.target.value))}
-                  className="h-9 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-xs font-bold text-[#1F2A1F]"
+                  className="h-10 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-[14px] font-semibold text-[#1F2A1F]"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase text-[#557945] mb-1">
+                <label className="block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945] mb-1">
                   Travelers
                 </label>
                 <input
@@ -247,11 +247,11 @@ export default function HomePage() {
                   max={20}
                   value={travelers}
                   onChange={(e) => setTravelers(Number(e.target.value))}
-                  className="h-9 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-xs font-bold text-[#1F2A1F]"
+                  className="h-10 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-[14px] font-semibold text-[#1F2A1F]"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase text-[#557945] mb-1">
+                <label className="block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945] mb-1">
                   Days
                 </label>
                 <input
@@ -260,17 +260,17 @@ export default function HomePage() {
                   max={14}
                   value={days}
                   onChange={(e) => setDays(Number(e.target.value))}
-                  className="h-9 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-xs font-bold text-[#1F2A1F]"
+                  className="h-10 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-[14px] font-semibold text-[#1F2A1F]"
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase text-[#557945] mb-1">
+                <label className="block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945] mb-1">
                   Month
                 </label>
                 <select
                   value={travelMonth}
                   onChange={(e) => setTravelMonth(Number(e.target.value))}
-                  className="h-9 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-xs font-bold text-[#1F2A1F]"
+                  className="h-10 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-[14px] font-semibold text-[#1F2A1F]"
                 >
                   {[
                     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -283,13 +283,13 @@ export default function HomePage() {
                 </select>
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase text-[#557945] mb-1">
+                <label className="block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945] mb-1">
                   From
                 </label>
                 <select
                   value={startingCity}
                   onChange={(e) => setStartingCity(e.target.value)}
-                  className="h-9 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-xs font-bold text-[#1F2A1F]"
+                  className="h-10 w-full rounded-full bg-[#F6FAF3] border border-[#D5E6CF] px-3 text-[14px] font-semibold text-[#1F2A1F]"
                 >
                   {['Dhaka', 'Chattogram', 'Sylhet', 'Rajshahi', 'Khulna', 'Barishal'].map((c) => (
                     <option key={c} value={c}>
@@ -312,7 +312,7 @@ export default function HomePage() {
                 setWishes(chip.label);
                 launchSearch(chip.label);
               }}
-              className="inline-flex items-center gap-2 rounded-full bg-white/85 border border-white px-4 py-2 text-[13px] font-medium text-[#1F2A1F] shadow-[0_4px_14px_rgba(31,42,31,0.04)] hover:bg-white hover:border-[#5D9253] hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 rounded-full bg-white/85 border border-white px-4 py-2 text-[14px] font-normal text-[#1F2A1F] shadow-[0_4px_14px_rgba(31,42,31,0.04)] hover:bg-white hover:border-[#5D9253] hover:-translate-y-0.5 transition-all"
             >
               {chip.tag === 'budget' && (
                 <span className="font-bold text-[#2F6B2F]">৳</span>
@@ -330,13 +330,13 @@ export default function HomePage() {
           {/* Floating Left Badge */}
           <div className="hidden md:flex absolute left-6 -top-4 z-20 items-center gap-2.5 rounded-full bg-white/90 backdrop-blur-xl border border-white px-5 py-2.5 shadow-[0_16px_40px_rgba(31,42,31,0.12)]">
             <span className="inline-block h-5 w-5 rounded-full border-[3px] border-[#2F6B2F] border-t-[#FFCB3D]" />
-            <span className="text-[13px] font-bold text-[#1F2A1F]">6-factor AI scoring</span>
+            <span className="text-[14px] font-semibold text-[#1F2A1F]">6-factor AI scoring</span>
           </div>
 
           {/* Floating Right Badge */}
           <div className="hidden md:flex absolute right-6 -top-2 z-20 items-center gap-2.5 rounded-full bg-white/90 backdrop-blur-xl border border-white px-5 py-2.5 shadow-[0_16px_40px_rgba(31,42,31,0.12)]">
             <span className="h-2.5 w-2.5 rounded-full bg-[#5D9253] ring-4 ring-[#5D9253]/25" />
-            <span className="text-[13px] font-bold text-[#1F2A1F]">Fits your budget</span>
+            <span className="text-[14px] font-semibold text-[#1F2A1F]">Fits your budget</span>
           </div>
 
           <div className="flex flex-wrap lg:flex-nowrap items-end justify-center gap-3 sm:gap-4 pt-6">
@@ -353,8 +353,8 @@ export default function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3 flex h-11 items-center justify-between rounded-full bg-white/90 backdrop-blur-md px-3.5 shadow-md">
-                  <span className="truncate text-[13px] font-bold text-[#1F2A1F]">{card.name}</span>
-                  <span className="rounded-full bg-[#2F6B2F] px-2 py-0.5 text-[11px] font-bold text-white shrink-0">
+                  <span className="truncate text-[14px] font-semibold text-[#1F2A1F]">{card.name}</span>
+                  <span className="rounded-full bg-[#2F6B2F] px-2.5 py-0.5 text-[14px] font-bold text-white shrink-0">
                     {card.score}
                   </span>
                 </div>
@@ -383,17 +383,17 @@ export default function HomePage() {
                 <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-[#E5F0E0]">
                   <stat.icon className="h-5 w-5 text-[#2F6B2F]" strokeWidth={1.75} />
                 </div>
-                <div className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#2F6B2F] whitespace-nowrap">
+                <div className="text-[40px] font-bold tracking-tight text-[#2F6B2F] whitespace-nowrap">
                   {stat.val}
                   {stat.accent && <span className="text-[#FFCB3D]">{stat.accent}</span>}
                 </div>
-                <div className="mt-1.5 text-sm font-medium text-[#1F2A1F]/70">{stat.label}</div>
+                <div className="mt-1.5 text-[14px] font-normal text-[#1F2A1F]/75">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-2 text-sm font-semibold text-[#1F2A1F]">
+        <div className="mt-8 flex items-center justify-center gap-2 text-[14px] font-semibold text-[#1F2A1F]">
           <Leaf className="h-4 w-4 text-[#2F6B2F]" strokeWidth={2} />
           <span>Built for travelers in Bangladesh</span>
         </div>
@@ -403,16 +403,16 @@ export default function HomePage() {
       <section id="how-it-works" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-10">
         <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <span className="inline-flex items-center rounded-full bg-[#1F2A1F] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#FFCB3D]">
+            <span className="inline-flex items-center rounded-full bg-[#1F2A1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#FFCB3D]">
               HOW IT WORKS
             </span>
-            <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.03em] text-[#1F2A1F]">
+            <h2 className="mt-4 text-[36px] md:text-[64px] font-extrabold leading-[1.06] tracking-[-0.03em] text-[#1F2A1F]">
               Four steps.
               <br />
               Zero guesswork.
             </h2>
           </div>
-          <p className="max-w-md text-base leading-relaxed text-[#1F2A1F]/80">
+          <p className="max-w-md text-[16px] md:text-[18px] font-normal leading-relaxed text-[#1F2A1F]/80">
             Our AI breaks down natural-language trip wishes into mathematical travel variables,
             testing budget limits, routes, and season constraints in seconds.
           </p>
@@ -464,7 +464,7 @@ export default function HomePage() {
                 className={`relative flex min-h-[300px] flex-col justify-between overflow-hidden rounded-[32px] p-7 shadow-[0_16px_40px_rgba(31,42,31,0.08)] ${step.bg}`}
               >
                 <span
-                  className={`pointer-events-none select-none absolute top-3 right-5 text-8xl font-black leading-none ${step.numColor}`}
+                  className={`pointer-events-none select-none absolute top-3 right-5 text-8xl font-extrabold leading-none ${step.numColor}`}
                 >
                   {step.num}
                 </span>
@@ -472,9 +472,9 @@ export default function HomePage() {
                   <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-full ${step.iconBg}`}>
                     <step.icon className="h-5 w-5" strokeWidth={2} />
                   </div>
-                  <h3 className="text-2xl font-extrabold tracking-tight">{step.title}</h3>
+                  <h3 className="text-[24px] font-semibold tracking-tight">{step.title}</h3>
                 </div>
-                <p className="relative z-10 mt-6 text-[15px] leading-relaxed opacity-85">{step.desc}</p>
+                <p className="relative z-10 mt-6 text-[16px] font-normal leading-relaxed opacity-90">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -483,11 +483,11 @@ export default function HomePage() {
 
       {/* SECTION 3: BENTO FEATURES */}
       <section id="features" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-10">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-[#1F2A1F]">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <h2 className="text-[36px] md:text-[64px] font-extrabold leading-[1.06] tracking-[-0.03em] text-[#1F2A1F]">
             Built to beat a Google search.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#1F2A1F]/75">
+          <p className="mt-4 text-[16px] md:text-[18px] font-normal leading-relaxed text-[#1F2A1F]/80">
             Standard search engines show sponsored blogs. VROMON calculates trip feasibility with
             multi-dimensional logic.
           </p>
@@ -501,17 +501,17 @@ export default function HomePage() {
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10">
                   <Sparkles className="h-5 w-5 text-[#FFCB3D]" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#FFCB3D]">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#FFCB3D]">
                   NATURAL QUERY ENGINE
                 </span>
               </div>
-              <h3 className="text-3xl font-extrabold tracking-tight">Semantic AI Match</h3>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/75">
+              <h3 className="text-[24px] font-semibold tracking-tight">Semantic AI Match</h3>
+              <p className="mt-3 max-w-lg text-[16px] font-normal leading-relaxed text-white/80">
                 Matches natural desires like &apos;peaceful tea garden morning&apos; to verified
                 locations and real travel conditions.
               </p>
 
-              <div className="mt-6 flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-5 py-3 text-sm text-white/90">
+              <div className="mt-6 flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-5 py-3 text-[16px] text-white/90">
                 <Search className="h-4 w-4 text-[#FFCB3D] shrink-0" />
                 <span className="truncate">&ldquo;peaceful tea garden morning with cool breeze&rdquo;</span>
               </div>
@@ -526,12 +526,12 @@ export default function HomePage() {
                 <div key={m.name} className="rounded-2xl bg-white/[0.06] p-4">
                   <div className="mb-2 flex items-center justify-between gap-2">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-sm font-bold">{m.name}</span>
-                      <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] text-white/70">
+                      <span className="text-[16px] font-semibold">{m.name}</span>
+                      <span className="rounded-full bg-white/10 px-3 py-0.5 text-[14px] text-white/75">
                         {m.tag}
                       </span>
                     </div>
-                    <span className="text-sm font-extrabold text-[#5D9253]">{m.pct}% match</span>
+                    <span className="text-[14px] font-bold text-[#5D9253]">{m.pct}% match</span>
                   </div>
                   <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
                     <div
@@ -548,31 +548,31 @@ export default function HomePage() {
           <div className="lg:col-span-5 flex flex-col justify-between rounded-[32px] bg-gradient-to-br from-[#2F6B2F] to-[#5D9253] p-7 text-white shadow-[0_16px_40px_rgba(47,107,47,0.22)]">
             <div>
               <div className="mb-3 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-lg font-extrabold">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-lg font-bold">
                   ৳
                 </div>
-                <h3 className="text-2xl font-extrabold tracking-tight">Budget feasibility</h3>
+                <h3 className="text-[24px] font-semibold tracking-tight">Budget feasibility</h3>
               </div>
-              <p className="text-sm text-white/90">
+              <p className="text-[16px] font-normal text-white/90">
                 Real-time cost projection vs your stated ceiling.
               </p>
             </div>
 
             <div className="mt-6 space-y-3">
               <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-[#145219]">
+                <span className="rounded-full bg-white px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#145219]">
                   Fits Ceiling
                 </span>
-                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold">
+                <span className="rounded-full bg-white/20 px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em]">
                   Tight
                 </span>
-                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold">
+                <span className="rounded-full bg-white/20 px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em]">
                   Over
                 </span>
               </div>
               <div className="flex items-baseline justify-between gap-2">
-                <span className="text-3xl font-extrabold">৳ 14,200</span>
-                <span className="text-sm font-semibold text-white/85">of ৳ 15,000 cap</span>
+                <span className="text-[32px] font-bold">৳ 14,200</span>
+                <span className="text-[14px] font-medium text-white/85">of ৳ 15,000 cap</span>
               </div>
               <div className="h-2.5 w-full overflow-hidden rounded-full bg-black/20">
                 <div className="h-full w-[88%] rounded-full bg-[#FFCB3D]" />
@@ -587,23 +587,23 @@ export default function HomePage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1F2A1F]/10">
                   <Clock className="h-5 w-5" />
                 </div>
-                <h3 className="text-2xl font-extrabold tracking-tight">Time feasibility</h3>
+                <h3 className="text-[24px] font-semibold tracking-tight">Time feasibility</h3>
               </div>
-              <p className="text-sm text-[#1F2A1F]/80">
+              <p className="text-[16px] font-normal text-[#1F2A1F]/85">
                 Calculates transit vs daylight exploration hours.
               </p>
             </div>
 
             <div className="mt-6 flex items-end justify-between gap-3">
               <div>
-                <div className="text-5xl font-black leading-none tracking-tight">12h</div>
-                <div className="mt-1 text-sm font-semibold text-[#1F2A1F]/75">
+                <div className="text-[40px] font-bold leading-none tracking-tight">12h</div>
+                <div className="mt-1 text-[14px] font-medium text-[#1F2A1F]/80">
                   usable hours per day
                 </div>
               </div>
               <div className="rounded-2xl bg-[#1F2A1F]/10 px-4 py-2.5 text-right">
-                <span className="block text-xs font-bold">Transit Efficiency</span>
-                <span className="block text-base font-extrabold text-[#2F6B2F]">+3.5h saved</span>
+                <span className="block text-[14px] font-semibold">Transit Efficiency</span>
+                <span className="block text-[16px] font-bold text-[#2F6B2F]">+3.5h saved</span>
               </div>
             </div>
           </div>
@@ -615,9 +615,9 @@ export default function HomePage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E5F0E0]">
                   <Thermometer className="h-5 w-5 text-[#2F6B2F]" />
                 </div>
-                <h3 className="text-xl font-extrabold tracking-tight">Climate &amp; crowd</h3>
+                <h3 className="text-[24px] font-semibold tracking-tight">Climate &amp; crowd</h3>
               </div>
-              <p className="text-sm text-[#1F2A1F]/75">
+              <p className="text-[16px] font-normal text-[#1F2A1F]/80">
                 Historical weather patterns and crowd spikes.
               </p>
             </div>
@@ -628,16 +628,15 @@ export default function HomePage() {
                   <div
                     key={item.m}
                     style={{ backgroundColor: item.bg, color: item.text }}
-                    className="flex h-10 flex-col items-center justify-center rounded-xl text-[10px] font-bold"
+                    className="flex h-10 items-center justify-center rounded-xl text-[14px] font-semibold"
                   >
-                    <span>{item.m}</span>
-                    <span className="text-[8px] opacity-80">{item.sub}</span>
+                    {item.m}
                   </div>
                 ))}
               </div>
-              <div className="mt-3 flex items-center justify-between text-[11px]">
-                <span className="text-[#1F2A1F]/60 font-medium">Dark green = Optimal weather</span>
-                <span className="rounded-full bg-[#E5F0E0] px-2.5 py-0.5 font-bold text-[#2F6B2F]">
+              <div className="mt-3 flex items-center justify-between text-[14px]">
+                <span className="text-[#1F2A1F]/70 font-normal">Dark green = Optimal weather</span>
+                <span className="rounded-full bg-[#E5F0E0] px-2.5 py-0.5 font-semibold text-[#2F6B2F]">
                   Dec: Ideal
                 </span>
               </div>
@@ -651,27 +650,27 @@ export default function HomePage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1F2A1F]/10">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h3 className="text-xl font-extrabold tracking-tight">Side-by-side compare</h3>
+                <h3 className="text-[24px] font-semibold tracking-tight">Side-by-side compare</h3>
               </div>
-              <p className="text-sm text-[#1F2A1F]/80">
+              <p className="text-[16px] font-normal text-[#1F2A1F]/85">
                 Rank trade-offs across budget, comfort, and travel time.
               </p>
             </div>
 
             <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-white/75 p-4 text-center">
               <div className="border-r border-[#1F2A1F]/10 pr-2">
-                <p className="text-sm font-bold">Sajek</p>
-                <div className="mx-auto my-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#2F6B2F] text-sm font-extrabold text-white">
+                <p className="text-[16px] font-semibold">Sajek</p>
+                <div className="mx-auto my-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#2F6B2F] text-[14px] font-bold text-white">
                   96%
                 </div>
-                <p className="text-[11px] font-bold text-[#2F6B2F]">Better Scenery</p>
+                <p className="text-[14px] font-semibold text-[#2F6B2F]">Better Scenery</p>
               </div>
               <div className="pl-2">
-                <p className="text-sm font-bold">Bandarban</p>
-                <div className="mx-auto my-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#5D9253] text-sm font-extrabold text-white">
+                <p className="text-[16px] font-semibold">Bandarban</p>
+                <div className="mx-auto my-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#5D9253] text-[14px] font-bold text-white">
                   91%
                 </div>
-                <p className="text-[11px] font-bold text-[#2F6B2F]">Lower Budget</p>
+                <p className="text-[14px] font-semibold text-[#2F6B2F]">Lower Budget</p>
               </div>
             </div>
           </div>
@@ -688,9 +687,9 @@ export default function HomePage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur">
                   <Share2 className="h-5 w-5 text-[#FFCB3D]" />
                 </div>
-                <h3 className="text-xl font-extrabold tracking-tight">Shareable itinerary</h3>
+                <h3 className="text-[24px] font-semibold tracking-tight">Shareable itinerary</h3>
               </div>
-              <p className="text-sm text-white/85">
+              <p className="text-[16px] font-normal text-white/85">
                 30-day shareable links and one-click PDF export for travel companions.
               </p>
             </div>
@@ -701,7 +700,7 @@ export default function HomePage() {
                 setCopiedDemoLink(true);
                 setTimeout(() => setCopiedDemoLink(false), 2000);
               }}
-              className="relative z-10 mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white text-sm font-bold text-[#1F2A1F] shadow-lg hover:bg-[#F6FAF3]"
+              className="relative z-10 mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white text-[14px] font-semibold text-[#1F2A1F] shadow-lg hover:bg-[#F6FAF3]"
             >
               {copiedDemoLink ? <Copy className="h-4 w-4 text-[#2F6B2F]" /> : <Link2 className="h-4 w-4" />}
               <span>{copiedDemoLink ? 'Ready on any itinerary!' : 'Try itinerary generator'}</span>
@@ -715,10 +714,10 @@ export default function HomePage() {
         <section id="destinations" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-10">
           <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="inline-flex items-center rounded-full bg-[#1F2A1F] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#FFCB3D]">
+              <span className="inline-flex items-center rounded-full bg-[#1F2A1F] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#FFCB3D]">
                 CURATED PICKS
               </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-[#1F2A1F]">
+              <h2 className="mt-4 text-[36px] md:text-[64px] font-extrabold leading-[1.06] tracking-[-0.03em] text-[#1F2A1F]">
                 Top matches this season.
               </h2>
             </div>
@@ -765,24 +764,24 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/10 to-black/75" />
 
                 <div className="relative z-10 flex items-center justify-between p-5">
-                  <span className="rounded-full bg-[#5D9253] px-3.5 py-1 text-xs font-bold text-white">
+                  <span className="rounded-full bg-[#5D9253] px-3.5 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-white">
                     {dest.cost_level === 'High' ? 'Comfort' : 'Fits'}
                   </span>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1F2A1F]/75 backdrop-blur border-2 border-[#5D9253] text-xs font-extrabold text-white">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1F2A1F]/75 backdrop-blur border-2 border-[#5D9253] text-[14px] font-bold text-white">
                     {97 - idx * 2}%
                   </div>
                 </div>
 
                 <div className="relative z-10 m-4 rounded-[22px] bg-white/15 backdrop-blur-lg border border-white/30 p-5 text-white">
-                  <h3 className="text-xl font-extrabold leading-tight truncate">{dest.name}</h3>
-                  <p className="mt-1 text-xs text-white/85 truncate">
+                  <h3 className="text-[24px] font-semibold leading-tight truncate">{dest.name}</h3>
+                  <p className="mt-1 text-[14px] text-white/85 truncate">
                     {dest.division} · {dest.min_hours_needed}h min
                   </p>
                   <div className="mt-3 flex items-baseline justify-between">
-                    <span className="text-[11px] uppercase tracking-wider text-white/75">
+                    <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-white/75">
                       Room / Night
                     </span>
-                    <span className="text-lg font-extrabold text-[#FFCB3D]">
+                    <span className="text-[18px] font-bold text-[#FFCB3D]">
                       ৳ {Number(dest.hotel_cost_per_room_night).toLocaleString()}
                     </span>
                   </div>
@@ -812,10 +811,10 @@ export default function HomePage() {
                   <circle cx="180" cy="180" r="130" fill="transparent" stroke="#D5E6CF" strokeDasharray="82 816" strokeDashoffset="-734" strokeWidth="40" />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-6xl sm:text-7xl font-black leading-none tracking-tight whitespace-nowrap">
+                  <span className="text-[64px] font-extrabold leading-none tracking-tight whitespace-nowrap">
                     92
                   </span>
-                  <span className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-white/70">
+                  <span className="mt-2 text-[13px] font-semibold uppercase tracking-[0.06em] text-white/75">
                     MATCH SCORE
                   </span>
                 </div>
@@ -825,15 +824,15 @@ export default function HomePage() {
             {/* 6 Factor Bars */}
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <span className="inline-flex rounded-full bg-[#FFCB3D]/15 border border-[#FFCB3D]/30 px-4 py-1 text-xs font-bold uppercase tracking-[0.12em] text-[#FFCB3D]">
+                <span className="inline-flex rounded-full bg-[#FFCB3D]/15 border border-[#FFCB3D]/30 px-4 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#FFCB3D]">
                   ALGORITHMIC TRANSPARENCY
                 </span>
-                <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight">
+                <h2 className="mt-4 text-[36px] md:text-[64px] font-extrabold leading-[1.06] tracking-[-0.03em]">
                   Six factors.
                   <br />
                   One honest score.
                 </h2>
-                <p className="mt-4 max-w-xl text-base text-white/75 leading-relaxed">
+                <p className="mt-4 max-w-xl text-[16px] md:text-[18px] font-normal text-white/80 leading-relaxed">
                   Every percentage point reflects deterministic math against your stated wishes,
                   budget elasticity, and real transit conditions.
                 </p>
@@ -854,7 +853,7 @@ export default function HomePage() {
                         className="h-3 w-3 rounded-full shrink-0"
                         style={{ backgroundColor: f.color }}
                       />
-                      <span className="text-sm font-semibold">{f.name}</span>
+                      <span className="text-[14px] font-semibold">{f.name}</span>
                     </div>
                     <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-white/10">
                       <div
@@ -862,7 +861,7 @@ export default function HomePage() {
                         style={{ width: `${f.pct * 2.5}%`, backgroundColor: f.color }}
                       />
                     </div>
-                    <span className="w-10 text-right text-sm font-bold">{f.pct}%</span>
+                    <span className="w-10 text-right text-[14px] font-bold">{f.pct}%</span>
                   </div>
                 ))}
               </div>
@@ -873,14 +872,14 @@ export default function HomePage() {
 
       {/* SECTION 6: TESTIMONIALS */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-10">
-        <div className="mx-auto mb-14 max-w-xl text-center">
-          <span className="inline-flex rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#2F6B2F]">
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <span className="inline-flex rounded-full bg-white px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
             TESTIMONIALS
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-[-0.03em] text-[#1F2A1F]">
+          <h2 className="mt-4 text-[36px] md:text-[64px] font-extrabold leading-[1.06] tracking-[-0.03em] text-[#1F2A1F]">
             Loved by real travelers.
           </h2>
-          <p className="mt-3 text-base text-[#1F2A1F]/75">
+          <p className="mt-3 text-[16px] md:text-[18px] font-normal text-[#1F2A1F]/80">
             How VROMON replaced 40 open browser tabs and guesswork.
           </p>
         </div>
@@ -922,18 +921,18 @@ export default function HomePage() {
             >
               <div>
                 <div
-                  className={`text-5xl font-serif leading-none mb-3 ${
+                  className={`mb-3 text-[40px] font-bold leading-none ${
                     t.featured ? 'text-white/90' : 'text-[#FFCB3D]'
                   }`}
                 >
                   &ldquo;
                 </div>
-                <p className="text-base leading-relaxed">{t.quote}</p>
+                <p className="text-[16px] md:text-[18px] font-normal leading-relaxed">{t.quote}</p>
               </div>
 
               <div className="mt-8 flex items-center gap-3.5">
                 <div
-                  className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-extrabold ${
+                  className={`flex h-11 w-11 items-center justify-center rounded-full text-[14px] font-bold ${
                     t.featured
                       ? 'bg-white text-[#2F6B2F] border-2 border-[#FFCB3D]'
                       : 'bg-[#D5E6CF] text-[#1F2A1F]'
@@ -942,8 +941,8 @@ export default function HomePage() {
                   {t.initials}
                 </div>
                 <div>
-                  <div className="text-sm font-bold">{t.name}</div>
-                  <div className={`text-xs ${t.featured ? 'text-white/80' : 'text-[#1F2A1F]/60'}`}>
+                  <div className="text-[16px] font-semibold">{t.name}</div>
+                  <div className={`text-[14px] ${t.featured ? 'text-white/80' : 'text-[#1F2A1F]/70'}`}>
                     {t.meta}
                   </div>
                 </div>
@@ -958,10 +957,10 @@ export default function HomePage() {
         <div className="relative overflow-hidden rounded-[44px] bg-gradient-to-br from-[#2F6B2F] to-[#5D9253] px-6 py-16 sm:px-12 text-center text-white shadow-[0_28px_70px_rgba(47,107,47,0.32)]">
           <div className="pointer-events-none absolute -top-20 -right-20 h-80 w-80 rounded-full bg-[#FFCB3D] opacity-35 blur-[100px]" />
           <div className="relative z-10 mx-auto max-w-2xl">
-            <h2 className="text-3xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight">
+            <h2 className="text-[32px] md:text-[40px] font-bold leading-tight tracking-tight">
               Your next trip starts with one sentence.
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-white/85">
+            <p className="mt-4 text-[16px] md:text-[18px] font-normal text-white/85">
               No check-in dates needed yet. Just say what kind of peace or adventure you are
               craving.
             </p>
@@ -981,11 +980,11 @@ export default function HomePage() {
                 value={ctaWishes}
                 onChange={(e) => setCtaWishes(e.target.value)}
                 placeholder="E.g., Khulna food walk & sights under 10,000..."
-                className="flex-1 min-w-0 bg-transparent px-3 text-sm text-[#1F2A1F] placeholder:text-[#1F2A1F]/45 focus:outline-none"
+                className="flex-1 min-w-0 bg-transparent px-3 text-[16px] font-normal text-[#1F2A1F] placeholder:text-[#1F2A1F]/45 focus:outline-none"
               />
               <button
                 type="submit"
-                className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-[#FFCB3D] px-5 text-sm font-bold text-[#1F2A1F] hover:brightness-95"
+                className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-[#FFCB3D] px-5 text-[14px] font-semibold text-[#1F2A1F] hover:brightness-95"
               >
                 <span>Plan my trip</span>
                 <ArrowRight className="h-4 w-4" strokeWidth={2.5} />

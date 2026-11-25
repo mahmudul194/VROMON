@@ -75,10 +75,10 @@ export default function ProfilePage() {
   if (!user) {
     return (
       <div className="mx-auto max-w-md space-y-4 p-16 text-center">
-        <h1 className="text-2xl font-extrabold text-[#1F2A1F]">Sign in required</h1>
+        <h1 className="text-[36px] md:text-[40px] font-extrabold text-[#1F2A1F]">Sign in required</h1>
         <Link
           href="/login"
-          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-sm font-bold text-white"
+          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-[14px] font-bold text-white"
         >
           Log in
         </Link>
@@ -105,8 +105,8 @@ export default function ProfilePage() {
               </div>
               <div className="min-w-0">
                 <h1 className="truncate text-lg font-extrabold text-[#1F2A1F]">{user.name}</h1>
-                <p className="truncate text-xs text-[#557945]">{user.email}</p>
-                <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-[#eaf7e6] px-2.5 py-0.5 text-[10px] font-extrabold uppercase text-[#2F6B2F]">
+                <p className="truncate text-[14px] text-[#557945]">{user.email}</p>
+                <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-[#eaf7e6] px-2.5 py-0.5 text-[14px] font-extrabold uppercase text-[#2F6B2F]">
                   <Shield className="h-2.5 w-2.5" /> {user.role}
                 </span>
               </div>
@@ -125,7 +125,7 @@ export default function ProfilePage() {
                     key={item.id}
                     type="button"
                     onClick={() => setSection(item.id as any)}
-                    className={`flex w-full items-center gap-2.5 rounded-2xl px-4 py-2.5 text-xs font-bold transition ${
+                    className={`flex w-full items-center gap-2.5 rounded-2xl px-4 py-2.5 text-[14px] font-bold transition ${
                       active
                         ? 'bg-[#2F6B2F] text-white shadow-sm'
                         : 'text-[#557945] hover:bg-[#F6FAF3] hover:text-[#1F2A1F]'
@@ -146,13 +146,13 @@ export default function ProfilePage() {
             {/* Public Profile Card */}
             <div className="rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm sm:p-8">
               <h2 className="text-lg font-extrabold text-[#1F2A1F]">Public Profile</h2>
-              <p className="mt-0.5 text-xs text-[#557945]">
+              <p className="mt-0.5 text-[14px] text-[#557945]">
                 Customize how VROMON greets and personalizes trip snapshots for you.
               </p>
 
               <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                  <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                     Display Name
                   </label>
                   <input
@@ -160,18 +160,18 @@ export default function ProfilePage() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="h-12 w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/70 px-5 text-sm font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                    className="h-12 w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/70 px-5 text-[14px] font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                  <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                     Verified Email
                   </label>
                   <input
                     type="email"
                     disabled
                     value={user.email}
-                    className="h-12 w-full rounded-full border border-[#E5F0E0] bg-[#F6FAF3] px-5 text-sm text-[#557945]"
+                    className="h-12 w-full rounded-full border border-[#E5F0E0] bg-[#F6FAF3] px-5 text-[14px] text-[#557945]"
                   />
                 </div>
               </div>
@@ -180,20 +180,20 @@ export default function ProfilePage() {
             {/* Travel & AI Preferences Card */}
             <div className="rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm sm:p-8">
               <h2 className="text-lg font-extrabold text-[#1F2A1F]">Travel &amp; AI Preferences</h2>
-              <p className="mt-0.5 text-xs text-[#557945]">
+              <p className="mt-0.5 text-[14px] text-[#557945]">
                 Used as default origin hub and accommodation tier in trip evaluations.
               </p>
 
               <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#557945]">
+                  <label className="mb-1.5 flex items-center gap-1 text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                     <MapPin className="h-3.5 w-3.5 text-[#2F6B2F]" />
                     Default Starting Hub
                   </label>
                   <select
                     value={preferredCity}
                     onChange={(e) => setPreferredCity(e.target.value)}
-                    className="h-12 w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/70 px-5 text-sm font-bold text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                    className="h-12 w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/70 px-5 text-[14px] font-bold text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
                   >
                     {CITIES.map((c) => (
                       <option key={c} value={c}>
@@ -204,7 +204,7 @@ export default function ProfilePage() {
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                  <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                     Comfort Budget Style
                   </label>
                   <div className="grid h-12 grid-cols-3 gap-1.5 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] p-1">
@@ -213,7 +213,7 @@ export default function ProfilePage() {
                         key={tier}
                         type="button"
                         onClick={() => setBudgetTier(tier)}
-                        className={`rounded-full text-xs font-bold transition ${
+                        className={`rounded-full text-[14px] font-bold transition ${
                           budgetTier === tier
                             ? 'bg-[#2F6B2F] text-white shadow-sm'
                             : 'text-[#557945] hover:text-[#1F2A1F]'
@@ -228,17 +228,17 @@ export default function ProfilePage() {
 
               <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-[#E5F0E0] pt-5">
                 {saved ? (
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2F6B2F]">
+                  <span className="inline-flex items-center gap-1.5 text-[14px] font-bold text-[#2F6B2F]">
                     <CheckCircle2 className="h-4 w-4" /> Changes saved to your profile
                   </span>
                 ) : (
-                  <span className="text-xs text-[#557945]">Preferences sync across web sessions</span>
+                  <span className="text-[14px] text-[#557945]">Preferences sync across web sessions</span>
                 )}
 
                 <button
                   type="submit"
                   disabled={saving}
-                  className="inline-flex h-11 items-center gap-2 rounded-full bg-[#2F6B2F] px-6 text-xs font-bold text-white shadow-sm hover:bg-[#145219] disabled:opacity-60"
+                  className="inline-flex h-11 items-center gap-2 rounded-full bg-[#2F6B2F] px-6 text-[14px] font-bold text-white shadow-sm hover:bg-[#145219] disabled:opacity-60"
                 >
                   {saving && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
                   Save Preferences
@@ -251,14 +251,14 @@ export default function ProfilePage() {
           <div className="flex flex-col justify-between gap-4 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm sm:flex-row sm:items-center sm:p-8">
             <div>
               <h2 className="text-lg font-extrabold text-[#1F2A1F]">Password &amp; Session</h2>
-              <p className="mt-0.5 text-xs text-[#557945]">
+              <p className="mt-0.5 text-[14px] text-[#557945]">
                 Reset your password via 6-digit email OTP or sign out of this browser.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2.5">
               <Link
                 href="/forgot-password"
-                className="inline-flex h-10 items-center gap-1.5 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-xs font-bold text-[#1F2A1F] hover:bg-[#eaf7e6]"
+                className="inline-flex h-10 items-center gap-1.5 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-[14px] font-bold text-[#1F2A1F] hover:bg-[#eaf7e6]"
               >
                 <KeyRound className="h-3.5 w-3.5 text-[#2F6B2F]" />
                 Reset Password
@@ -266,7 +266,7 @@ export default function ProfilePage() {
               <button
                 type="button"
                 onClick={logout}
-                className="inline-flex h-10 items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-4 text-xs font-bold text-red-700 hover:bg-red-100"
+                className="inline-flex h-10 items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-4 text-[14px] font-bold text-red-700 hover:bg-red-100"
               >
                 <LogOut className="h-3.5 w-3.5" />
                 Sign Out

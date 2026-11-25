@@ -11,7 +11,7 @@ export function ScoreRing({ score, size = 72 }: { score: number; size?: number }
 
   return (
     <div
-      className="relative inline-flex items-center justify-center shrink-0"
+      className="relative inline-flex shrink-0 items-center justify-center"
       style={{ width: size, height: size }}
     >
       <svg className="-rotate-90" width={size} height={size}>
@@ -36,10 +36,12 @@ export function ScoreRing({ score, size = 72 }: { score: number; size?: number }
         />
       </svg>
       <div className="absolute flex flex-col items-center justify-center leading-none">
-        <span className="text-base font-extrabold text-vromon-dark">{rounded}</span>
-        <span className="text-[10px] font-semibold uppercase tracking-wider text-vromon-muted">
-          Score
-        </span>
+        <span className="text-[16px] font-extrabold text-[#1F2A1F]">{rounded}</span>
+        {size >= 68 && (
+          <span className="mt-0.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
+            Score
+          </span>
+        )}
       </div>
     </div>
   );

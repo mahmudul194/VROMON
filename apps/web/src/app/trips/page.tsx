@@ -58,13 +58,13 @@ export default function TripsPage() {
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#eaf7e6] text-[#2F6B2F]">
           <Bookmark className="h-7 w-7" />
         </div>
-        <h1 className="text-2xl font-extrabold text-[#1F2A1F]">Sign in to view Saved Trips</h1>
-        <p className="text-sm text-[#557945]">
+        <h1 className="text-[36px] md:text-[40px] font-extrabold text-[#1F2A1F]">Sign in to view Saved Trips</h1>
+        <p className="text-[16px] text-[#557945]">
           Save evaluated trip recommendations to compare budgets and revisit routes anytime.
         </p>
         <Link
           href="/login"
-          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-sm font-bold text-white"
+          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-[14px] font-bold text-white"
         >
           Log in
         </Link>
@@ -79,20 +79,20 @@ export default function TripsPage() {
       {/* Header (No Waving Emoji) */}
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <span className="inline-block rounded-full bg-[#eaf7e6] px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#2F6B2F]">
+          <span className="inline-block rounded-full bg-[#eaf7e6] px-3.5 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
             Expedition Registry
           </span>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1F2A1F] sm:text-4xl">
+          <h1 className="mt-2 text-[36px] md:text-[40px] font-extrabold tracking-tight text-[#1F2A1F] sm:text-4xl">
             Hi {firstName}, your saved trips
           </h1>
-          <p className="mt-1 text-sm text-[#557945]">
+          <p className="mt-1 text-[16px] text-[#557945]">
             Reopen any evaluated Bangladesh route, adjust parameters, or launch day-by-day plans.
           </p>
         </div>
 
         <Link
           href="/plan"
-          className="inline-flex h-11 items-center gap-2 self-start rounded-full bg-[#2F6B2F] px-5 text-xs font-bold text-white shadow-sm hover:bg-[#145219] sm:self-auto"
+          className="inline-flex h-11 items-center gap-2 self-start rounded-full bg-[#2F6B2F] px-5 text-[14px] font-bold text-white shadow-sm hover:bg-[#145219] sm:self-auto"
         >
           <Plus className="h-4 w-4 text-[#FFCB3D]" />
           Plan New Trip
@@ -102,31 +102,31 @@ export default function TripsPage() {
       {/* Stitch 12_trips 3 KPI Cards (Dark, Amber, White) */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div className="rounded-[24px] bg-gradient-to-br from-[#235425] to-[#145219] p-6 text-white shadow-md">
-          <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#D5E6CF]">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#D5E6CF]">
             Saved Expeditions
           </p>
           <p className="mt-2 text-4xl font-black text-white">{metrics.total}</p>
-          <p className="mt-1 text-xs text-[#D5E6CF]">Synced across your traveler account</p>
+          <p className="mt-1 text-[14px] text-[#D5E6CF]">Synced across your traveler account</p>
         </div>
 
         <div className="rounded-[24px] bg-[#FFCB3D] p-6 text-[#1F2A1F] shadow-sm">
-          <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#1F2A1F]/75">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#1F2A1F]/75">
             Fits Budget Tier
           </p>
           <p className="mt-2 text-4xl font-black">{metrics.fitsCount}</p>
-          <p className="mt-1 text-xs font-semibold text-[#1F2A1F]/80">
+          <p className="mt-1 text-[14px] font-semibold text-[#1F2A1F]/80">
             Routes comfortably inside target ceiling
           </p>
         </div>
 
         <div className="rounded-[24px] border border-[#D5E6CF] bg-white p-6 shadow-sm">
-          <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#557945]">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
             Avg Estimated Budget
           </p>
           <p className="mt-2 text-4xl font-black text-[#2F6B2F]">
             ৳{metrics.avgCost.toLocaleString()}
           </p>
-          <p className="mt-1 text-xs text-[#557945]">Includes transport, rooms, meals &amp; buffer</p>
+          <p className="mt-1 text-[14px] text-[#557945]">Includes transport, rooms, meals &amp; buffer</p>
         </div>
       </div>
 
@@ -137,7 +137,7 @@ export default function TripsPage() {
             key={tab}
             type="button"
             onClick={() => setStatusFilter(tab)}
-            className={`rounded-full px-4 py-1.5 text-xs font-bold transition ${
+            className={`rounded-full px-4 py-1.5 text-[14px] font-bold transition ${
               statusFilter === tab
                 ? 'bg-[#2F6B2F] text-white shadow-sm'
                 : 'border border-[#D5E6CF] bg-white text-[#557945] hover:bg-[#eaf7e6]'
@@ -153,12 +153,12 @@ export default function TripsPage() {
         <div className="space-y-4 rounded-[28px] border border-[#D5E6CF] bg-white p-12 text-center shadow-sm">
           <Compass className="mx-auto h-10 w-10 text-[#5D9253]" />
           <p className="text-lg font-extrabold text-[#1F2A1F]">No trips in this view yet</p>
-          <p className="mx-auto max-w-md text-sm text-[#557945]">
+          <p className="mx-auto max-w-md text-[16px] text-[#557945]">
             Run an evaluation in Trip Planner and click Save on any destination card.
           </p>
           <Link
             href="/plan"
-            className="inline-flex items-center gap-2 rounded-full bg-[#2F6B2F] px-5 py-2.5 text-xs font-bold text-white"
+            className="inline-flex items-center gap-2 rounded-full bg-[#2F6B2F] px-5 py-2.5 text-[14px] font-bold text-white"
           >
             Start Planning <ArrowRight className="h-3.5 w-3.5" />
           </Link>
@@ -201,7 +201,7 @@ export default function TripsPage() {
                 <div className="flex flex-1 flex-col justify-between space-y-4 p-5">
                   <div>
                     <h3 className="text-lg font-extrabold text-[#1F2A1F]">{trip.title}</h3>
-                    <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[#557945]">
+                    <p className="mt-1 flex items-center gap-1 text-[14px] font-semibold text-[#557945]">
                       <MapPin className="h-3.5 w-3.5 text-[#2F6B2F]" />
                       <span>
                         {trip.destination?.district || snap.district},{' '}
@@ -209,7 +209,7 @@ export default function TripsPage() {
                       </span>
                     </p>
                     {totalCost && (
-                      <p className="mt-2 text-sm font-black text-[#2F6B2F]">
+                      <p className="mt-2 text-[16px] font-black text-[#2F6B2F]">
                         Est. Total: ৳{Number(totalCost).toLocaleString()}
                       </p>
                     )}
@@ -219,14 +219,14 @@ export default function TripsPage() {
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/destinations/${trip.destination_id}`}
-                        className="rounded-full bg-[#eaf7e6] px-3.5 py-1.5 text-xs font-bold text-[#2F6B2F] hover:bg-[#D5E6CF]"
+                        className="rounded-full bg-[#eaf7e6] px-3.5 py-1.5 text-[14px] font-bold text-[#2F6B2F] hover:bg-[#D5E6CF]"
                       >
                         Details
                       </Link>
                       {totalCost && (
                         <Link
                           href={`/itinerary?destId=${trip.destination_id}&days=${qp.days || 2}&usable=${snap.usable_hours || 14}&totalCost=${totalCost}&status=${encodeURIComponent(snap.feasibility_status || 'Fits')}&score=${score || 85}&budget=${qp.budget || totalCost}&travelers=${qp.travelers || 2}&month=${qp.travel_month || 12}&city=${encodeURIComponent(qp.starting_city || 'Dhaka')}`}
-                          className="rounded-full bg-[#2F6B2F] px-3.5 py-1.5 text-xs font-bold text-white hover:bg-[#145219]"
+                          className="rounded-full bg-[#2F6B2F] px-3.5 py-1.5 text-[14px] font-bold text-white hover:bg-[#145219]"
                         >
                           Itinerary
                         </Link>

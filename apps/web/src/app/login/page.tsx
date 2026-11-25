@@ -78,12 +78,12 @@ function LoginInner() {
                 <p className="whitespace-nowrap text-base font-black tracking-tight text-white">
                   VROMON
                 </p>
-                <p className="text-[11px] font-medium text-[#D5E6CF]">
+                <p className="text-[14px] font-medium text-[#D5E6CF]">
                   Bangladesh Smart Trip Engine
                 </p>
               </div>
             </Link>
-            <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#FFCB3D]">
+            <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#FFCB3D]">
               64 Districts
             </span>
           </div>
@@ -97,8 +97,8 @@ function LoginInner() {
                 className="h-36 w-full object-cover"
               />
               <div className="bg-[#145219]/90 px-3 py-2">
-                <p className="text-xs font-bold text-white">Khulna</p>
-                <p className="text-[10px] text-[#D5E6CF]">Sundarbans</p>
+                <p className="text-[14px] font-bold text-white">Khulna</p>
+                <p className="text-[14px] text-[#D5E6CF]">Sundarbans</p>
               </div>
             </div>
 
@@ -109,8 +109,8 @@ function LoginInner() {
                 className="h-40 w-full object-cover"
               />
               <div className="bg-[#145219]/95 px-3 py-2">
-                <p className="text-xs font-bold text-white">Rangamati</p>
-                <p className="text-[10px] text-[#FFCB3D]">Sajek Valley</p>
+                <p className="text-[14px] font-bold text-white">Rangamati</p>
+                <p className="text-[14px] text-[#FFCB3D]">Sajek Valley</p>
               </div>
             </div>
 
@@ -121,37 +121,37 @@ function LoginInner() {
                 className="h-36 w-full object-cover"
               />
               <div className="bg-[#145219]/90 px-3 py-2">
-                <p className="text-xs font-bold text-white">Cox&apos;s Bazar</p>
-                <p className="text-[10px] text-[#D5E6CF]">Marine Drive</p>
+                <p className="text-[14px] font-bold text-white">Cox&apos;s Bazar</p>
+                <p className="text-[14px] text-[#D5E6CF]">Marine Drive</p>
               </div>
             </div>
           </div>
 
           <div className="relative z-10 space-y-5">
             <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-[14px] font-semibold text-white">
                 <Sparkles className="h-3.5 w-3.5 text-[#FFCB3D]" />
                 6-Factor AI Scoring
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-[14px] font-semibold text-white">
                 <ShieldCheck className="h-3.5 w-3.5 text-[#FFCB3D]" />
                 Fair-Price Feasibility
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-[14px] font-semibold text-white">
                 <Compass className="h-3.5 w-3.5 text-[#FFCB3D]" />
                 Seasonal Crowd Guard
               </span>
             </div>
 
-            <blockquote className="text-sm leading-relaxed text-[#E5F0E0]">
+            <blockquote className="text-[14px] leading-relaxed text-[#E5F0E0]">
               &ldquo;Know before you pack whether your time, transport, and budget actually fit Bangladesh&apos;s real seasonal roads.&rdquo;
             </blockquote>
 
             <div className="flex items-center gap-3 pt-1">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFCB3D] text-xs font-extrabold text-[#1F2A1F]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFCB3D] text-[14px] font-extrabold text-[#1F2A1F]">
                 10k+
               </div>
-              <p className="text-xs font-medium text-[#D5E6CF]">
+              <p className="text-[14px] font-medium text-[#D5E6CF]">
                 Feasibility checks &amp; curated routes powered by deterministic math + Gemini AI
               </p>
             </div>
@@ -171,19 +171,19 @@ function LoginInner() {
                 VROMON
               </span>
             </div>
-            <span className="inline-block rounded-full bg-[#eaf7e6] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#2F6B2F]">
+            <span className="inline-block rounded-full bg-[#eaf7e6] px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
               Traveler Sign In
             </span>
-            <h1 className="text-3xl font-extrabold tracking-tight text-[#1F2A1F]">
+            <h1 className="text-[36px] md:text-[40px] font-extrabold tracking-tight text-[#1F2A1F]">
               Welcome back
             </h1>
-            <p className="text-sm text-[#557945]">
+            <p className="text-[16px] text-[#557945]">
               Sign in to access saved trips, personalized AI defaults, and itineraries.
             </p>
           </div>
 
           {error && (
-            <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-red-700">
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
               <span>{error}</span>
             </div>
@@ -191,7 +191,7 @@ function LoginInner() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+              <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                 Email Address
               </label>
               <div className="relative">
@@ -202,19 +202,19 @@ function LoginInner() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="h-[54px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-12 pr-5 text-sm font-medium text-[#1F2A1F] placeholder-[#557945]/60 focus:border-[#2F6B2F] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2F6B2F]/15"
+                  className="h-[54px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-12 pr-5 text-[14px] font-medium text-[#1F2A1F] placeholder-[#557945]/60 focus:border-[#2F6B2F] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2F6B2F]/15"
                 />
               </div>
             </div>
 
             <div>
               <div className="mb-1.5 flex items-center justify-between">
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                <label className="block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                   Password
                 </label>
                 <Link
                   href="/forgot-password"
-                  className="text-xs font-bold text-[#2F6B2F] hover:text-[#145219] hover:underline"
+                  className="text-[14px] font-bold text-[#2F6B2F] hover:text-[#145219] hover:underline"
                 >
                   Forgot password?
                 </Link>
@@ -227,7 +227,7 @@ function LoginInner() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="h-[54px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-12 pr-12 text-sm font-medium text-[#1F2A1F] placeholder-[#557945]/60 focus:border-[#2F6B2F] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2F6B2F]/15"
+                  className="h-[54px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-12 pr-12 text-[14px] font-medium text-[#1F2A1F] placeholder-[#557945]/60 focus:border-[#2F6B2F] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#2F6B2F]/15"
                 />
                 <button
                   type="button"
@@ -245,7 +245,7 @@ function LoginInner() {
               <button
                 type="button"
                 onClick={() => setRememberMe(!rememberMe)}
-                className="flex items-center gap-2.5 text-xs font-semibold text-[#557945]"
+                className="flex items-center gap-2.5 text-[14px] font-semibold text-[#557945]"
               >
                 <span
                   className={`relative inline-flex h-5 w-9 items-center rounded-full transition ${
@@ -265,7 +265,7 @@ function LoginInner() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 flex h-[54px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-6 pr-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#145219] disabled:opacity-60"
+              className="mt-2 flex h-[54px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-6 pr-2.5 text-[14px] font-bold text-white shadow-sm transition hover:bg-[#145219] disabled:opacity-60"
             >
               <span>{loading ? 'Signing in...' : 'Log in'}</span>
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFCB3D] text-[#1F2A1F]">
@@ -276,7 +276,7 @@ function LoginInner() {
 
           <div className="my-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-[#E5F0E0]" />
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+            <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
               Or continue with
             </span>
             <div className="h-px flex-1 bg-[#E5F0E0]" />
@@ -284,7 +284,7 @@ function LoginInner() {
 
           <a
             href={GOOGLE_OAUTH_URL}
-            className="flex h-[52px] w-full items-center justify-center gap-3 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] text-sm font-semibold text-[#1F2A1F] transition hover:bg-[#eaf7e6]"
+            className="flex h-[52px] w-full items-center justify-center gap-3 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] text-[14px] font-semibold text-[#1F2A1F] transition hover:bg-[#eaf7e6]"
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24">
               <path
@@ -307,7 +307,7 @@ function LoginInner() {
             Continue with Google
           </a>
 
-          <p className="mt-7 text-center text-sm text-[#557945]">
+          <p className="mt-7 text-center text-[16px] text-[#557945]">
             Don&apos;t have an account?{' '}
             <Link href="/register" className="font-bold text-[#2F6B2F] hover:underline">
               Create account

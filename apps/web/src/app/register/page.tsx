@@ -193,7 +193,7 @@ function RegisterInner() {
             </Link>
 
             {/* 3-Step Horizontal Stepper */}
-            <div className="flex items-center gap-2 text-xs font-bold">
+            <div className="flex items-center gap-2 text-[14px] font-bold">
               {[
                 { n: 1, label: 'Account' },
                 { n: 2, label: 'Verify' },
@@ -223,14 +223,14 @@ function RegisterInner() {
           </div>
 
           {error && (
-            <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-red-700">
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
           {info && !error && (
-            <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6] px-4 py-3 text-sm text-[#2F6B2F]">
+            <div className="mb-5 flex items-start gap-2.5 rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6] px-4 py-3 text-[14px] text-[#2F6B2F]">
               <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" />
               <span>{info}</span>
             </div>
@@ -239,10 +239,10 @@ function RegisterInner() {
           {step === 'account' && (
             <>
               <div className="mb-6">
-                <h1 className="text-3xl font-extrabold tracking-tight text-[#1F2A1F]">
+                <h1 className="text-[36px] md:text-[40px] font-extrabold tracking-tight text-[#1F2A1F]">
                   Start planning smarter
                 </h1>
-                <p className="mt-1 text-sm text-[#557945]">
+                <p className="mt-1 text-[16px] text-[#557945]">
                   Set your default hub and comfort style for instant 64-district scoring.
                 </p>
               </div>
@@ -250,7 +250,7 @@ function RegisterInner() {
               <form onSubmit={handleRegister} className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                    <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                       Full Name
                     </label>
                     <div className="relative">
@@ -262,13 +262,13 @@ function RegisterInner() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Mahmudul Haque"
-                        className="h-[50px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-4 text-sm font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                        className="h-[50px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-4 text-[14px] font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                    <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                       Email Address
                     </label>
                     <div className="relative">
@@ -279,7 +279,7 @@ function RegisterInner() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@example.com"
-                        className="h-[50px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-4 text-sm font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                        className="h-[50px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-4 text-[14px] font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
                       />
                     </div>
                   </div>
@@ -287,10 +287,10 @@ function RegisterInner() {
 
                 <div>
                   <div className="mb-1.5 flex items-center justify-between">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                    <label className="block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                       Password
                     </label>
-                    <span className="text-[11px] font-bold text-[#557945]">{strength.label}</span>
+                    <span className="text-[14px] font-bold text-[#557945]">{strength.label}</span>
                   </div>
                   <div className="relative">
                     <Lock className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#5D9253]" />
@@ -301,7 +301,7 @@ function RegisterInner() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="At least 6 characters"
-                      className="h-[50px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-12 text-sm font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                      className="h-[50px] w-full rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-12 text-[14px] font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
                     />
                     <button
                       type="button"
@@ -333,7 +333,7 @@ function RegisterInner() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                    <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                       Starting Hub
                     </label>
                     <div className="relative">
@@ -341,7 +341,7 @@ function RegisterInner() {
                       <select
                         value={preferredCity}
                         onChange={(e) => setPreferredCity(e.target.value)}
-                        className="h-[50px] w-full appearance-none rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-5 text-sm font-semibold text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                        className="h-[50px] w-full appearance-none rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/75 pl-11 pr-5 text-[14px] font-semibold text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
                       >
                         {CITIES.map((city) => (
                           <option key={city} value={city}>
@@ -353,7 +353,7 @@ function RegisterInner() {
                   </div>
 
                   <div>
-                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+                    <label className="mb-1.5 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                       Budget Comfort Style
                     </label>
                     <div className="grid h-[50px] grid-cols-3 gap-1.5 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] p-1">
@@ -362,7 +362,7 @@ function RegisterInner() {
                           key={tier}
                           type="button"
                           onClick={() => setBudgetTier(tier)}
-                          className={`rounded-full text-xs font-bold transition ${
+                          className={`rounded-full text-[14px] font-bold transition ${
                             budgetTier === tier
                               ? 'bg-[#2F6B2F] text-white shadow-sm'
                               : 'text-[#557945] hover:text-[#1F2A1F]'
@@ -375,7 +375,7 @@ function RegisterInner() {
                   </div>
                 </div>
 
-                <label className="flex cursor-pointer items-center gap-2.5 pt-1 text-xs font-medium text-[#557945]">
+                <label className="flex cursor-pointer items-center gap-2.5 pt-1 text-[14px] font-medium text-[#557945]">
                   <input
                     type="checkbox"
                     checked={acceptedTerms}
@@ -390,7 +390,7 @@ function RegisterInner() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex h-[54px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-6 pr-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#145219] disabled:opacity-60"
+                  className="flex h-[54px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-6 pr-2.5 text-[14px] font-bold text-white shadow-sm transition hover:bg-[#145219] disabled:opacity-60"
                 >
                   <span>{loading ? 'Sending verification code...' : 'Create account'}</span>
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFCB3D] text-[#1F2A1F]">
@@ -405,7 +405,7 @@ function RegisterInner() {
 
               <div className="my-5 flex items-center gap-3">
                 <div className="h-px flex-1 bg-[#E5F0E0]" />
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
                   Or sign up with
                 </span>
                 <div className="h-px flex-1 bg-[#E5F0E0]" />
@@ -413,7 +413,7 @@ function RegisterInner() {
 
               <a
                 href={GOOGLE_OAUTH_URL}
-                className="flex h-[50px] w-full items-center justify-center gap-3 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] text-sm font-semibold text-[#1F2A1F] transition hover:bg-[#eaf7e6]"
+                className="flex h-[50px] w-full items-center justify-center gap-3 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] text-[14px] font-semibold text-[#1F2A1F] transition hover:bg-[#eaf7e6]"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24">
                   <path
@@ -441,10 +441,10 @@ function RegisterInner() {
           {step === 'otp' && (
             <form onSubmit={handleVerifyOtp} className="space-y-6 py-4">
               <div>
-                <h1 className="text-3xl font-extrabold tracking-tight text-[#1F2A1F]">
+                <h1 className="text-[36px] md:text-[40px] font-extrabold tracking-tight text-[#1F2A1F]">
                   Verify your email
                 </h1>
-                <p className="mt-1.5 text-sm text-[#557945]">
+                <p className="mt-1.5 text-[16px] text-[#557945]">
                   Enter the 6-digit code sent to{' '}
                   <span className="font-bold text-[#1F2A1F]">{email}</span>
                 </p>
@@ -466,7 +466,7 @@ function RegisterInner() {
                 ))}
               </div>
 
-              <div className="flex items-center justify-between text-xs font-semibold text-[#557945]">
+              <div className="flex items-center justify-between text-[14px] font-semibold text-[#557945]">
                 <span>
                   {countdown > 0 ? `Resend code available in ${countdown}s` : 'Did not receive the code?'}
                 </span>
@@ -483,7 +483,7 @@ function RegisterInner() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex h-[54px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-6 pr-2.5 text-sm font-bold text-white transition hover:bg-[#145219] disabled:opacity-60"
+                className="flex h-[54px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-6 pr-2.5 text-[14px] font-bold text-white transition hover:bg-[#145219] disabled:opacity-60"
               >
                 <span>{loading ? 'Verifying...' : 'Verify & Activate Account'}</span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFCB3D] text-[#1F2A1F]">
@@ -498,7 +498,7 @@ function RegisterInner() {
               <button
                 type="button"
                 onClick={() => setStep('account')}
-                className="text-xs font-bold text-[#557945] hover:text-[#1F2A1F]"
+                className="text-[14px] font-bold text-[#557945] hover:text-[#1F2A1F]"
               >
                 Use a different email address
               </button>
@@ -511,13 +511,13 @@ function RegisterInner() {
                 <CheckCircle2 className="h-9 w-9" />
               </div>
               <h2 className="text-2xl font-extrabold text-[#1F2A1F]">Account verified!</h2>
-              <p className="text-sm text-[#557945]">
+              <p className="text-[16px] text-[#557945]">
                 Your VROMON travel workspace is ready. Redirecting to Trip Planner...
               </p>
             </div>
           )}
 
-          <p className="mt-6 text-center text-sm text-[#557945]">
+          <p className="mt-6 text-center text-[16px] text-[#557945]">
             Already registered?{' '}
             <Link href="/login" className="font-bold text-[#2F6B2F] hover:underline">
               Log in
@@ -528,13 +528,13 @@ function RegisterInner() {
         {/* Right Dark Destination Showcase Panel */}
         <div className="relative hidden flex-col justify-between overflow-hidden rounded-[28px] bg-gradient-to-br from-[#1F2A1F] via-[#2F6B2F] to-[#145219] p-8 text-white shadow-[0_24px_60px_-15px_rgba(20,82,25,0.4)] lg:col-span-5 lg:flex">
           <div className="space-y-4">
-            <span className="inline-block rounded-full bg-[#FFCB3D] px-3.5 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[#1F2A1F]">
+            <span className="inline-block rounded-full bg-[#FFCB3D] px-3.5 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#1F2A1F]">
               Why Join VROMON
             </span>
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight">
               Realistic Bangladesh itineraries in under 10 seconds.
             </h2>
-            <p className="text-sm leading-relaxed text-[#D5E6CF]">
+            <p className="text-[16px] leading-relaxed text-[#D5E6CF]">
               Unlike generic chatbots, VROMON calculates exact bus/train/ferry travel hours, hotel tiers, and crowd indices before recommending a single route.
             </p>
           </div>
@@ -549,8 +549,8 @@ function RegisterInner() {
                 key={item.title}
                 className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3.5 backdrop-blur-sm"
               >
-                <p className="text-sm font-bold text-white">{item.title}</p>
-                <p className="mt-0.5 text-xs text-[#D5E6CF]">{item.sub}</p>
+                <p className="text-[16px] font-bold text-white">{item.title}</p>
+                <p className="mt-0.5 text-[14px] text-[#D5E6CF]">{item.sub}</p>
               </div>
             ))}
           </div>

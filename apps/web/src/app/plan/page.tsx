@@ -184,21 +184,21 @@ export default function PlanPage() {
       {/* Stitch 07_plan Header */}
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eaf7e6] px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#2F6B2F]">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eaf7e6] px-3.5 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
             <Sparkles className="h-3.5 w-3.5" />
             AI Trip Feasibility Studio
           </span>
-          <h1 className="mt-2.5 text-3xl font-extrabold tracking-tight text-[#1F2A1F] sm:text-4xl">
+          <h1 className="mt-2.5 text-[36px] md:text-[40px] font-extrabold tracking-tight text-[#1F2A1F] sm:text-4xl">
             Where to next?
           </h1>
-          <p className="mt-1 text-sm text-[#557945] sm:text-base">
+          <p className="mt-1 text-[16px] text-[#557945] sm:text-base">
             Describe your ideal Bangladesh trip in plain words, refine budget and days, and score all 64 districts.
           </p>
         </div>
 
         <Link
           href="/trips"
-          className="inline-flex items-center gap-2 self-start rounded-full border border-[#D5E6CF] bg-white px-4 py-2 text-xs font-bold text-[#1F2A1F] shadow-sm hover:bg-[#eaf7e6] sm:self-auto"
+          className="inline-flex items-center gap-2 self-start rounded-full border border-[#D5E6CF] bg-white px-4 py-2 text-[14px] font-bold text-[#1F2A1F] shadow-sm hover:bg-[#eaf7e6] sm:self-auto"
         >
           <Compass className="h-3.5 w-3.5 text-[#2F6B2F]" />
           View Saved Trips
@@ -212,10 +212,10 @@ export default function PlanPage() {
           {/* Card 1: Natural Language Prompt */}
           <div className="rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-[0_14px_40px_-14px_rgba(31,42,31,0.08)] sm:p-7">
             <div className="mb-3 flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#557945]">
+              <label className="text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                 Describe your dream trip
               </label>
-              <span className="text-[11px] font-semibold text-[#5D9253]">
+              <span className="text-[14px] font-semibold text-[#5D9253]">
                 English or Banglish supported
               </span>
             </div>
@@ -226,35 +226,35 @@ export default function PlanPage() {
               value={wishes}
               onChange={(e) => setWishes(e.target.value)}
               placeholder="e.g. Quiet tea gardens in Sylhet under 15,000 BDT for 2 people in December..."
-              className="w-full rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6]/55 p-4 text-sm font-medium leading-relaxed text-[#1F2A1F] placeholder-[#557945]/60 focus:border-[#2F6B2F] focus:bg-white focus:outline-none sm:text-base"
+              className="w-full rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6]/55 p-4 text-[14px] font-medium leading-relaxed text-[#1F2A1F] placeholder-[#557945]/60 focus:border-[#2F6B2F] focus:bg-white focus:outline-none sm:text-base"
             />
 
             {/* Here's What I Understood Live Strip */}
             <div className="mt-4 rounded-2xl bg-[#F6FAF3] p-4 border border-[#E5F0E0]">
-              <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+              <p className="mb-2 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
                 Here&apos;s what I understood
               </p>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-[#1F2A1F] border border-[#D5E6CF]">
+                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-[14px] font-bold text-[#1F2A1F] border border-[#D5E6CF]">
                   <MapPin className="h-3 w-3 text-[#2F6B2F]" />
                   From {startingCity}
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-[#1F2A1F] border border-[#D5E6CF]">
+                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-[14px] font-bold text-[#1F2A1F] border border-[#D5E6CF]">
                   <Wallet className="h-3 w-3 text-[#2F6B2F]" />
                   ৳{budget.toLocaleString()}
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-[#1F2A1F] border border-[#D5E6CF]">
+                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-[14px] font-bold text-[#1F2A1F] border border-[#D5E6CF]">
                   <Users className="h-3 w-3 text-[#2F6B2F]" />
                   {travelers} traveler{travelers > 1 ? 's' : ''}
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-[#1F2A1F] border border-[#D5E6CF]">
+                <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-[14px] font-bold text-[#1F2A1F] border border-[#D5E6CF]">
                   <Calendar className="h-3 w-3 text-[#2F6B2F]" />
                   {days} day{days > 1 ? 's' : ''} • {activeMonthName}
                 </span>
                 {extractedPills.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-[#eaf7e6] px-3 py-1 text-xs font-bold text-[#2F6B2F]"
+                    className="rounded-full bg-[#eaf7e6] px-3 py-1 text-[14px] font-bold text-[#2F6B2F]"
                   >
                     {tag}
                   </span>
@@ -267,7 +267,7 @@ export default function PlanPage() {
           <div className="space-y-6 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-[0_14px_40px_-14px_rgba(31,42,31,0.08)] sm:p-7">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-extrabold text-[#1F2A1F]">Refine parameters</h2>
-              <span className="rounded-full bg-[#fff8e1] px-3 py-1 text-xs font-bold text-[#9a6b00]">
+              <span className="rounded-full bg-[#fff8e1] px-3 py-1 text-[14px] font-bold text-[#9a6b00]">
                 Includes 10% safety buffer
               </span>
             </div>
@@ -275,10 +275,10 @@ export default function PlanPage() {
             {/* Max Budget Slider */}
             <div className="rounded-2xl bg-[#F6FAF3] p-4 border border-[#E5F0E0]">
               <div className="mb-2 flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#557945]">
+                <span className="text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                   Total Group Budget (BDT)
                 </span>
-                <span className="rounded-full bg-[#2F6B2F] px-3.5 py-1 text-sm font-extrabold text-white">
+                <span className="rounded-full bg-[#2F6B2F] px-3.5 py-1 text-[14px] font-extrabold text-white">
                   ৳{budget.toLocaleString()}
                 </span>
               </div>
@@ -291,7 +291,7 @@ export default function PlanPage() {
                 onChange={(e) => setBudget(Number(e.target.value))}
                 className="w-full cursor-pointer accent-[#FFCB3D]"
               />
-              <div className="mt-1 flex justify-between text-[11px] font-semibold text-[#557945]">
+              <div className="mt-1 flex justify-between text-[14px] font-semibold text-[#557945]">
                 <span>৳2,000</span>
                 <span>৳40,000</span>
                 <span>৳80,000</span>
@@ -302,7 +302,7 @@ export default function PlanPage() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               {/* Days Stepper */}
               <div className="rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] p-3.5">
-                <span className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                <span className="mb-2 block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
                   Duration
                 </span>
                 <div className="flex items-center justify-between">
@@ -330,7 +330,7 @@ export default function PlanPage() {
 
               {/* Travelers Stepper */}
               <div className="rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] p-3.5">
-                <span className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                <span className="mb-2 block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
                   Travelers
                 </span>
                 <div className="flex items-center justify-between">
@@ -358,13 +358,13 @@ export default function PlanPage() {
 
               {/* Starting Hub */}
               <div className="rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] p-3.5">
-                <span className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                <span className="mb-2 block text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
                   Starting Hub
                 </span>
                 <select
                   value={startingCity}
                   onChange={(e) => setStartingCity(e.target.value)}
-                  className="h-9 w-full rounded-full border border-[#D5E6CF] bg-white px-3 text-sm font-bold text-[#1F2A1F] focus:border-[#2F6B2F] focus:outline-none"
+                  className="h-9 w-full rounded-full border border-[#D5E6CF] bg-white px-3 text-[14px] font-bold text-[#1F2A1F] focus:border-[#2F6B2F] focus:outline-none"
                 >
                   {CITIES.map((city) => (
                     <option key={city} value={city}>
@@ -378,10 +378,10 @@ export default function PlanPage() {
             {/* Travel Month Pills */}
             <div>
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#557945]">
+                <span className="text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                   Travel Month (Weather &amp; Crowd Check)
                 </span>
-                <label className="flex cursor-pointer items-center gap-2 text-xs font-semibold text-[#1F2A1F]">
+                <label className="flex cursor-pointer items-center gap-2 text-[14px] font-semibold text-[#1F2A1F]">
                   <input
                     type="checkbox"
                     checked={hasHoliday}
@@ -398,7 +398,7 @@ export default function PlanPage() {
                     key={m.num}
                     type="button"
                     onClick={() => setTravelMonth(m.num)}
-                    className={`rounded-full py-2 text-xs font-bold transition ${
+                    className={`rounded-full py-2 text-[14px] font-bold transition ${
                       travelMonth === m.num
                         ? 'bg-[#2F6B2F] text-white shadow-sm'
                         : 'border border-[#D5E6CF] bg-[#F6FAF3] text-[#557945] hover:bg-[#eaf7e6] hover:text-[#1F2A1F]'
@@ -412,7 +412,7 @@ export default function PlanPage() {
 
             {/* Trip Vibes (Zero Emojis) */}
             <div>
-              <span className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#557945]">
+              <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
                 Tap vibes to enrich your query
               </span>
               <div className="flex flex-wrap gap-2">
@@ -424,7 +424,7 @@ export default function PlanPage() {
                       key={vibe.label}
                       type="button"
                       onClick={() => toggleVibe(vibe.keyword)}
-                      className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-bold transition ${
+                      className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[14px] font-bold transition ${
                         active
                           ? 'bg-[#eaf7e6] text-[#2F6B2F] border border-[#2F6B2F]/40'
                           : 'border border-[#D5E6CF] bg-white text-[#1F2A1F] hover:bg-[#F6FAF3]'
@@ -440,7 +440,7 @@ export default function PlanPage() {
 
             <button
               type="submit"
-              className="flex h-[56px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-7 pr-3 text-sm font-bold text-white shadow-md transition hover:bg-[#145219] sm:text-base"
+              className="flex h-[56px] w-full items-center justify-between rounded-full bg-[#2F6B2F] pl-7 pr-3 text-[14px] font-bold text-white shadow-md transition hover:bg-[#145219] sm:text-base"
             >
               <span>Evaluate 64 Districts &amp; Recommend</span>
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFCB3D] text-[#1F2A1F]">
@@ -456,7 +456,7 @@ export default function PlanPage() {
           <div className="rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm">
             <div className="mb-4 flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-[#2F6B2F]" />
-              <h3 className="text-sm font-extrabold uppercase tracking-wider text-[#1F2A1F]">
+              <h3 className="text-[14px] font-extrabold uppercase tracking-wider text-[#1F2A1F]">
                 Trending Trip Prompts
               </h3>
             </div>
@@ -469,10 +469,10 @@ export default function PlanPage() {
                   className="w-full rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4 text-left transition hover:border-[#5D9253] hover:bg-[#eaf7e6]"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-[#1F2A1F]">{preset.title}</span>
+                    <span className="text-[14px] font-bold text-[#1F2A1F]">{preset.title}</span>
                     <ArrowRight className="h-3.5 w-3.5 text-[#2F6B2F]" />
                   </div>
-                  <p className="mt-1 text-xs font-semibold text-[#557945]">{preset.subtitle}</p>
+                  <p className="mt-1 text-[14px] font-semibold text-[#557945]">{preset.subtitle}</p>
                 </button>
               ))}
             </div>
@@ -484,16 +484,16 @@ export default function PlanPage() {
               <ShieldCheck className="h-5 w-5" />
             </div>
             <h3 className="text-lg font-extrabold">Local Fair-Price Guard</h3>
-            <p className="mt-2 text-xs leading-relaxed text-[#D5E6CF]">
+            <p className="mt-2 text-[14px] leading-relaxed text-[#D5E6CF]">
               Every recommendation runs deterministic math on real Bus, Train, and Launch fares from {startingCity}, twin-share hotel rooms, local daily meals, entry fees, and a 10% safety buffer before Gemini writes a word.
             </p>
-            <div className="mt-4 grid grid-cols-2 gap-2.5 text-xs">
+            <div className="mt-4 grid grid-cols-2 gap-2.5 text-[14px]">
               <div className="rounded-xl bg-white/10 p-3">
-                <p className="text-[10px] uppercase tracking-wider text-[#D5E6CF]">Daylight Budget</p>
+                <p className="text-[14px] uppercase tracking-wider text-[#D5E6CF]">Daylight Budget</p>
                 <p className="mt-0.5 font-extrabold text-[#FFCB3D]">12h / day</p>
               </div>
               <div className="rounded-xl bg-white/10 p-3">
-                <p className="text-[10px] uppercase tracking-wider text-[#D5E6CF]">Room Rule</p>
+                <p className="text-[14px] uppercase tracking-wider text-[#D5E6CF]">Room Rule</p>
                 <p className="mt-0.5 font-extrabold text-[#FFCB3D]">1 per 2 guests</p>
               </div>
             </div>
@@ -505,7 +505,7 @@ export default function PlanPage() {
       <section className="rounded-[28px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm sm:p-8 space-y-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-widest text-[#557945]">
+            <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
               Verified Bangladesh Directory
             </span>
             <h2 className="mt-1 text-2xl font-extrabold text-[#1F2A1F]">
@@ -520,7 +520,7 @@ export default function PlanPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search district or spot..."
-              className="h-11 w-full rounded-full border border-[#D5E6CF] bg-[#F6FAF3] pl-11 pr-4 text-sm text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+              className="h-11 w-full rounded-full border border-[#D5E6CF] bg-[#F6FAF3] pl-11 pr-4 text-[14px] text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
             />
           </div>
         </div>
@@ -531,7 +531,7 @@ export default function PlanPage() {
               key={div}
               type="button"
               onClick={() => setActiveDivision(div)}
-              className={`rounded-full px-4 py-1.5 text-xs font-bold transition ${
+              className={`rounded-full px-4 py-1.5 text-[14px] font-bold transition ${
                 activeDivision === div
                   ? 'bg-[#2F6B2F] text-white shadow-sm'
                   : 'border border-[#D5E6CF] bg-[#F6FAF3] text-[#557945] hover:bg-[#eaf7e6] hover:text-[#1F2A1F]'
@@ -558,10 +558,10 @@ export default function PlanPage() {
                   alt={dest.name}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
-                <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-[#1F2A1F] backdrop-blur-sm">
+                <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[14px] font-bold text-[#1F2A1F] backdrop-blur-sm">
                   {dest.division}
                 </span>
-                <span className="absolute right-3 top-3 rounded-full bg-[#1F2A1F]/80 px-2.5 py-1 text-[11px] font-bold text-[#FFCB3D]">
+                <span className="absolute right-3 top-3 rounded-full bg-[#1F2A1F]/80 px-2.5 py-1 text-[14px] font-bold text-[#FFCB3D]">
                   {dest.cost_level} Cost
                 </span>
               </div>
@@ -571,14 +571,14 @@ export default function PlanPage() {
                     {dest.name}
                   </h3>
                   {dest.name_bn && (
-                    <span className="text-xs font-medium text-[#557945]">{dest.name_bn}</span>
+                    <span className="text-[14px] font-medium text-[#557945]">{dest.name_bn}</span>
                   )}
                 </div>
-                <p className="mt-1 flex items-center gap-1 text-xs font-semibold text-[#557945]">
+                <p className="mt-1 flex items-center gap-1 text-[14px] font-semibold text-[#557945]">
                   <MapPin className="h-3 w-3 text-[#2F6B2F]" />
                   {dest.district} District
                 </p>
-                <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-[#557945]">
+                <p className="mt-2 line-clamp-2 text-[14px] leading-relaxed text-[#557945]">
                   {dest.description}
                 </p>
               </div>

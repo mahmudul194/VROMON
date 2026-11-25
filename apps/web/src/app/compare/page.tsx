@@ -151,11 +151,11 @@ function CompareInner() {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eaf7e6] px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#2F6B2F]">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eaf7e6] px-3.5 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
             <GitCompare className="h-3.5 w-3.5" />
             Side-by-Side Comparison Matrix
           </span>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1F2A1F]">
+          <h1 className="mt-2 text-[36px] md:text-[40px] font-extrabold tracking-tight text-[#1F2A1F]">
             Compare up to 3 districts head-to-head
           </h1>
         </div>
@@ -166,7 +166,7 @@ function CompareInner() {
             <select
               value=""
               onChange={(e) => handleAdd(e.target.value)}
-              className="h-11 rounded-full border border-[#D5E6CF] bg-white px-4 text-xs font-bold text-[#1F2A1F] shadow-sm focus:border-[#2F6B2F] focus:outline-none"
+              className="h-11 rounded-full border border-[#D5E6CF] bg-white px-4 text-[14px] font-bold text-[#1F2A1F] shadow-sm focus:border-[#2F6B2F] focus:outline-none"
             >
               <option value="">Add destination ({selectedIds.length}/3)...</option>
               {allDestinations
@@ -185,11 +185,11 @@ function CompareInner() {
       <div className="grid grid-cols-1 items-center gap-5 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm md:grid-cols-12">
         <div className="space-y-2 md:col-span-6">
           <div className="flex items-center justify-between">
-            <span className="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#557945]">
+            <span className="flex items-center gap-1.5 text-[14px] font-extrabold uppercase tracking-wider text-[#557945]">
               <SlidersHorizontal className="h-3.5 w-3.5 text-[#2F6B2F]" />
               Dynamic Budget Filter
             </span>
-            <span className="rounded-full bg-[#2F6B2F] px-3 py-0.5 text-sm font-black text-white">
+            <span className="rounded-full bg-[#2F6B2F] px-3 py-0.5 text-[14px] font-black text-white">
               ৳{budget.toLocaleString()}
             </span>
           </div>
@@ -206,11 +206,11 @@ function CompareInner() {
 
         <div className="grid grid-cols-2 gap-3 md:col-span-6">
           <div className="rounded-2xl bg-[#F6FAF3] px-4 py-2.5 border border-[#E5F0E0]">
-            <span className="block text-[10px] font-bold uppercase text-[#557945]">Days</span>
+            <span className="block text-[14px] font-bold uppercase text-[#557945]">Days</span>
             <select
               value={days}
               onChange={(e) => setDays(Number(e.target.value))}
-              className="mt-0.5 w-full bg-transparent text-sm font-extrabold text-[#1F2A1F] focus:outline-none"
+              className="mt-0.5 w-full bg-transparent text-[14px] font-extrabold text-[#1F2A1F] focus:outline-none"
             >
               {[1, 2, 3, 4, 5, 7].map((d) => (
                 <option key={d} value={d}>
@@ -220,11 +220,11 @@ function CompareInner() {
             </select>
           </div>
           <div className="rounded-2xl bg-[#F6FAF3] px-4 py-2.5 border border-[#E5F0E0]">
-            <span className="block text-[10px] font-bold uppercase text-[#557945]">Travelers</span>
+            <span className="block text-[14px] font-bold uppercase text-[#557945]">Travelers</span>
             <select
               value={travelers}
               onChange={(e) => setTravelers(Number(e.target.value))}
-              className="mt-0.5 w-full bg-transparent text-sm font-extrabold text-[#1F2A1F] focus:outline-none"
+              className="mt-0.5 w-full bg-transparent text-[14px] font-extrabold text-[#1F2A1F] focus:outline-none"
             >
               {[1, 2, 3, 4, 6, 8].map((t) => (
                 <option key={t} value={t}>
@@ -242,7 +242,7 @@ function CompareInner() {
           <table className="w-full min-w-[720px] border-collapse text-left">
             <thead>
               <tr className="border-b border-[#E5F0E0] bg-[#F6FAF3]">
-                <th className="w-48 p-5 text-xs font-extrabold uppercase tracking-wider text-[#557945]">
+                <th className="w-48 p-5 text-[14px] font-extrabold uppercase tracking-wider text-[#557945]">
                   Feasibility Metric
                 </th>
                 {evaluated.map((e) => (
@@ -271,7 +271,7 @@ function CompareInner() {
                       <div className="flex items-center justify-between gap-2">
                         <div>
                           <p className="text-lg font-extrabold text-[#1F2A1F]">{e.dest.name}</p>
-                          <p className="flex items-center gap-1 text-xs font-semibold text-[#557945]">
+                          <p className="flex items-center gap-1 text-[14px] font-semibold text-[#557945]">
                             <MapPin className="h-3 w-3 text-[#2F6B2F]" />
                             {e.dest.division}
                           </p>
@@ -283,7 +283,7 @@ function CompareInner() {
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E5F0E0] text-sm">
+            <tbody className="divide-y divide-[#E5F0E0] text-[14px]">
               <tr>
                 <td className="p-5 font-bold text-[#557945]">Budget Feasibility</td>
                 {evaluated.map((e) => (
@@ -305,7 +305,7 @@ function CompareInner() {
                     >
                       ৳{e.budgetRes.cost_breakdown.total_cost.toLocaleString()}
                       {isBest && (
-                        <span className="ml-2 rounded-full bg-[#FFCB3D] px-2 py-0.5 text-[10px] font-black text-[#1F2A1F]">
+                        <span className="ml-2 rounded-full bg-[#FFCB3D] px-2 py-0.5 text-[14px] font-black text-[#1F2A1F]">
                           BEST VALUE
                         </span>
                       )}
@@ -353,7 +353,7 @@ function CompareInner() {
                     <td key={e.dest.destination_id} className="p-5">
                       <Link
                         href={`/itinerary?destId=${e.dest.destination_id}&days=${days}&usable=${e.timeRes.usable_hours}&totalCost=${e.budgetRes.cost_breakdown.total_cost}&status=${encodeURIComponent(e.budgetRes.feasibility_status)}&score=${e.overallScore}&budget=${budget}&travelers=${travelers}&month=${month}&city=${encodeURIComponent(city)}`}
-                        className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-extrabold transition ${
+                        className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[14px] font-extrabold transition ${
                           isTop
                             ? 'bg-[#FFCB3D] text-[#1F2A1F]'
                             : 'bg-[#2F6B2F] text-white hover:bg-[#145219]'
@@ -378,7 +378,7 @@ function CompareInner() {
             <h2 className="text-xl font-extrabold text-[#1F2A1F]">
               Multi-dimensional Suitability Overlay
             </h2>
-            <p className="mt-0.5 text-xs text-[#557945]">
+            <p className="mt-0.5 text-[14px] text-[#557945]">
               Visualizing how each district scores across Budget Fit, Time Fit, Climate, and Crowd Calm.
             </p>
           </div>

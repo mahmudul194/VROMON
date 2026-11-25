@@ -99,10 +99,10 @@ export default function DestinationDetailPage() {
   if (!dest || !budgetCheck || !timeCheck) {
     return (
       <div className="mx-auto max-w-2xl space-y-4 p-16 text-center">
-        <h1 className="text-2xl font-extrabold text-[#1F2A1F]">Destination not found</h1>
+        <h1 className="text-[36px] md:text-[40px] font-extrabold text-[#1F2A1F]">Destination not found</h1>
         <Link
           href="/plan"
-          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-sm font-bold text-white"
+          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-[14px] font-bold text-white"
         >
           Back to Planner
         </Link>
@@ -126,7 +126,7 @@ export default function DestinationDetailPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Link
           href="/plan"
-          className="inline-flex items-center gap-2 rounded-full border border-[#D5E6CF] bg-white px-4 py-2 text-xs font-bold text-[#1F2A1F] shadow-sm hover:bg-[#eaf7e6]"
+          className="inline-flex items-center gap-2 rounded-full border border-[#D5E6CF] bg-white px-4 py-2 text-[14px] font-bold text-[#1F2A1F] shadow-sm hover:bg-[#eaf7e6]"
         >
           <ArrowLeft className="h-3.5 w-3.5 text-[#2F6B2F]" />
           <span>Back to Planner</span>
@@ -135,7 +135,7 @@ export default function DestinationDetailPage() {
         <div className="flex items-center gap-2">
           <Link
             href={`/compare?ids=${dest.destination_id}&budget=${budget}&travelers=${travelers}&days=${days}&month=${month}&city=${encodeURIComponent(startingCity)}`}
-            className="inline-flex items-center gap-1.5 rounded-full border border-[#D5E6CF] bg-white px-4 py-2 text-xs font-bold text-[#1F2A1F] hover:bg-[#eaf7e6]"
+            className="inline-flex items-center gap-1.5 rounded-full border border-[#D5E6CF] bg-white px-4 py-2 text-[14px] font-bold text-[#1F2A1F] hover:bg-[#eaf7e6]"
           >
             <GitCompare className="h-3.5 w-3.5 text-[#2F6B2F]" />
             Compare District
@@ -158,7 +158,7 @@ export default function DestinationDetailPage() {
 
           <div className="absolute right-5 top-5 flex items-center gap-3 rounded-2xl border border-white/20 bg-[#1F2A1F]/85 px-4 py-2.5 text-white backdrop-blur-md">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-[#D5E6CF]">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#D5E6CF]">
                 Feasibility Score
               </p>
               <p className="text-2xl font-black leading-none text-[#FFCB3D]">{compositeScore}</p>
@@ -169,18 +169,18 @@ export default function DestinationDetailPage() {
           <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-4 text-white sm:flex-row sm:items-end sm:justify-between">
             <div>
               <div className="mb-2 flex flex-wrap gap-2">
-                <span className="rounded-full bg-[#FFCB3D] px-3 py-1 text-xs font-extrabold text-[#1F2A1F]">
+                <span className="rounded-full bg-[#FFCB3D] px-3 py-1 text-[14px] font-extrabold text-[#1F2A1F]">
                   {dest.division} Division
                 </span>
                 <FeasibilityBadge status={budgetCheck.feasibility_status} />
-                <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-bold backdrop-blur-sm">
+                <span className="rounded-full bg-white/20 px-3 py-1 text-[14px] font-bold backdrop-blur-sm">
                   {dest.cost_level} Cost Tier
                 </span>
               </div>
-              <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              <h1 className="text-[36px] md:text-[40px] font-extrabold tracking-tight sm:text-4xl">
                 {dest.name} {dest.name_bn ? `(${dest.name_bn})` : ''}
               </h1>
-              <p className="mt-1 flex items-center gap-1.5 text-sm text-[#E5F0E0]">
+              <p className="mt-1 flex items-center gap-1.5 text-[16px] text-[#E5F0E0]">
                 <MapPin className="h-4 w-4 text-[#FFCB3D]" />
                 <span>{dest.district} District, Bangladesh</span>
               </p>
@@ -201,7 +201,7 @@ export default function DestinationDetailPage() {
             <a
               key={tab.href}
               href={tab.href}
-              className="rounded-full border border-[#D5E6CF] bg-white px-4 py-1.5 text-xs font-bold text-[#1F2A1F] transition hover:bg-[#2F6B2F] hover:text-white"
+              className="rounded-full border border-[#D5E6CF] bg-white px-4 py-1.5 text-[14px] font-bold text-[#1F2A1F] transition hover:bg-[#2F6B2F] hover:text-white"
             >
               {tab.label}
             </a>
@@ -217,18 +217,18 @@ export default function DestinationDetailPage() {
             id="overview"
             className="scroll-mt-24 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm sm:p-8"
           >
-            <div className="mb-3 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#2F6B2F]">
+            <div className="mb-3 flex items-center gap-2 text-[14px] font-extrabold uppercase tracking-wider text-[#2F6B2F]">
               <Sparkles className="h-4 w-4" />
               Why {dest.name} fits this profile
             </div>
-            <p className="text-sm leading-relaxed text-[#1F2A1F] sm:text-base">
+            <p className="text-[16px] leading-relaxed text-[#1F2A1F] sm:text-base">
               {dest.description}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {(dest.tags || []).map((t: string) => (
                 <span
                   key={t}
-                  className="rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/70 px-3.5 py-1 text-xs font-bold text-[#2F6B2F]"
+                  className="rounded-full border border-[#D5E6CF] bg-[#eaf7e6]/70 px-3.5 py-1 text-[14px] font-bold text-[#2F6B2F]"
                 >
                   #{t}
                 </span>
@@ -246,7 +246,7 @@ export default function DestinationDetailPage() {
                 <h2 className="text-xl font-extrabold text-[#1F2A1F]">
                   Itemized Budget Breakdown
                 </h2>
-                <p className="mt-0.5 text-xs font-medium text-[#557945]">
+                <p className="mt-0.5 text-[14px] font-medium text-[#557945]">
                   Calculated for {travelers} traveler{travelers > 1 ? 's' : ''}, {days} day{days > 1 ? 's' : ''} from {startingCity} • Room rate ৳{dest.hotel_cost_per_room_night.toLocaleString()}/night
                 </p>
               </div>
@@ -282,7 +282,7 @@ export default function DestinationDetailPage() {
                 ].map((row) => (
                   <div
                     key={row.label}
-                    className="flex items-center justify-between rounded-xl bg-[#F6FAF3] px-4 py-2.5 text-xs border border-[#E5F0E0]"
+                    className="flex items-center justify-between rounded-xl bg-[#F6FAF3] px-4 py-2.5 text-[14px] border border-[#E5F0E0]"
                   >
                     <span className="font-semibold text-[#557945]">{row.label}</span>
                     <span className="font-extrabold text-[#1F2A1F]">
@@ -290,7 +290,7 @@ export default function DestinationDetailPage() {
                     </span>
                   </div>
                 ))}
-                <div className="flex items-center justify-between rounded-xl bg-[#2F6B2F] px-4 py-3 text-sm text-white">
+                <div className="flex items-center justify-between rounded-xl bg-[#2F6B2F] px-4 py-3 text-[14px] text-white">
                   <span className="font-bold">Total Estimated Package</span>
                   <span className="font-black text-[#FFCB3D]">
                     ৳{budgetCheck.cost_breakdown.total_cost.toLocaleString()}
@@ -309,14 +309,14 @@ export default function DestinationDetailPage() {
               <h2 className="text-xl font-extrabold text-[#1F2A1F]">
                 Time &amp; Transit Feasibility
               </h2>
-              <p className="mt-0.5 text-xs font-medium text-[#557945]">
+              <p className="mt-0.5 text-[14px] font-medium text-[#557945]">
                 Best route from {startingCity}: {optimalTransport.mode} (৳{optimalTransport.fare_per_person}/person one-way)
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
                   Round-Trip Transit
                 </span>
                 <p className="mt-1 text-2xl font-black text-[#1F2A1F]">
@@ -324,7 +324,7 @@ export default function DestinationDetailPage() {
                 </p>
               </div>
               <div className="rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6] p-4">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#2F6B2F]">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
                   Usable Explore Hours
                 </span>
                 <p className="mt-1 text-2xl font-black text-[#2F6B2F]">
@@ -332,7 +332,7 @@ export default function DestinationDetailPage() {
                 </p>
               </div>
               <div className="rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
                   Min. Recommended Time
                 </span>
                 <p className="mt-1 text-2xl font-black text-[#1F2A1F]">
@@ -342,9 +342,9 @@ export default function DestinationDetailPage() {
             </div>
 
             <div className="overflow-x-auto pt-2">
-              <table className="w-full text-left text-sm">
+              <table className="w-full text-left text-[14px]">
                 <thead>
-                  <tr className="border-b border-[#E5F0E0] text-xs uppercase tracking-wider text-[#557945]">
+                  <tr className="border-b border-[#E5F0E0] text-[14px] uppercase tracking-wider text-[#557945]">
                     <th className="pb-3">Origin City</th>
                     <th className="pb-3">Mode</th>
                     <th className="pb-3">One-Way Fare</th>
@@ -356,7 +356,7 @@ export default function DestinationDetailPage() {
                     <tr key={idx} className="text-[#1F2A1F]">
                       <td className="py-3 font-bold">{tr.city_name}</td>
                       <td className="py-3">
-                        <span className="inline-flex items-center gap-1 rounded-full bg-[#eaf7e6] px-2.5 py-0.5 text-xs font-bold text-[#2F6B2F]">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-[#eaf7e6] px-2.5 py-0.5 text-[14px] font-bold text-[#2F6B2F]">
                           <Train className="h-3 w-3" /> {tr.mode}
                         </span>
                       </td>
@@ -380,12 +380,12 @@ export default function DestinationDetailPage() {
                   <CloudSun className="h-5 w-5 text-[#2F6B2F]" />
                   Climate and Crowd Index
                 </h2>
-                <p className="mt-0.5 text-xs text-[#557945]">
+                <p className="mt-0.5 text-[14px] text-[#557945]">
                   Click any month pill below to preview weather conditions and crowd intensity.
                 </p>
               </div>
               {activeCondition && (
-                <span className="rounded-full bg-[#fff8e1] px-3 py-1 text-xs font-bold text-[#9a6b00]">
+                <span className="rounded-full bg-[#fff8e1] px-3 py-1 text-[14px] font-bold text-[#9a6b00]">
                   {MONTH_SHORT[activeCondition.month_no]}: {activeCondition.weather_rating}/5 Weather • {activeCondition.crowd_level} Crowd
                 </span>
               )}
@@ -409,16 +409,16 @@ export default function DestinationDetailPage() {
                         : 'border-[#E5F0E0] bg-[#F6FAF3] text-[#1F2A1F] hover:bg-[#eaf7e6]'
                     }`}
                   >
-                    <p className="text-[11px] font-bold">{MONTH_SHORT[c.month_no]}</p>
+                    <p className="text-[14px] font-bold">{MONTH_SHORT[c.month_no]}</p>
                     <p
-                      className={`mt-0.5 text-xs font-black ${
+                      className={`mt-0.5 text-[14px] font-black ${
                         isSelected ? 'text-[#FFCB3D]' : 'text-[#2F6B2F]'
                       }`}
                     >
                       {c.weather_rating}/5
                     </p>
                     <p
-                      className={`text-[9px] font-semibold uppercase ${
+                      className={`text-[14px] font-semibold uppercase ${
                         isSelected ? 'text-[#D5E6CF]' : 'text-[#557945]'
                       }`}
                     >
@@ -430,7 +430,7 @@ export default function DestinationDetailPage() {
             </div>
 
             {activeCondition?.weather_note && (
-              <div className="rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6]/70 px-4 py-3 text-xs font-medium text-[#1F2A1F]">
+              <div className="rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6]/70 px-4 py-3 text-[14px] font-medium text-[#1F2A1F]">
                 <strong className="font-extrabold text-[#2F6B2F]">Seasonal Verdict:</strong>{' '}
                 {activeCondition.weather_note}
               </div>
@@ -455,13 +455,13 @@ export default function DestinationDetailPage() {
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-sm font-extrabold text-[#1F2A1F]">{a.name}</h3>
-                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-white px-2.5 py-0.5 text-[11px] font-bold text-[#2F6B2F] border border-[#D5E6CF]">
+                      <h3 className="text-[14px] font-extrabold text-[#1F2A1F]">{a.name}</h3>
+                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-white px-2.5 py-0.5 text-[14px] font-bold text-[#2F6B2F] border border-[#D5E6CF]">
                         <Clock className="h-3 w-3" /> {a.est_hours}h
                       </span>
                     </div>
                     {a.description && (
-                      <p className="mt-1.5 text-xs leading-relaxed text-[#557945]">
+                      <p className="mt-1.5 text-[14px] leading-relaxed text-[#557945]">
                         {a.description}
                       </p>
                     )}
@@ -490,26 +490,26 @@ export default function DestinationDetailPage() {
         <aside className="lg:col-span-4">
           <div className="sticky top-24 space-y-5 rounded-[26px] bg-gradient-to-br from-[#235425] via-[#2F6B2F] to-[#145219] p-6 text-white shadow-[0_22px_55px_-16px_rgba(20,82,25,0.45)]">
             <div className="flex items-center justify-between">
-              <span className="rounded-full bg-white/15 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[#FFCB3D]">
+              <span className="rounded-full bg-white/15 px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#FFCB3D]">
                 Curated Package
               </span>
-              <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">
+              <span className="rounded-full bg-white/15 px-3 py-1 text-[14px] font-bold text-white">
                 {budgetCheck.feasibility_status}
               </span>
             </div>
 
             <div>
-              <p className="text-xs text-[#D5E6CF]">Estimated Group Total</p>
+              <p className="text-[14px] text-[#D5E6CF]">Estimated Group Total</p>
               <p className="mt-0.5 text-4xl font-black tracking-tight text-white">
                 ৳{budgetCheck.cost_breakdown.total_cost.toLocaleString()}
               </p>
-              <p className="mt-1 text-xs text-[#E5F0E0]">
+              <p className="mt-1 text-[14px] text-[#E5F0E0]">
                 From {startingCity} via {optimalTransport.mode} • {timeCheck.usable_hours}h at destination
               </p>
             </div>
 
             {/* Interactive Controls inside Sidebar */}
-            <div className="space-y-3 rounded-2xl border border-white/15 bg-white/10 p-4 text-xs">
+            <div className="space-y-3 rounded-2xl border border-white/15 bg-white/10 p-4 text-[14px]">
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-1.5 font-semibold text-[#E5F0E0]">
                   <Wallet className="h-3.5 w-3.5 text-[#FFCB3D]" /> Your Budget
@@ -528,13 +528,13 @@ export default function DestinationDetailPage() {
 
               <div className="grid grid-cols-2 gap-2 pt-1">
                 <div>
-                  <label className="mb-1 flex items-center gap-1 text-[10px] font-bold uppercase text-[#D5E6CF]">
+                  <label className="mb-1 flex items-center gap-1 text-[14px] font-bold uppercase text-[#D5E6CF]">
                     <Calendar className="h-3 w-3" /> Days
                   </label>
                   <select
                     value={days}
                     onChange={(e) => setDays(Number(e.target.value))}
-                    className="h-9 w-full rounded-xl bg-[#145219] px-2.5 text-xs font-bold text-white focus:outline-none"
+                    className="h-9 w-full rounded-xl bg-[#145219] px-2.5 text-[14px] font-bold text-white focus:outline-none"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 10].map((d) => (
                       <option key={d} value={d}>
@@ -545,13 +545,13 @@ export default function DestinationDetailPage() {
                 </div>
 
                 <div>
-                  <label className="mb-1 flex items-center gap-1 text-[10px] font-bold uppercase text-[#D5E6CF]">
+                  <label className="mb-1 flex items-center gap-1 text-[14px] font-bold uppercase text-[#D5E6CF]">
                     <Users className="h-3 w-3" /> Travelers
                   </label>
                   <select
                     value={travelers}
                     onChange={(e) => setTravelers(Number(e.target.value))}
-                    className="h-9 w-full rounded-xl bg-[#145219] px-2.5 text-xs font-bold text-white focus:outline-none"
+                    className="h-9 w-full rounded-xl bg-[#145219] px-2.5 text-[14px] font-bold text-white focus:outline-none"
                   >
                     {[1, 2, 3, 4, 5, 6, 8].map((t) => (
                       <option key={t} value={t}>
@@ -563,7 +563,7 @@ export default function DestinationDetailPage() {
               </div>
             </div>
 
-            <div className="space-y-2 text-xs text-[#E5F0E0]">
+            <div className="space-y-2 text-[14px] text-[#E5F0E0]">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-[#FFCB3D]" />
                 <span>Grounded strictly to database attractions</span>
@@ -580,7 +580,7 @@ export default function DestinationDetailPage() {
 
             <Link
               href={`/itinerary?destId=${dest.destination_id}&days=${days}&usable=${timeCheck.usable_hours}&totalCost=${budgetCheck.cost_breakdown.total_cost}&status=${encodeURIComponent(budgetCheck.feasibility_status)}&score=${compositeScore}&budget=${budget}&travelers=${travelers}&month=${month}&city=${encodeURIComponent(startingCity)}`}
-              className="flex h-12 w-full items-center justify-between rounded-full bg-[#FFCB3D] pl-6 pr-2.5 text-sm font-extrabold text-[#1F2A1F] shadow-md transition hover:brightness-95"
+              className="flex h-12 w-full items-center justify-between rounded-full bg-[#FFCB3D] pl-6 pr-2.5 text-[14px] font-extrabold text-[#1F2A1F] shadow-md transition hover:brightness-95"
             >
               <span>Generate Day-by-Day Itinerary</span>
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1F2A1F] text-white">
