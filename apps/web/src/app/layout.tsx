@@ -4,6 +4,8 @@ import './globals.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { OfflineBanner } from '@/components/OfflineBanner';
+import { AuthStatusBanners } from '@/components/AuthStatusBanners';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -23,8 +25,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col bg-[#E5F0E0] text-[16px] md:text-[18px] font-normal text-[#1F2A1F]">
         <AuthProvider>
           <Navbar />
+          <OfflineBanner />
           <main className="flex-1">{children}</main>
           <Footer />
+          <AuthStatusBanners />
         </AuthProvider>
       </body>
     </html>

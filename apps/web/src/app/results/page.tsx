@@ -69,6 +69,13 @@ function ResultsInner() {
   const [compareIds, setCompareIds] = useState<number[]>([]);
   const [savedIds, setSavedIds] = useState<number[]>([]);
   const [latencyMs, setLatencyMs] = useState<number | null>(null);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const activeFilterCount =
+    (divisionFilter !== 'All' ? 1 : 0) +
+    (crowdFilter !== 'All' ? 1 : 0) +
+    (transportFilter !== 'All' ? 1 : 0) +
+    (statusFilters.length < 4 ? 1 : 0);
 
   useEffect(() => {
     setLoading(true);
@@ -160,20 +167,223 @@ function ResultsInner() {
 
   if (loading) {
     return (
-      <div className="mx-auto max-w-6xl px-4 py-16">
-        <div className="space-y-4 rounded-[28px] border border-[#D5E6CF] bg-white p-10 text-center shadow-sm">
-          <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#2F6B2F]" />
-          <h2 className="text-2xl font-extrabold text-[#1F2A1F]">
-            Evaluating 64 districts across feasibility factors
-          </h2>
-          <p className="mx-auto max-w-lg text-[16px] text-[#557945]">
-            Running LangChain intent extraction, round-trip transit fares, hotel calculations,
-            weather checks, and semantic vector scoring...
+      <div className="mx-auto max-w-[1260px] px-4 py-8 pb-24 sm:px-6 lg:px-8">
+        {/* Status Banner */}
+        <div className="mb-6 flex items-center gap-3 rounded-full border border-[#D5E6CF] bg-white px-5 py-3 shadow-sm">
+          <Loader2 className="h-4 w-4 shrink-0 animate-spin text-[#2F6B2F]" />
+          <p className="text-[14px] font-semibold text-[#1F2A1F]">
+            Evaluating 64 districts across budget, transit, weather, and crowd feasibility...
           </p>
+        </div>
+
+        {/* Header Skeleton */}
+        <div className="mb-8 animate-pulse rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm">
+          <div className="h-8 w-64 rounded-full bg-[#E5F0E0]" />
+          <div className="mt-3 h-4 w-96 max-w-full rounded-full bg-[#F6FAF3]" />
+          <div className="mt-4 flex flex-wrap gap-2">
+            {[1, 2, 3, 4, 5].map((pill) => (
+              <div key={pill} className="h-7 w-24 rounded-full bg-[#E5F0E0]" />
+            ))}
+          </div>
+        </div>
+
+        {/* 12-Col Skeleton Layout */}
+        <div className="grid grid-cols-1 gap-7 lg:grid-cols-12">
+          {/* Desktop Sidebar Skeleton */}
+          <aside className="hidden lg:block lg:col-span-4">
+            <div className="animate-pulse space-y-6 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm">
+              <div className="h-5 w-40 rounded-full bg-[#E5F0E0]" />
+              <div className="h-24 rounded-2xl bg-[#F6FAF3]" />
+              <div className="space-y-2">
+                <div className="h-4 w-28 rounded-full bg-[#E5F0E0]" />
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="h-9 rounded-xl bg-[#F6FAF3]" />
+                  <div className="h-9 rounded-xl bg-[#F6FAF3]" />
+                  <div className="h-9 rounded-xl bg-[#F6FAF3]" />
+                  <div className="h-9 rounded-xl bg-[#F6FAF3]" />
+                </div>
+              </div>
+              <div className="h-11 rounded-full bg-[#F6FAF3]" />
+              <div className="h-11 rounded-full bg-[#F6FAF3]" />
+            </div>
+          </aside>
+
+          {/* Cards Skeleton Grid */}
+          <div className="grid grid-cols-1 gap-6 lg:col-span-8 xl:grid-cols-2">
+            {[1, 2, 3, 4].map((card) => (
+              <div
+                key={card}
+                className="animate-pulse overflow-hidden rounded-[26px] border border-[#D5E6CF]/70 bg-white shadow-sm"
+              >
+                <div className="h-48 w-full bg-[#E5F0E0]" />
+                <div className="space-y-4 p-5">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="space-y-2">
+                      <div className="h-6 w-40 rounded-full bg-[#E5F0E0]" />
+                      <div className="h-4 w-28 rounded-full bg-[#F6FAF3]" />
+                    </div>
+                    <div className="h-12 w-12 rounded-full bg-[#E5F0E0]" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-2.5 pt-2">
+                    {[1, 2, 3, 4, 5, 6].map((bar) => (
+                      <div key={bar} className="space-y-1.5">
+                        <div className="h-3 w-16 rounded-full bg-[#F6FAF3]" />
+                        <div className="h-2 w-full rounded-full bg-[#E5F0E0]" />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex gap-2 pt-2">
+                    <div className="h-10 flex-1 rounded-full bg-[#E5F0E0]" />
+                    <div className="h-10 w-24 rounded-full bg-[#F6FAF3]" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
   }
+
+  const filterControls = (
+    <div className="space-y-6">
+      {/* Live Budget Slider */}
+      <div className="rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4">
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-[14px] font-bold text-[#557945]">What-If Budget</span>
+          <span className="rounded-full bg-[#2F6B2F] px-3 py-0.5 text-[14px] font-extrabold text-white">
+            ৳{sliderBudget.toLocaleString()}
+          </span>
+        </div>
+        <input
+          type="range"
+          min={2000}
+          max={80000}
+          step={500}
+          value={sliderBudget}
+          onChange={(e) => setSliderBudget(Number(e.target.value))}
+          className="vromon-slider w-full cursor-pointer"
+        />
+        <div className="mt-1 flex justify-between text-[14px] font-semibold text-[#557945]">
+          <span>৳2,000</span>
+          <span>৳40k</span>
+          <span>৳80k</span>
+        </div>
+      </div>
+
+      {/* Feasibility Tier Checkboxes */}
+      <div>
+        <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
+          Feasibility Tier
+        </span>
+        <div className="grid grid-cols-2 gap-2">
+          {['Fits', 'Tight', 'Over budget', 'Discard'].map((st) => {
+            const checked = statusFilters.includes(st);
+            return (
+              <button
+                key={st}
+                type="button"
+                onClick={() => toggleStatusFilter(st)}
+                className={`flex items-center justify-between rounded-xl border px-3 py-2 text-[14px] font-bold transition ${
+                  checked
+                    ? 'border-[#2F6B2F] bg-[#eaf7e6] text-[#2F6B2F]'
+                    : 'border-[#E5F0E0] bg-[#F6FAF3] text-[#557945]'
+                }`}
+              >
+                <span>{st}</span>
+                {checked && <Check className="h-3.5 w-3.5" />}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Crowd Segmented Pill */}
+      <div>
+        <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
+          Crowd Comfort
+        </span>
+        <div className="grid grid-cols-4 gap-1 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] p-1">
+          {(['All', 'Low', 'Medium', 'High'] as const).map((cr) => (
+            <button
+              key={cr}
+              type="button"
+              onClick={() => setCrowdFilter(cr)}
+              className={`rounded-full py-1.5 text-[14px] font-bold transition ${
+                crowdFilter === cr
+                  ? 'bg-[#2F6B2F] text-white shadow-sm'
+                  : 'text-[#557945] hover:text-[#1F2A1F]'
+              }`}
+            >
+              {cr}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Transport Filter Pills */}
+      <div>
+        <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
+          Optimal Transit Mode
+        </span>
+        <div className="flex flex-wrap gap-1.5">
+          {(['All', 'Bus', 'Train', 'Launch'] as const).map((mode) => (
+            <button
+              key={mode}
+              type="button"
+              onClick={() => setTransportFilter(mode)}
+              className={`rounded-full px-3.5 py-1.5 text-[14px] font-bold transition ${
+                transportFilter === mode
+                  ? 'bg-[#2F6B2F] text-white'
+                  : 'border border-[#D5E6CF] bg-[#F6FAF3] text-[#557945] hover:bg-[#eaf7e6]'
+              }`}
+            >
+              {mode}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Division Filter */}
+      <div>
+        <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
+          Region / Division
+        </span>
+        <div className="flex flex-wrap gap-1.5">
+          {divisions.map((div) => (
+            <button
+              key={div}
+              type="button"
+              onClick={() => setDivisionFilter(div)}
+              className={`rounded-full px-3 py-1 text-[14px] font-bold transition ${
+                divisionFilter === div
+                  ? 'bg-[#1F2A1F] text-white'
+                  : 'border border-[#D5E6CF] bg-[#F6FAF3] text-[#557945] hover:bg-[#eaf7e6]'
+              }`}
+            >
+              {div}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Sort By */}
+      <div>
+        <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
+          Sort Recommendations
+        </span>
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value as 'score' | 'cost' | 'time')}
+          className="h-10 w-full rounded-full border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-[14px] font-bold text-[#1F2A1F] focus:border-[#2F6B2F] focus:outline-none"
+        >
+          <option value="score">Highest AI Match Score</option>
+          <option value="cost">Lowest Total Estimated Cost</option>
+          <option value="time">Most Usable Exploration Hours</option>
+        </select>
+      </div>
+    </div>
+  );
 
   return (
     <div className="mx-auto max-w-[1260px] px-4 py-8 pb-28 sm:px-6 lg:px-8">
@@ -237,9 +447,70 @@ function ResultsInner() {
         </div>
       )}
 
+      {/* Mobile Sticky Filter Trigger Bar (#52) */}
+      <div className="sticky top-[84px] z-30 mb-5 flex items-center justify-between gap-3 rounded-full border border-[#D5E6CF] bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md lg:hidden">
+        <button
+          type="button"
+          onClick={() => setMobileFiltersOpen(true)}
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-[#2F6B2F] px-4 text-[14px] font-bold text-white"
+        >
+          <SlidersHorizontal className="h-4 w-4" />
+          <span>Filters &amp; What-If</span>
+          {activeFilterCount > 0 && (
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#FFCB3D] text-[12px] font-extrabold text-[#1F2A1F]">
+              {activeFilterCount}
+            </span>
+          )}
+        </button>
+        <div className="flex items-center gap-2 text-[14px] font-bold text-[#1F2A1F]">
+          <span className="rounded-full bg-[#F6FAF3] px-3 py-1 border border-[#E5F0E0]">
+            ৳{sliderBudget.toLocaleString()}
+          </span>
+        </div>
+      </div>
+
+      {/* Mobile Filters Bottom Sheet (#52) */}
+      {mobileFiltersOpen && (
+        <div className="fixed inset-0 z-50 flex items-end bg-[#1F2A1F]/45 backdrop-blur-sm lg:hidden">
+          <div className="flex max-h-[86vh] w-full flex-col rounded-t-[28px] border-t border-[#D5E6CF] bg-white shadow-[0_-20px_60px_rgba(31,42,31,0.18)]">
+            <div className="flex flex-col items-center border-b border-[#E5F0E0] px-5 pb-3 pt-3">
+              <span className="mb-3 h-1.5 w-12 rounded-full bg-[#D5E6CF]" />
+              <div className="flex w-full items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <SlidersHorizontal className="h-4 w-4 text-[#2F6B2F]" />
+                  <h2 className="text-[16px] font-extrabold text-[#1F2A1F]">
+                    Filters &amp; What-If Budget
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setMobileFiltersOpen(false)}
+                  aria-label="Close filters"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F6FAF3] text-[#1F2A1F]"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-5 py-5">{filterControls}</div>
+
+            <div className="border-t border-[#E5F0E0] bg-white px-5 py-4">
+              <button
+                type="button"
+                onClick={() => setMobileFiltersOpen(false)}
+                className="flex h-12 w-full items-center justify-center rounded-full bg-[#2F6B2F] text-[15px] font-bold text-white shadow-[0_8px_24px_rgba(47,107,47,0.24)]"
+              >
+                Show {liveResults.length} Place{liveResults.length === 1 ? '' : 's'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 gap-7 lg:grid-cols-12">
-        {/* Left Filters & Live What-If Budget Sidebar */}
-        <aside className="lg:col-span-4">
+        {/* Left Filters & Live What-If Budget Sidebar (Desktop) */}
+        <aside className="hidden lg:block lg:col-span-4">
           <div className="sticky top-24 space-y-6 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -252,142 +523,7 @@ function ResultsInner() {
                 Instant Math
               </span>
             </div>
-
-            {/* Live Budget Slider */}
-            <div className="rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4">
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-[14px] font-bold text-[#557945]">What-If Budget</span>
-                <span className="rounded-full bg-[#2F6B2F] px-3 py-0.5 text-[14px] font-extrabold text-white">
-                  ৳{sliderBudget.toLocaleString()}
-                </span>
-              </div>
-              <input
-                type="range"
-                min={2000}
-                max={80000}
-                step={500}
-                value={sliderBudget}
-                onChange={(e) => setSliderBudget(Number(e.target.value))}
-                className="w-full cursor-pointer accent-[#FFCB3D]"
-              />
-              <div className="mt-1 flex justify-between text-[14px] font-semibold text-[#557945]">
-                <span>৳2,000</span>
-                <span>৳40k</span>
-                <span>৳80k</span>
-              </div>
-            </div>
-
-            {/* Feasibility Tier Checkboxes */}
-            <div>
-              <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
-                Feasibility Tier
-              </span>
-              <div className="grid grid-cols-2 gap-2">
-                {['Fits', 'Tight', 'Over budget', 'Discard'].map((st) => {
-                  const checked = statusFilters.includes(st);
-                  return (
-                    <button
-                      key={st}
-                      type="button"
-                      onClick={() => toggleStatusFilter(st)}
-                      className={`flex items-center justify-between rounded-xl border px-3 py-2 text-[14px] font-bold transition ${
-                        checked
-                          ? 'border-[#2F6B2F] bg-[#eaf7e6] text-[#2F6B2F]'
-                          : 'border-[#E5F0E0] bg-[#F6FAF3] text-[#557945]'
-                      }`}
-                    >
-                      <span>{st}</span>
-                      {checked && <Check className="h-3.5 w-3.5" />}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Crowd Segmented Pill */}
-            <div>
-              <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
-                Crowd Comfort
-              </span>
-              <div className="grid grid-cols-4 gap-1 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] p-1">
-                {(['All', 'Low', 'Medium', 'High'] as const).map((cr) => (
-                  <button
-                    key={cr}
-                    type="button"
-                    onClick={() => setCrowdFilter(cr)}
-                    className={`rounded-full py-1.5 text-[14px] font-bold transition ${
-                      crowdFilter === cr
-                        ? 'bg-[#2F6B2F] text-white shadow-sm'
-                        : 'text-[#557945] hover:text-[#1F2A1F]'
-                    }`}
-                  >
-                    {cr}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Transport Filter Pills */}
-            <div>
-              <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
-                Optimal Transit Mode
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {(['All', 'Bus', 'Train', 'Launch'] as const).map((mode) => (
-                  <button
-                    key={mode}
-                    type="button"
-                    onClick={() => setTransportFilter(mode)}
-                    className={`rounded-full px-3.5 py-1.5 text-[14px] font-bold transition ${
-                      transportFilter === mode
-                        ? 'bg-[#2F6B2F] text-white'
-                        : 'border border-[#D5E6CF] bg-[#F6FAF3] text-[#557945] hover:bg-[#eaf7e6]'
-                    }`}
-                  >
-                    {mode}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Division Filter */}
-            <div>
-              <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
-                Region / Division
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {divisions.map((div) => (
-                  <button
-                    key={div}
-                    type="button"
-                    onClick={() => setDivisionFilter(div)}
-                    className={`rounded-full px-3 py-1 text-[14px] font-bold transition ${
-                      divisionFilter === div
-                        ? 'bg-[#1F2A1F] text-white'
-                        : 'border border-[#D5E6CF] bg-[#F6FAF3] text-[#557945] hover:bg-[#eaf7e6]'
-                    }`}
-                  >
-                    {div}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Sort By */}
-            <div>
-              <span className="mb-2 block text-[14px] font-bold uppercase tracking-wider text-[#557945]">
-                Sort Recommendations
-              </span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as 'score' | 'cost' | 'time')}
-                className="h-10 w-full rounded-full border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-[14px] font-bold text-[#1F2A1F] focus:border-[#2F6B2F] focus:outline-none"
-              >
-                <option value="score">Highest AI Match Score</option>
-                <option value="cost">Lowest Total Estimated Cost</option>
-                <option value="time">Most Usable Exploration Hours</option>
-              </select>
-            </div>
+            {filterControls}
           </div>
         </aside>
 

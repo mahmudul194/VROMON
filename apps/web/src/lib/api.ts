@@ -24,6 +24,9 @@ export async function apiFetch<T = any>(path: string, options: RequestInit = {})
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
+    if (res.status === 401 && token && typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('vromon:session-expired'));
+    }
     const err: any = new Error(data.message || `Request failed (${res.status})`);
     err.status = res.status;
     err.data = data;

@@ -47,7 +47,7 @@
 | **Phase 2** | Shared Pure Math Engine & Zod Schemas (`@vromon/shared`) | Complete | `100%` |
 | **Phase 3** | Backend API (`apps/api` — NestJS 10, Auth, AI, Admin) | Complete | `100%` |
 | **Phase 4** | Stitch Primary Pages (Desktop Core Flows & Typography) | Complete | `100%` |
-| **Phase 4.5** | Remaining Stitch Utility, State & Mobile Sheet Screens | Pending | `0%` |
+| **Phase 4.5** | Remaining Stitch Utility, State & Mobile Sheet Screens | Complete | `100%` |
 | **Phase 5** | Google OAuth Console Setup & Live E2E Browser QA | Pending | `0%` |
 | **Phase 6** | Security Hardening, Media Integration & Responsive Polish | Pending | `0%` |
 | **Phase 7** | Production Deployment & Capstone Demo Readiness | Pending | `0%` |
@@ -77,17 +77,17 @@
 | 23–24 | Admin Dashboard & Destinations Management (`acba8657...`, `6e0c7912...`) | `/admin` (`apps/web/src/app/admin/page.tsx`) | `[x]` | 40px title, 44px KPIs, Recharts, slide-over editor, bulk JSON import |
 | 25 | 404 Page Not Found (`3bdde069...`) + Mobile (`c2e1ef3d...`) | `not-found.tsx` (`apps/web/src/app/not-found.tsx`) | `[x]` | Clean fallback page matching theme |
 
-### B. Remaining Stitch States, Modals & Mobile Sheets (`[ ]` Not Yet Built — Phase 4.5)
+### B. Remaining Stitch States, Modals & Mobile Sheets (`[x]` Built — Phase 4.5)
 
 | # | Stitch Screen(s) & ID | Target File / Behavior | Status |
 |---|---|---|---|
-| 26 | 500 Server Error (`dd18f1ff...`) | `apps/web/src/app/error.tsx` (friendly recovery + retry button) | `[ ]` |
-| 27, 60, 62 | You're Offline (`16225506...`, `ea2e89a3...`, `054ce692...`) | Offline status banner/page triggered by `navigator.onLine` / `offline` event | `[ ]` |
-| 30, 59 | Full-Screen Page Loader (`00750958...`, `fc2f1fb0...`) | `apps/web/src/app/loading.tsx` branded loading transition | `[ ]` |
-| 31 | Results Skeleton Loader (`a53735b1...`) | Shimmer card skeleton placeholders on `/results` while fetching | `[ ]` |
-| 34–36, 58 | Logged Out Success (`178f8a5c...`), Session Expired (`18fff3b5...`), Logout Confirmation Modal & Mobile Bottom Sheet (`35e22141...`, `a0ffaaee...`) | Confirmation dialog in `Navbar.tsx` + 401 session-expired handler in `AuthContext.tsx` | `[ ]` |
-| 38 | Mobile Navigation Menu Open (`0cd71a6f...`) | Verify Stitch mobile drawer layout/spacing polish on `375px` | `[ ]` |
-| 52 | Mobile Filters Bottom Sheet (`be171fb2...`) | Collapsible sticky mobile filter trigger + slide-up sheet on `/results` | `[ ]` |
+| 26 | 500 Server Error (`dd18f1ff...`) | `apps/web/src/app/error.tsx` (friendly recovery + retry button) | `[x]` |
+| 27, 60, 62 | You're Offline (`16225506...`, `ea2e89a3...`, `054ce692...`) | `apps/web/src/components/OfflineBanner.tsx` triggered by `navigator.onLine` / `offline` event | `[x]` |
+| 30, 59 | Full-Screen Page Loader (`00750958...`, `fc2f1fb0...`) | `apps/web/src/app/loading.tsx` branded loading transition | `[x]` |
+| 31 | Results Skeleton Loader (`a53735b1...`) | Shimmer card skeleton placeholders on `/results` while fetching | `[x]` |
+| 34–36, 58 | Logged Out Success (`178f8a5c...`), Session Expired (`18fff3b5...`), Logout Confirmation Modal & Mobile Bottom Sheet (`35e22141...`, `a0ffaaee...`) | Confirmation dialog/sheet in `Navbar.tsx` + 401 handler in `api.ts`/`AuthContext.tsx` + `AuthStatusBanners.tsx` | `[x]` |
+| 38 | Mobile Navigation Menu Open (`0cd71a6f...`) | Polished mobile drawer layout/spacing & 44px touch targets in `Navbar.tsx` | `[x]` |
+| 52 | Mobile Filters Bottom Sheet (`be171fb2...`) | Collapsible sticky mobile filter trigger + slide-up sheet on `/results` | `[x]` |
 
 ---
 
@@ -124,11 +124,11 @@
 - [x] ESLint `0` errors & production build verified (`15/15` routes) (`ba8736a`)
 
 ### Phase 4.5: Remaining Stitch Error, Loader, Offline & Modal Screens
-- [ ] Build `apps/web/src/app/error.tsx` matching Stitch `#26` (500 Server Error)
-- [ ] Build `apps/web/src/app/loading.tsx` matching Stitch `#30` (Full-Screen Page Loader)
-- [ ] Replace spinner on `/results` with Stitch `#31` skeleton cards
-- [ ] Add Offline detector banner (`#27` / `#60`), Session Expired notice (`#35`), and Logout Confirmation Modal / Bottom Sheet (`#36` / `#58`) + Logged Out feedback (`#34`)
-- [ ] Add collapsible Mobile Filters Bottom Sheet (`#52`) on `/results`
+- [x] Build `apps/web/src/app/error.tsx` matching Stitch `#26` (500 Server Error) (`2026-11-26`, `wasif`)
+- [x] Build `apps/web/src/app/loading.tsx` matching Stitch `#30` (Full-Screen Page Loader) (`2026-11-26`, `wasif`)
+- [x] Replace spinner on `/results` with Stitch `#31` skeleton cards (`2026-11-26`, `wasif`)
+- [x] Add Offline detector banner (`#27` / `#60`), Session Expired notice (`#35`), and Logout Confirmation Modal / Bottom Sheet (`#36` / `#58`) + Logged Out feedback (`#34`) (`2026-11-26`, `wasif`)
+- [x] Add collapsible Mobile Filters Bottom Sheet (`#52`) on `/results` & polish Mobile Navigation Drawer (`#38`) (`2026-11-26`, `wasif`)
 
 ### Phase 5: Google OAuth Console Setup & Live E2E Browser QA *(Next Up)*
 - [ ] **Google Cloud Console OAuth Setup:** Add `http://localhost:3000` (Authorized JS Origin) and `http://localhost:4000/api/auth/google/callback` (Authorized Redirect URI) + add test Gmail accounts
@@ -155,7 +155,7 @@
 | Task / Area | Owner | Branch | Status | Notes |
 |---|---|---|---|---|
 | Phases 0 – 4 (Core Monorepo, API, Seed, 14 Stitch Pages) | Rifat + Agent | `rifat` -> `main` | `[x]` Done | Pushed to `rifat` and merged cleanly into `main` |
-| Phase 4.5 (Stitch Error/Offline/Skeleton/Modal Screens) | Unassigned | — | `[ ]` Open | Available for collaborator |
+| Phase 4.5 (Stitch Error/Offline/Skeleton/Modal Screens) | Wasif + Agent | `wasif` -> `main` | `[x]` Done | Verified `test:shared` (9/9), `test:api` (1/1), `lint` (0 errors), `build:web` (15/15) |
 | Phase 5 (Google Console URIs + Live E2E Browser QA) | Unassigned | — | `[ ]` Open | Coordinate here before claiming |
 | Phase 6 (Local 64 Photos Wiring + Mobile `375px` Polish) | Unassigned | — | `[ ]` Open | `images/` + `credits.csv` already downloaded locally |
 | Phase 7 (Deployment & Final README) | Unassigned | — | `[ ]` Open | Target after Phase 5 & 6 pass |
@@ -166,7 +166,8 @@
 
 | Date | Commit / Ref | Author / Agent | Summary of Changes |
 |---|---|---|---|
-| 2026-11-26 | `rifat` -> `main` | Rifat + Agent | Created `rifat` branch, updated branch/merge workflow in `roadmap.md`, pushed `origin/rifat`, and merged into `main` |
+| 2026-11-26 | `rifat` -> `main` | Rifat + Agent | Synced latest `main` (Wasif's Phase 4.5 merge `c15217a`) into `rifat`, finalized `rifat` -> `main` branch workflow in `roadmap.md`, pushed `origin/rifat`, and merged cleanly into `main` |
+| 2026-11-26 | `c15217a` (`wasif` -> `main`) | Wasif + Agent | Completed Phase 4.5: added `error.tsx` (#26), `loading.tsx` (#30/#59), `OfflineBanner.tsx` (#27/#60/#62), `AuthStatusBanners.tsx` (#34/#35) with 401 interceptor, Logout modal/bottom sheet (#36/#58) & mobile drawer polish (#38) in `Navbar.tsx`, and `/results` skeleton loader (#31) + mobile filters bottom sheet (#52) |
 | 2026-11-26 | `bc503ec` | Rifat + Agent | Audited all **62** Stitch entries (`projects/3572637668389846387`) and added explicit screen-by-screen table + Phase 4.5 for missing Stitch utility/modal screens to `roadmap.md` |
 | 2026-11-26 | `ba8736a` | Rifat + Agent | Routed Navbar `Get started` button to `/register` and rebuilt `/login` & `/register` (with Step 2 Vibes/Budget Preferences) to exact Stitch `02_login`, `03_register_1`, and `04_register_2` visual layouts |
 | 2026-11-26 | `fbbb6f1` | Rifat + Agent | Cleared hardcoded pre-filled prompts on Hero `/` & `/plan` + ran Wikimedia photo downloader (64/64 districts downloaded) |
