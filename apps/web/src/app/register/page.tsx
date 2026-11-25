@@ -181,15 +181,12 @@ function RegisterInner() {
         {/* Left White Form Card (Stitch 03_register_1 / 04_register_2) */}
         <div className="flex flex-col justify-center rounded-[28px] border border-[#D5E6CF]/70 bg-white p-7 shadow-[0_18px_50px_-14px_rgba(31,42,31,0.12)] sm:p-10 lg:col-span-7">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-            <Link href="/" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center">
               <img
                 src="/vromon_logo.png"
                 alt="VROMON"
-                className="h-9 w-9 rounded-full border border-[#D5E6CF] object-cover"
+                className="h-10 w-auto object-contain"
               />
-              <span className="whitespace-nowrap text-base font-black tracking-tight text-[#1F2A1F]">
-                VROMON
-              </span>
             </Link>
 
             {/* 3-Step Horizontal Stepper */}

@@ -48,16 +48,13 @@ export function Navbar() {
       }
     >
       <nav className="glass-surface mx-auto flex h-[70px] max-w-[1180px] items-center justify-between rounded-full px-4 pl-5 shadow-[0_20px_60px_rgba(31,42,31,0.10)]">
-        {/* Left: Single-line Brand */}
-        <Link href="/" className="flex items-center gap-3 shrink-0">
+        {/* Left: Standalone Full Horizontal Logo (no extra text) */}
+        <Link href="/" className="flex items-center shrink-0 py-1">
           <img
             src="/vromon_logo.png"
-            alt="VROMON Logo"
-            className="h-10 w-10 rounded-full object-cover shadow-[0_4px_12px_rgba(47,107,47,0.22)] border border-white"
+            alt="VROMON"
+            className="h-10 sm:h-11 w-auto object-contain"
           />
-          <span className="text-[20px] font-bold tracking-[0.08em] text-[#1F2A1F] whitespace-nowrap">
-            VROMON
-          </span>
         </Link>
 
         {/* Center Navigation Pills */}

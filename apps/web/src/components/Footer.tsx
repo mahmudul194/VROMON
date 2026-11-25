@@ -9,16 +9,16 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 border-b border-white/15 pb-14 md:grid-cols-12">
           {/* Brand Column */}
           <div className="space-y-5 md:col-span-5">
-            <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center rounded-2xl bg-white/95 px-4 py-2 shadow-sm"
+            >
               <img
                 src="/vromon_logo.png"
-                alt="VROMON Logo"
-                className="h-10 w-10 rounded-full border border-white/20 object-cover"
+                alt="VROMON"
+                className="h-10 w-auto object-contain"
               />
-              <span className="whitespace-nowrap text-[20px] font-bold tracking-[0.08em] text-white">
-                VROMON
-              </span>
-            </div>
+            </Link>
             <p className="max-w-sm text-[16px] font-normal leading-relaxed text-white/75">
               Bangladesh&apos;s multi-vector AI travel feasibility engine. Precision recommendations
               calibrated for real budgets, transit hours, seasonal climates, and crowd levels.

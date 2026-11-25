@@ -68,20 +68,15 @@ function LoginInner() {
           <div className="pointer-events-none absolute -bottom-20 -left-12 h-64 w-64 rounded-full bg-[#FFCB3D]/15 blur-3xl" />
 
           <div className="relative z-10 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center rounded-2xl bg-white/95 px-3.5 py-2 shadow-sm"
+            >
               <img
                 src="/vromon_logo.png"
                 alt="VROMON"
-                className="h-10 w-10 rounded-full border border-white/25 object-cover"
+                className="h-9 w-auto object-contain"
               />
-              <div>
-                <p className="whitespace-nowrap text-base font-black tracking-tight text-white">
-                  VROMON
-                </p>
-                <p className="text-[14px] font-medium text-[#D5E6CF]">
-                  Bangladesh Smart Trip Engine
-                </p>
-              </div>
             </Link>
             <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#FFCB3D]">
               64 Districts
@@ -161,15 +156,12 @@ function LoginInner() {
         {/* Right White Login Card */}
         <div className="flex flex-col justify-center rounded-[28px] border border-[#D5E6CF]/70 bg-white p-7 shadow-[0_18px_50px_-14px_rgba(31,42,31,0.12)] sm:p-10 lg:col-span-6">
           <div className="mb-7 space-y-2">
-            <div className="flex items-center gap-2.5 lg:hidden">
+            <div className="flex items-center lg:hidden">
               <img
                 src="/vromon_logo.png"
                 alt="VROMON"
-                className="h-9 w-9 rounded-full border border-[#D5E6CF] object-cover"
+                className="h-10 w-auto object-contain"
               />
-              <span className="whitespace-nowrap text-base font-black tracking-tight text-[#1F2A1F]">
-                VROMON
-              </span>
             </div>
             <span className="inline-block rounded-full bg-[#eaf7e6] px-3 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
               Traveler Sign In
