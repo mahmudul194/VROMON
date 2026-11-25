@@ -106,9 +106,7 @@ const PRESET_SCENARIOS = [
 
 export default function PlanPage() {
   const router = useRouter();
-  const [wishes, setWishes] = useState(
-    'hey i want to go to khulna what are the places to see around, what kind of food i can explore there, i have 10k budget will it be suffecient and we are 2 people where can we stay what are the hotel price rates',
-  );
+  const [wishes, setWishes] = useState('');
   const [budget, setBudget] = useState(10000);
   const [travelers, setTravelers] = useState(2);
   const [days, setDays] = useState(2);

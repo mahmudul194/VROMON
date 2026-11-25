@@ -93,9 +93,7 @@ const SEASONAL_MONTHS = [
 
 export default function HomePage() {
   const router = useRouter();
-  const [wishes, setWishes] = useState(
-    '3 days, 15,000 BDT, 2 people, quiet tea gardens, December...',
-  );
+  const [wishes, setWishes] = useState('');
   const [ctaWishes, setCtaWishes] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [budget, setBudget] = useState(15000);
@@ -122,7 +120,10 @@ export default function HomePage() {
 
   const launchSearch = (queryText: string) => {
     const clean = queryText.trim();
-    if (!clean) return;
+    if (!clean) {
+      router.push('/plan');
+      return;
+    }
     const params = new URLSearchParams({
       wishes: clean,
       budget: String(budget),
@@ -201,7 +202,7 @@ export default function HomePage() {
               type="text"
               value={wishes}
               onChange={(e) => setWishes(e.target.value)}
-              placeholder="e.g., quiet hill place with tea gardens under 15,000 BDT for 2 people..."
+              placeholder="e.g., 3 days in Sylhet tea gardens, 15,000 BDT for 2"
               className="flex-1 min-w-0 bg-transparent text-[16px] font-normal text-[#1F2A1F] placeholder:text-[#1F2A1F]/45 focus:outline-none px-2"
             />
             <button
