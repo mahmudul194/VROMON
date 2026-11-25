@@ -2,27 +2,38 @@
 
 import React, { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   ArrowLeft,
+  Bookmark,
   Calendar,
   Check,
   Clock,
+  CloudSun,
   Download,
   Loader2,
+  MapPin,
   Share2,
   Sparkles,
+  Train,
 } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import { apiFetch } from '@/lib/api';
+import { useAuth } from '@/context/AuthContext';
+import { DestinationMap } from '@/components/DestinationMap';
+import { FeasibilityBadge } from '@/components/FeasibilityBadge';
+import { ScoreRing } from '@/components/ScoreRing';
 
 function ItineraryInner() {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const { user } = useAuth();
+
   const destId = Number(searchParams.get('destId') || 1);
   const days = Number(searchParams.get('days') || 2);
   const usableHours = Number(searchParams.get('usable') || 14);
   const totalCost = Number(searchParams.get('totalCost') || 8250);
-  const status = searchParams.get('status') || 'Fits';
+  const status = (searchParams.get('status') || 'Fits') as any;
   const score = Number(searchParams.get('score') || 88);
   const budget = Number(searchParams.get('budget') || 10000);
   const travelers = Number(searchParams.get('travelers') || 2);
@@ -30,22 +41,30 @@ function ItineraryInner() {
   const city = searchParams.get('city') || 'Dhaka';
 
   const [itinerary, setItinerary] = useState<any>(null);
+  const [destInfo, setDestInfo] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [shareUrl, setShareUrl] = useState('');
   const [sharing, setSharing] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    apiFetch('/itineraries/generate', {
-      method: 'POST',
-      body: JSON.stringify({
-        destination_id: destId,
-        days,
-        usable_hours: usableHours,
+    Promise.all([
+      apiFetch('/itineraries/generate', {
+        method: 'POST',
+        body: JSON.stringify({
+          destination_id: destId,
+          days,
+          usable_hours: usableHours,
+        }),
       }),
-    })
-      .then(setItinerary)
+      apiFetch(`/destinations/${destId}`).catch(() => null),
+    ])
+      .then(([itData, dData]) => {
+        setItinerary(itData);
+        setDestInfo(dData);
+      })
       .catch(() => setItinerary(null))
       .finally(() => setLoading(false));
   }, [destId, days, usableHours]);
@@ -118,15 +137,54 @@ function ItineraryInner() {
     }
   };
 
+  const handleSaveTrip = async () => {
+    if (!user) {
+      router.push('/login');
+      return;
+    }
+    if (!itinerary) return;
+    try {
+      await apiFetch('/trips', {
+        method: 'POST',
+        body: JSON.stringify({
+          destination_id: destId,
+          title: `${days}-Day Trip to ${itinerary.destination_name}`,
+          query_params: {
+            budget,
+            travelers,
+            days,
+            travel_month: month,
+            starting_city: city,
+          },
+          recommendation_snapshot: {
+            destination_id: destId,
+            name: itinerary.destination_name,
+            division: destInfo?.division || '',
+            district: destInfo?.district || '',
+            image_url: destInfo?.image_url || '',
+            cost_breakdown: { total_cost: totalCost },
+            feasibility_status: status,
+            scores: { final_score: score },
+            usable_hours: usableHours,
+            itinerary,
+          },
+        }),
+      });
+      setSaved(true);
+    } catch {
+      // Ignore duplicate save clicks
+    }
+  };
+
   if (loading) {
     return (
-      <div className="mx-auto max-w-4xl px-4 py-20 text-center space-y-4">
-        <Loader2 className="mx-auto h-10 w-10 animate-spin text-vromon-primary" />
-        <h2 className="text-xl font-extrabold text-vromon-dark">
+      <div className="mx-auto max-w-4xl space-y-4 px-4 py-20 text-center">
+        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#2F6B2F]" />
+        <h2 className="text-xl font-extrabold text-[#1F2A1F]">
           Building Day-by-Day Grounded Itinerary
         </h2>
-        <p className="text-sm text-vromon-muted">
-          Scheduling stored attractions within your {usableHours} usable hours...
+        <p className="text-sm text-[#557945]">
+          Scheduling verified attractions within your {usableHours} usable daylight hours...
         </p>
       </div>
     );
@@ -134,9 +192,12 @@ function ItineraryInner() {
 
   if (!itinerary) {
     return (
-      <div className="mx-auto max-w-xl p-16 text-center space-y-4">
-        <h2 className="text-xl font-extrabold text-vromon-dark">Could not generate itinerary</h2>
-        <Link href="/plan" className="inline-flex rounded-full bg-vromon-primary px-6 py-2.5 text-sm font-bold text-white">
+      <div className="mx-auto max-w-xl space-y-4 p-16 text-center">
+        <h2 className="text-xl font-extrabold text-[#1F2A1F]">Could not generate itinerary</h2>
+        <Link
+          href="/plan"
+          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-sm font-bold text-white"
+        >
           Return to Planner
         </Link>
       </div>
@@ -144,109 +205,218 @@ function ItineraryInner() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-10 space-y-8">
+    <div className="mx-auto max-w-[1240px] space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+      {/* Top Back + Action Bar */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <Link
-          href={`/destinations/${destId}`}
-          className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold text-vromon-dark shadow-soft border border-vromon-pill"
+          href={`/destinations/${destId}?budget=${budget}&travelers=${travelers}&days=${days}&month=${month}&city=${encodeURIComponent(city)}`}
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-[#D5E6CF] bg-white px-4 py-2 text-xs font-bold text-[#1F2A1F] shadow-sm hover:bg-[#eaf7e6]"
         >
-          <ArrowLeft className="h-3.5 w-3.5" />
+          <ArrowLeft className="h-3.5 w-3.5 text-[#2F6B2F]" />
           <span>Back to {itinerary.destination_name}</span>
         </Link>
 
         <div className="flex flex-wrap items-center gap-2.5">
           <button
-            onClick={handleDownloadPdf}
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-vromon-dark/20 bg-white px-5 text-xs font-bold text-vromon-dark hover:bg-vromon-leaf"
+            type="button"
+            onClick={handleSaveTrip}
+            className={`inline-flex h-10 items-center gap-2 rounded-full px-4 text-xs font-bold transition ${
+              saved
+                ? 'bg-[#eaf7e6] text-[#2F6B2F]'
+                : 'border border-[#D5E6CF] bg-white text-[#1F2A1F] hover:bg-[#eaf7e6]'
+            }`}
           >
-            <Download className="h-4 w-4 text-vromon-primary" />
-            <span>Export PDF</span>
+            {saved ? <Check className="h-3.5 w-3.5" /> : <Bookmark className="h-3.5 w-3.5" />}
+            <span>{saved ? 'Saved to Trips' : 'Save Trip'}</span>
           </button>
 
           <button
+            type="button"
+            onClick={handleDownloadPdf}
+            className="inline-flex h-10 items-center gap-2 rounded-full border border-[#D5E6CF] bg-white px-4 text-xs font-bold text-[#1F2A1F] hover:bg-[#eaf7e6]"
+          >
+            <Download className="h-3.5 w-3.5 text-[#2F6B2F]" />
+            <span>Download PDF</span>
+          </button>
+
+          <button
+            type="button"
             onClick={handleShare}
             disabled={sharing}
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-vromon-primary px-5 text-xs font-bold text-white hover:bg-vromon-deep"
+            className="inline-flex h-10 items-center gap-2 rounded-full bg-[#2F6B2F] px-5 text-xs font-bold text-white shadow-sm hover:bg-[#145219] disabled:opacity-60"
           >
-            {sharing ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : copied ? (
-              <Check className="h-4 w-4 text-vromon-amber" />
-            ) : (
-              <Share2 className="h-4 w-4 text-vromon-amber" />
-            )}
-            <span>{copied ? 'Link Copied!' : 'Create 30-Day Share Link'}</span>
+            {copied ? <Check className="h-3.5 w-3.5 text-[#FFCB3D]" /> : <Share2 className="h-3.5 w-3.5 text-[#FFCB3D]" />}
+            <span>{copied ? 'Link Copied' : sharing ? 'Creating link...' : 'Share 30-Day Link'}</span>
           </button>
         </div>
       </div>
 
+      {/* Share Link Banner */}
       {shareUrl && (
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-2xl bg-vromon-leaf border border-vromon-accent/40 p-4 text-xs">
-          <span className="font-semibold text-vromon-deep">
-            Public 30-day shareable link created (no personal info included):
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#5D9253]/40 bg-[#eaf7e6] px-5 py-3.5 text-xs text-[#1F2A1F]">
+          <div>
+            <span className="font-extrabold text-[#2F6B2F]">30-Day Shareable Plan URL:</span>{' '}
+            <a href={shareUrl} className="font-semibold underline">
+              {shareUrl}
+            </a>
+          </div>
+          <span className="rounded-full bg-white px-3 py-1 font-bold text-[#2F6B2F]">
+            Public Read-Only Active
           </span>
-          <Link href={shareUrl} className="font-bold text-vromon-primary underline break-all">
-            {shareUrl}
-          </Link>
         </div>
       )}
 
-      {/* Header Summary Card */}
-      <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-ambient border border-vromon-pill">
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-vromon-pill px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-vromon-deep">
-          <Sparkles className="h-3.5 w-3.5" />
-          <span>Grounded Schedule</span>
+      {/* Top KPI Bar (Stitch 10_itinerary) */}
+      <div className="grid grid-cols-1 gap-4 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm lg:grid-cols-12">
+        <div className="flex items-center gap-4 lg:col-span-5">
+          <ScoreRing score={score} size={70} />
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full bg-[#eaf7e6] px-3 py-0.5 text-[11px] font-bold uppercase text-[#2F6B2F]">
+                {days}-Day Plan
+              </span>
+              <FeasibilityBadge status={status} />
+            </div>
+            <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight text-[#1F2A1F]">
+              {itinerary.destination_name}
+            </h1>
+            <p className="text-xs font-medium text-[#557945]">
+              {travelers} traveler{travelers > 1 ? 's' : ''} departing from {city} • Month {month}
+            </p>
+          </div>
         </div>
-        <h1 className="mt-3 text-3xl font-extrabold text-vromon-dark">
-          {days}-Day Itinerary for {itinerary.destination_name}
-        </h1>
-        <p className="mt-1.5 text-sm text-vromon-muted">
-          {travelers} Traveler(s) from {city} • Total Cost Estimate: ৳{totalCost.toLocaleString()} ({status}) • {usableHours} usable exploration hours
-        </p>
+
+        <div className="grid grid-cols-3 gap-3 lg:col-span-7">
+          <div className="rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4">
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#557945]">
+              Est. Total Cost
+            </span>
+            <p className="mt-1 text-xl font-black text-[#2F6B2F]">
+              ৳{totalCost.toLocaleString()}
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4">
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#557945]">
+              Usable Daylight
+            </span>
+            <p className="mt-1 text-xl font-black text-[#1F2A1F]">{usableHours} hrs</p>
+          </div>
+          <div className="rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4">
+            <span className="flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider text-[#557945]">
+              <CloudSun className="h-3 w-3" /> Budget Cap
+            </span>
+            <p className="mt-1 text-xl font-black text-[#1F2A1F]">৳{budget.toLocaleString()}</p>
+          </div>
+        </div>
       </div>
 
-      {/* Day Cards */}
-      <div className="space-y-6">
-        {(itinerary.days || []).map((day: any) => (
-          <section
-            key={day.day_number}
-            className="rounded-[28px] bg-white p-6 sm:p-8 shadow-soft border border-vromon-pill space-y-5"
-          >
-            <div className="flex items-center gap-3 border-b border-vromon-pill pb-4">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-vromon-primary text-sm font-extrabold text-white">
-                D{day.day_number}
-              </span>
-              <div>
-                <h2 className="text-lg font-extrabold text-vromon-dark">
-                  Day {day.day_number}: {day.title}
-                </h2>
-                <p className="text-xs text-vromon-muted flex items-center gap-1">
-                  <Calendar className="h-3 w-3" /> Max 12h daytime pacing
-                </p>
+      {/* Main 12-Col Stitch 10_itinerary Body */}
+      <div className="grid grid-cols-1 gap-7 lg:grid-cols-12">
+        {/* Left 7 Cols: AI Synthesis + Vertical Day Timeline */}
+        <div className="space-y-6 lg:col-span-7">
+          <div className="rounded-[26px] border border-[#D5E6CF] bg-[#eaf7e6]/70 p-6">
+            <div className="mb-2 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#2F6B2F]">
+              <Sparkles className="h-4 w-4" />
+              AI Synthesis &amp; Route Logic
+            </div>
+            <p className="text-sm leading-relaxed text-[#1F2A1F]">
+              Scheduled within {usableHours} usable explore hours across {days} day{days > 1 ? 's' : ''}, prioritizing nearby verified attractions in {itinerary.destination_name} to prevent transit rush and stay within your ৳{budget.toLocaleString()} group ceiling.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {(itinerary.days || []).map((day: any) => (
+              <div
+                key={day.day_number}
+                className="overflow-hidden rounded-[26px] border border-[#D5E6CF]/70 bg-white shadow-sm"
+              >
+                <div className="flex items-center justify-between bg-[#2F6B2F] px-6 py-4 text-white">
+                  <div className="flex items-center gap-2.5">
+                    <span className="rounded-full bg-[#FFCB3D] px-3 py-0.5 text-xs font-black text-[#1F2A1F]">
+                      DAY {day.day_number}
+                    </span>
+                    <h2 className="text-base font-extrabold">{day.title}</h2>
+                  </div>
+                  <Calendar className="h-4 w-4 text-[#D5E6CF]" />
+                </div>
+
+                <div className="space-y-3 p-6">
+                  {(day.slots || []).map((slot: any, idx: number) => (
+                    <div
+                      key={idx}
+                      className="flex flex-col gap-2 rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4 sm:flex-row sm:items-start sm:justify-between"
+                    >
+                      <div className="space-y-1">
+                        <span className="inline-block rounded-full bg-white px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-[#2F6B2F] border border-[#D5E6CF]">
+                          {slot.time_of_day}
+                        </span>
+                        <h3 className="text-sm font-extrabold text-[#1F2A1F]">
+                          {slot.activity_name}
+                        </h3>
+                        {slot.description && (
+                          <p className="text-xs leading-relaxed text-[#557945]">
+                            {slot.description}
+                          </p>
+                        )}
+                      </div>
+
+                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-[#1F2A1F] border border-[#D5E6CF]">
+                        <Clock className="h-3 w-3 text-[#2F6B2F]" /> {slot.hours}h
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Sticky Right Map & Destination Summary */}
+        <aside className="lg:col-span-5">
+          <div className="sticky top-24 space-y-5 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between">
+              <h2 className="flex items-center gap-2 text-lg font-extrabold text-[#1F2A1F]">
+                <MapPin className="h-4 w-4 text-[#2F6B2F]" />
+                Destination Route Map
+              </h2>
+              {destInfo?.division && (
+                <span className="rounded-full bg-[#eaf7e6] px-3 py-0.5 text-xs font-bold text-[#2F6B2F]">
+                  {destInfo.division}
+                </span>
+              )}
             </div>
 
-            <div className="space-y-3">
-              {(day.slots || []).map((slot: any, idx: number) => (
-                <div
-                  key={idx}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl bg-vromon-leaf p-4 border border-vromon-pill"
-                >
-                  <div className="space-y-1">
-                    <span className="inline-block rounded-full bg-vromon-amber px-2.5 py-0.5 text-[11px] font-bold text-vromon-dark">
-                      {slot.time_of_day}
-                    </span>
-                    <h3 className="text-sm font-bold text-vromon-dark">{slot.activity_name}</h3>
-                    <p className="text-xs text-vromon-muted">{slot.description}</p>
+            {destInfo ? (
+              <>
+                <DestinationMap
+                  latitude={destInfo.latitude}
+                  longitude={destInfo.longitude}
+                  name={destInfo.name}
+                  district={destInfo.district}
+                />
+                <div className="grid grid-cols-2 gap-3 pt-1 text-xs">
+                  <div className="rounded-2xl bg-[#F6FAF3] p-3 border border-[#E5F0E0]">
+                    <p className="font-bold text-[#557945]">Avg. Room Rate</p>
+                    <p className="mt-0.5 text-sm font-extrabold text-[#1F2A1F]">
+                      ৳{destInfo.hotel_cost_per_room_night?.toLocaleString()}/night
+                    </p>
                   </div>
-                  <span className="inline-flex w-fit items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-vromon-deep shrink-0">
-                    <Clock className="h-3.5 w-3.5" /> {slot.hours} hrs
-                  </span>
+                  <div className="rounded-2xl bg-[#F6FAF3] p-3 border border-[#E5F0E0]">
+                    <p className="font-bold text-[#557945]">Daily Meals</p>
+                    <p className="mt-0.5 text-sm font-extrabold text-[#1F2A1F]">
+                      ৳{destInfo.food_cost_per_person_day?.toLocaleString()}/day
+                    </p>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </section>
-        ))}
+              </>
+            ) : (
+              <div className="flex items-center gap-2 rounded-2xl bg-[#F6FAF3] p-5 text-xs text-[#557945]">
+                <Train className="h-4 w-4 text-[#2F6B2F]" />
+                Interactive coordinates available when viewing from catalog.
+              </div>
+            )}
+          </div>
+        </aside>
       </div>
     </div>
   );
@@ -254,7 +424,13 @@ function ItineraryInner() {
 
 export default function ItineraryPage() {
   return (
-    <Suspense fallback={<div className="p-16 text-center text-sm">Loading itinerary...</div>}>
+    <Suspense
+      fallback={
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-[#2F6B2F]" />
+        </div>
+      }
+    >
       <ItineraryInner />
     </Suspense>
   );

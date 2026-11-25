@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { ArrowRight, Compass, LogOut, Menu, ShieldCheck, User, X } from 'lucide-react';
+import { ArrowRight, LogOut, Menu, ShieldCheck, X } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
 export function Navbar() {
@@ -12,13 +12,24 @@ export function Navbar() {
   const { user, logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/plan', label: 'Plan Trip' },
-    { href: '/compare', label: 'Compare' },
-    ...(user ? [{ href: '/trips', label: 'My Trips' }] : []),
-    ...(user?.role === 'ADMIN' ? [{ href: '/admin', label: 'Admin' }] : []),
-  ];
+  const isLanding = pathname === '/';
+
+  const navLinks = isLanding
+    ? [
+        { href: '/#features', label: 'Features' },
+        { href: '/#how-it-works', label: 'How it works' },
+        { href: '/plan', label: 'Destinations' },
+        { href: '/compare', label: 'Compare' },
+        ...(user ? [{ href: '/trips', label: 'My Trips' }] : []),
+        ...(user?.role === 'ADMIN' ? [{ href: '/admin', label: 'Admin' }] : []),
+      ]
+    : [
+        { href: '/plan', label: 'Plan' },
+        { href: '/results', label: 'Results' },
+        { href: '/compare', label: 'Compare' },
+        ...(user ? [{ href: '/trips', label: 'My Trips' }] : []),
+        ...(user?.role === 'ADMIN' ? [{ href: '/admin', label: 'Admin' }] : []),
+      ];
 
   const handleLogout = () => {
     logout();
@@ -26,38 +37,37 @@ export function Navbar() {
     router.push('/login');
   };
 
+  const initial = user?.name?.trim().charAt(0).toUpperCase() || 'V';
+
   return (
-    <header className="sticky top-0 z-50 w-full px-4 pt-3 sm:px-6 lg:px-10">
-      <nav className="glass-surface mx-auto flex max-w-7xl items-center justify-between rounded-full px-4 py-2.5 shadow-soft sm:px-6">
-        {/* Brand */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+    <header className="sticky top-0 z-50 w-full px-4 pt-4 sm:px-6">
+      <nav className="glass-surface mx-auto flex h-[70px] max-w-[1180px] items-center justify-between rounded-full px-4 pl-5 shadow-[0_20px_60px_rgba(31,42,31,0.10)]">
+        {/* Left: Single-line Brand */}
+        <Link href="/" className="flex items-center gap-3 shrink-0">
           <img
             src="/vromon_logo.png"
             alt="VROMON Logo"
-            className="h-9 w-9 rounded-full object-cover border border-vromon-pill"
+            className="h-10 w-10 rounded-full object-cover shadow-[0_4px_12px_rgba(47,107,47,0.22)] border border-white"
           />
-          <div className="flex flex-col">
-            <span className="text-base font-extrabold tracking-tight text-vromon-deep leading-none">
-              VROMON
-            </span>
-            <span className="text-[11px] font-medium tracking-wider uppercase text-vromon-olive leading-tight">
-              Travel Planner
-            </span>
-          </div>
+          <span className="text-[19px] font-extrabold tracking-[0.08em] text-[#1F2A1F] whitespace-nowrap">
+            VROMON
+          </span>
         </Link>
 
-        {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Center Navigation Pills */}
+        <div className="hidden md:flex items-center gap-1.5">
           {navLinks.map((link) => {
-            const active = pathname === link.href;
+            const active =
+              link.href === pathname ||
+              (link.href === '/#features' && pathname === '/');
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                className={`rounded-full px-4 py-2 text-[14px] whitespace-nowrap transition-all ${
                   active
-                    ? 'bg-vromon-pill text-vromon-deep'
-                    : 'text-vromon-muted hover:bg-vromon-leaf hover:text-vromon-dark'
+                    ? 'bg-[#E5F0E0] font-semibold text-[#2F6B2F]'
+                    : 'font-medium text-[#1F2A1F] hover:bg-white/70'
                 }`}
               >
                 {link.label}
@@ -66,54 +76,56 @@ export function Navbar() {
           })}
         </div>
 
-        {/* Desktop Right Actions */}
-        <div className="hidden md:flex items-center gap-3 shrink-0">
+        {/* Right Actions */}
+        <div className="hidden md:flex items-center gap-4 shrink-0">
           {user ? (
-            <>
+            <div className="flex items-center gap-2.5">
               <Link
                 href="/profile"
-                className="flex items-center gap-2 rounded-full bg-vromon-leaf border border-vromon-border/60 px-3.5 py-2 text-sm font-medium text-vromon-dark hover:bg-vromon-pill transition-colors"
+                className="flex h-11 items-center gap-2.5 rounded-full bg-[#F6FAF3] border border-[#D5E6CF] pl-3.5 pr-1.5 text-xs font-bold tracking-wider uppercase text-[#1F2A1F] hover:bg-[#E5F0E0] transition-colors"
               >
-                {user.role === 'ADMIN' ? (
-                  <ShieldCheck className="h-4 w-4 text-vromon-primary" strokeWidth={1.75} />
-                ) : (
-                  <User className="h-4 w-4 text-vromon-primary" strokeWidth={1.75} />
+                {user.role === 'ADMIN' && (
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#2F6B2F]" />
                 )}
-                <span className="max-w-[130px] truncate">{user.name}</span>
+                <span className="max-w-[110px] truncate">{user.name.split(' ')[0]}</span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FFCB3D] text-[#1F2A1F] font-extrabold">
+                  {initial}
+                </span>
               </Link>
               <button
                 onClick={handleLogout}
                 title="Sign out"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-vromon-border/70 bg-white text-vromon-muted hover:bg-red-50 hover:text-vromon-danger transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-[#D5E6CF] text-[#41493E] hover:bg-red-50 hover:text-[#c62828] transition-colors"
               >
                 <LogOut className="h-4 w-4" strokeWidth={1.75} />
               </button>
-            </>
+            </div>
           ) : (
-            <Link
-              href="/login"
-              className="rounded-full px-4 py-2 text-sm font-semibold text-vromon-dark hover:bg-vromon-pill transition-colors"
-            >
-              Sign In
-            </Link>
+            <>
+              <Link
+                href="/login"
+                className="px-3 py-2 text-[15px] font-semibold text-[#1F2A1F] hover:opacity-75 whitespace-nowrap"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/plan"
+                className="group inline-flex h-12 items-center gap-3.5 rounded-full bg-[#2F6B2F] pl-5 pr-2 text-[15px] font-semibold text-white shadow-[0_8px_24px_rgba(47,107,47,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(47,107,47,0.32)] whitespace-nowrap"
+              >
+                <span>Get started</span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FFCB3D] text-[#1F2A1F] transition-transform group-hover:translate-x-0.5">
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </span>
+              </Link>
+            </>
           )}
-
-          <Link
-            href="/plan"
-            className="group inline-flex h-11 items-center gap-3 rounded-full bg-vromon-primary pl-5 pr-2 text-sm font-semibold text-white transition-all hover:bg-vromon-deep shadow-sm"
-          >
-            <span>Plan trip</span>
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-vromon-amber text-vromon-dark transition-transform group-hover:translate-x-0.5">
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.2} />
-            </span>
-          </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle Menu"
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-vromon-leaf text-vromon-dark md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E5F0E0] text-[#1F2A1F] md:hidden"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -121,49 +133,52 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="mx-auto mt-2 max-w-7xl rounded-3xl bg-white p-5 shadow-ambient border border-vromon-border/40 md:hidden">
-          <div className="flex flex-col gap-2">
+        <div className="mx-auto mt-2 max-w-[1180px] rounded-[28px] bg-white p-5 shadow-[0_20px_60px_rgba(31,42,31,0.14)] border border-[#D5E6CF] md:hidden">
+          <div className="flex flex-col gap-1.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`rounded-2xl px-4 py-3 text-sm font-semibold ${
-                  pathname === link.href
-                    ? 'bg-vromon-pill text-vromon-deep'
-                    : 'text-vromon-dark hover:bg-vromon-leaf'
-                }`}
+                className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#1F2A1F] hover:bg-[#E5F0E0]"
               >
                 {link.label}
               </Link>
             ))}
-            <hr className="my-2 border-vromon-pill" />
+            <hr className="my-2 border-[#D5E6CF]" />
             {user ? (
               <>
                 <Link
                   href="/profile"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold text-vromon-dark hover:bg-vromon-leaf"
+                  className="rounded-2xl px-4 py-3 text-sm font-semibold text-[#1F2A1F] hover:bg-[#E5F0E0]"
                 >
-                  <User className="h-4 w-4 text-vromon-primary" />
-                  <span>{user.name} (Profile)</span>
+                  {user.name} (Profile)
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-2 rounded-2xl px-4 py-3 text-left text-sm font-semibold text-vromon-danger hover:bg-red-50"
+                  className="rounded-2xl px-4 py-3 text-left text-sm font-semibold text-[#c62828] hover:bg-red-50"
                 >
-                  <LogOut className="h-4 w-4" />
-                  <span>Sign Out</span>
+                  Sign Out
                 </button>
               </>
             ) : (
-              <Link
-                href="/login"
-                onClick={() => setMobileOpen(false)}
-                className="rounded-2xl bg-vromon-pill px-4 py-3 text-center text-sm font-semibold text-vromon-deep"
-              >
-                Sign In / Register
-              </Link>
+              <div className="flex flex-col gap-2 pt-1">
+                <Link
+                  href="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-full border border-[#D5E6CF] py-3 text-center text-sm font-semibold text-[#1F2A1F]"
+                >
+                  Log in
+                </Link>
+                <Link
+                  href="/plan"
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-full bg-[#2F6B2F] py-3 text-center text-sm font-semibold text-white"
+                >
+                  Get started
+                </Link>
+              </div>
             )}
           </div>
         </div>

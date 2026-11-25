@@ -1,29 +1,127 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Database, Loader2, ShieldAlert, Upload } from 'lucide-react';
+import {
+  Activity,
+  CheckCircle2,
+  Database,
+  Edit3,
+  LayoutDashboard,
+  Loader2,
+  MapPin,
+  Search,
+  ShieldAlert,
+  Upload,
+  X,
+} from 'lucide-react';
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { apiFetch } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 
 export default function AdminDashboardPage() {
   const { user, loading: authLoading } = useAuth();
+  const [activeTab, setActiveTab] = useState<'overview' | 'destinations' | 'import'>('overview');
   const [stats, setStats] = useState<any>(null);
   const [destinations, setDestinations] = useState<any[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Slide-over Editor State (Stitch 16_admin_dest)
+  const [editingDest, setEditingDest] = useState<any>(null);
+  const [savingEdit, setSavingEdit] = useState(false);
+  const [editNotice, setEditNotice] = useState('');
+
+  // Bulk JSON Upload State
   const [jsonText, setJsonText] = useState('');
   const [importing, setImporting] = useState(false);
   const [importResult, setImportResult] = useState('');
 
+  const loadAdminData = () => {
+    Promise.all([apiFetch('/admin/stats'), apiFetch('/destinations')])
+      .then(([s, d]) => {
+        setStats(s);
+        setDestinations(d);
+      })
+      .catch(() => {});
+  };
+
   useEffect(() => {
     if (user?.role === 'ADMIN') {
-      Promise.all([apiFetch('/admin/stats'), apiFetch('/destinations')])
-        .then(([s, d]) => {
-          setStats(s);
-          setDestinations(d);
-        })
-        .catch(() => {});
+      loadAdminData();
     }
   }, [user]);
+
+  const costTierData = useMemo(() => {
+    const counts: Record<string, number> = { Low: 0, Medium: 0, High: 0 };
+    destinations.forEach((d) => {
+      counts[d.cost_level] = (counts[d.cost_level] || 0) + 1;
+    });
+    return Object.entries(counts).map(([tier, count]) => ({ tier, count }));
+  }, [destinations]);
+
+  const queryBudgetSeries = useMemo(() => {
+    return (stats?.recent_queries || [])
+      .slice(0, 8)
+      .reverse()
+      .map((q: any, idx: number) => ({
+        idx: `#${idx + 1}`,
+        budget: Number(q.budget || 0),
+        travelers: q.travelers || 1,
+      }));
+  }, [stats]);
+
+  const filteredDestinations = useMemo(() => {
+    const q = searchTerm.trim().toLowerCase();
+    if (!q) return destinations;
+    return destinations.filter(
+      (d) =>
+        d.name.toLowerCase().includes(q) ||
+        d.division.toLowerCase().includes(q) ||
+        d.district.toLowerCase().includes(q),
+    );
+  }, [destinations, searchTerm]);
+
+  const handleSaveDestination = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingDest) return;
+    setSavingEdit(true);
+    setEditNotice('');
+    try {
+      await apiFetch(`/admin/destinations/${editingDest.destination_id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          hotel_cost_per_room_night: Number(editingDest.hotel_cost_per_room_night),
+          food_cost_per_person_day: Number(editingDest.food_cost_per_person_day),
+          local_fees_per_person: Number(editingDest.local_fees_per_person),
+          min_hours_needed: Number(editingDest.min_hours_needed),
+          cost_level: editingDest.cost_level,
+          description: editingDest.description,
+        }),
+      });
+      setDestinations((prev) =>
+        prev.map((d) => (d.destination_id === editingDest.destination_id ? { ...d, ...editingDest } : d)),
+      );
+      setEditNotice('Destination updated in PostgreSQL.');
+      setTimeout(() => {
+        setEditingDest(null);
+        setEditNotice('');
+      }, 900);
+    } catch (err: any) {
+      setEditNotice(`Error: ${err.message}`);
+    } finally {
+      setSavingEdit(false);
+    }
+  };
 
   const handleBulkImport = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +136,7 @@ export default function AdminDashboardPage() {
       });
       setImportResult(`Loaded ${res.loaded}/${res.records_read} destination records.`);
       setJsonText('');
+      loadAdminData();
     } catch (err: any) {
       setImportResult(`Error: ${err.message}`);
     } finally {
@@ -46,18 +145,25 @@ export default function AdminDashboardPage() {
   };
 
   if (authLoading) {
-    return <div className="p-16 text-center text-sm">Checking authorization...</div>;
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-[#2F6B2F]" />
+      </div>
+    );
   }
 
   if (!user || user.role !== 'ADMIN') {
     return (
-      <div className="mx-auto max-w-md p-16 text-center space-y-4">
-        <ShieldAlert className="mx-auto h-10 w-10 text-vromon-danger" />
-        <h1 className="text-2xl font-extrabold text-vromon-dark">Administrator Access Only</h1>
-        <p className="text-sm text-vromon-muted">
-          Sign in with an Admin account to manage the 64-district destination catalog.
+      <div className="mx-auto max-w-md space-y-4 p-16 text-center">
+        <ShieldAlert className="mx-auto h-10 w-10 text-red-600" />
+        <h1 className="text-2xl font-extrabold text-[#1F2A1F]">Administrator Access Only</h1>
+        <p className="text-sm text-[#557945]">
+          Sign in with an Admin account to manage the 64-district destination catalog and telemetry.
         </p>
-        <Link href="/login" className="inline-flex rounded-full bg-vromon-primary px-6 py-2.5 text-sm font-bold text-white">
+        <Link
+          href="/login"
+          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-sm font-bold text-white"
+        >
           Sign In as Admin
         </Link>
       </div>
@@ -65,107 +171,417 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10 space-y-8">
-      <div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-vromon-pill px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-vromon-deep">
-          <Database className="h-3.5 w-3.5" />
-          <span>Admin Console</span>
-        </span>
-        <h1 className="mt-2 text-3xl font-extrabold text-vromon-dark">
-          Catalog & Telemetry Management
-        </h1>
+    <div className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 gap-7 lg:grid-cols-12">
+        {/* Stitch 15_admin_dash Dedicated Sidebar */}
+        <aside className="lg:col-span-3">
+          <div className="sticky top-24 space-y-5 rounded-[26px] border border-[#D5E6CF]/70 bg-white p-5 shadow-sm">
+            <div className="border-b border-[#E5F0E0] pb-4">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eaf7e6] px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[#2F6B2F]">
+                <Database className="h-3 w-3" />
+                VROMON Operations
+              </span>
+              <h1 className="mt-2 text-xl font-extrabold text-[#1F2A1F]">Admin Console</h1>
+              <p className="text-xs text-[#557945]">{user.email}</p>
+            </div>
+
+            <nav className="space-y-1.5">
+              {[
+                { id: 'overview', label: 'Overview & Telemetry', icon: LayoutDashboard },
+                { id: 'destinations', label: `Destinations (${destinations.length})`, icon: MapPin },
+                { id: 'import', label: 'Bulk JSON Import', icon: Upload },
+              ].map((item) => {
+                const Icon = item.icon;
+                const active = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setActiveTab(item.id as any)}
+                    className={`flex w-full items-center gap-2.5 rounded-2xl px-4 py-3 text-xs font-bold transition ${
+                      active
+                        ? 'bg-[#2F6B2F] text-white shadow-sm'
+                        : 'text-[#557945] hover:bg-[#F6FAF3] hover:text-[#1F2A1F]'
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    {item.label}
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        </aside>
+
+        {/* Main Admin Workspace */}
+        <div className="space-y-7 lg:col-span-9">
+          {activeTab === 'overview' && (
+            <>
+              {/* 4 KPI Cards (3 Light + 1 Dark Forest) */}
+              {stats && (
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                  <div className="rounded-[24px] border border-[#D5E6CF] bg-white p-5 shadow-sm">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                      Destinations
+                    </span>
+                    <p className="mt-2 text-3xl font-black text-[#1F2A1F]">
+                      {stats.totals.destinations}
+                    </p>
+                  </div>
+                  <div className="rounded-[24px] border border-[#D5E6CF] bg-white p-5 shadow-sm">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                      Registered Users
+                    </span>
+                    <p className="mt-2 text-3xl font-black text-[#1F2A1F]">
+                      {stats.totals.users}
+                    </p>
+                  </div>
+                  <div className="rounded-[24px] border border-[#D5E6CF] bg-white p-5 shadow-sm">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#557945]">
+                      Search Queries
+                    </span>
+                    <p className="mt-2 text-3xl font-black text-[#2F6B2F]">
+                      {stats.totals.queries}
+                    </p>
+                  </div>
+                  <div className="rounded-[24px] bg-gradient-to-br from-[#235425] to-[#145219] p-5 text-white shadow-md">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#D5E6CF]">
+                      Shared Plans
+                    </span>
+                    <p className="mt-2 text-3xl font-black text-[#FFCB3D]">
+                      {stats.totals.shared_plans}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Charts Row */}
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="rounded-[26px] border border-[#D5E6CF] bg-white p-6 shadow-sm">
+                  <h2 className="text-base font-extrabold text-[#1F2A1F]">
+                    Catalog Cost Tier Distribution
+                  </h2>
+                  <p className="text-xs text-[#557945]">Live breakdown of Low, Medium, High districts</p>
+                  <div className="mt-4 h-56 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={costTierData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#E5F0E0" vertical={false} />
+                        <XAxis dataKey="tier" tick={{ fill: '#1F2A1F', fontSize: 12 }} />
+                        <YAxis tick={{ fill: '#557945', fontSize: 11 }} />
+                        <Tooltip />
+                        <Bar dataKey="count" fill="#2F6B2F" radius={[10, 10, 0, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+
+                <div className="rounded-[26px] border border-[#D5E6CF] bg-white p-6 shadow-sm">
+                  <h2 className="text-base font-extrabold text-[#1F2A1F]">
+                    Recent Query Budget Trend
+                  </h2>
+                  <p className="text-xs text-[#557945]">Latest traveler group budgets in BDT</p>
+                  <div className="mt-4 h-56 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={queryBudgetSeries}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#E5F0E0" vertical={false} />
+                        <XAxis dataKey="idx" tick={{ fill: '#1F2A1F', fontSize: 12 }} />
+                        <YAxis tick={{ fill: '#557945', fontSize: 11 }} />
+                        <Tooltip />
+                        <Area
+                          type="monotone"
+                          dataKey="budget"
+                          stroke="#2F6B2F"
+                          fill="#eaf7e6"
+                          strokeWidth={2.5}
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recent Query Telemetry Table */}
+              <div className="overflow-x-auto rounded-[26px] border border-[#D5E6CF] bg-white shadow-sm">
+                <div className="flex items-center gap-2 border-b border-[#E5F0E0] p-5">
+                  <Activity className="h-4 w-4 text-[#2F6B2F]" />
+                  <h2 className="text-base font-extrabold text-[#1F2A1F]">Recent Planner Telemetry</h2>
+                </div>
+                <table className="w-full min-w-[600px] text-left text-xs">
+                  <thead>
+                    <tr className="bg-[#F6FAF3] uppercase tracking-wider text-[#557945]">
+                      <th className="p-4">Origin Hub</th>
+                      <th className="p-4">Budget (BDT)</th>
+                      <th className="p-4">Travelers / Days</th>
+                      <th className="p-4">Prompt Summary</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E5F0E0]">
+                    {(stats?.recent_queries || []).map((q: any, i: number) => (
+                      <tr key={i} className="hover:bg-[#F6FAF3]/60">
+                        <td className="p-4 font-bold text-[#1F2A1F]">{q.starting_city}</td>
+                        <td className="p-4 font-extrabold text-[#2F6B2F]">
+                          ৳{Number(q.budget).toLocaleString()}
+                        </td>
+                        <td className="p-4 text-[#557945]">
+                          {q.travelers} guests • {q.days} days
+                        </td>
+                        <td className="max-w-xs truncate p-4 text-[#1F2A1F]">{q.wishes}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+
+          {activeTab === 'destinations' && (
+            <div className="overflow-hidden rounded-[26px] border border-[#D5E6CF] bg-white shadow-sm">
+              <div className="flex flex-col justify-between gap-4 border-b border-[#E5F0E0] p-6 sm:flex-row sm:items-center">
+                <div>
+                  <h2 className="text-xl font-extrabold text-[#1F2A1F]">
+                    Destinations Catalog Management
+                  </h2>
+                  <p className="text-xs text-[#557945]">
+                    Click Edit on any district to update room rates, meal budgets, or transit hours.
+                  </p>
+                </div>
+                <div className="relative w-full sm:w-72">
+                  <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#5D9253]" />
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Filter destinations..."
+                    className="h-10 w-full rounded-full border border-[#D5E6CF] bg-[#F6FAF3] pl-10 pr-4 text-xs font-medium text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[720px] text-left text-sm">
+                  <thead>
+                    <tr className="bg-[#F6FAF3] text-xs uppercase tracking-wider text-[#557945]">
+                      <th className="p-4">Name</th>
+                      <th className="p-4">Division</th>
+                      <th className="p-4">Cost Tier</th>
+                      <th className="p-4">Hotel/Night</th>
+                      <th className="p-4">Food/Day</th>
+                      <th className="p-4">Min Hours</th>
+                      <th className="p-4 text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E5F0E0]">
+                    {filteredDestinations.map((d) => (
+                      <tr key={d.destination_id} className="hover:bg-[#F6FAF3]/60">
+                        <td className="p-4 font-extrabold text-[#1F2A1F]">
+                          {d.name}{' '}
+                          {d.name_bn && (
+                            <span className="text-xs font-normal text-[#557945]">({d.name_bn})</span>
+                          )}
+                        </td>
+                        <td className="p-4 text-[#557945]">{d.division}</td>
+                        <td className="p-4">
+                          <span className="rounded-full bg-[#eaf7e6] px-2.5 py-0.5 text-xs font-bold text-[#2F6B2F]">
+                            {d.cost_level}
+                          </span>
+                        </td>
+                        <td className="p-4 font-bold">৳{d.hotel_cost_per_room_night}</td>
+                        <td className="p-4">৳{d.food_cost_per_person_day}</td>
+                        <td className="p-4">{d.min_hours_needed}h</td>
+                        <td className="p-4 text-right">
+                          <button
+                            type="button"
+                            onClick={() => setEditingDest({ ...d })}
+                            className="inline-flex items-center gap-1 rounded-full border border-[#D5E6CF] bg-white px-3 py-1.5 text-xs font-bold text-[#1F2A1F] hover:bg-[#eaf7e6]"
+                          >
+                            <Edit3 className="h-3 w-3 text-[#2F6B2F]" />
+                            Edit
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'import' && (
+            <div className="space-y-4 rounded-[26px] border border-[#D5E6CF] bg-white p-6 shadow-sm sm:p-8">
+              <div className="flex items-center gap-2">
+                <Upload className="h-5 w-5 text-[#2F6B2F]" />
+                <h2 className="text-xl font-extrabold text-[#1F2A1F]">
+                  Batch JSON Catalog Import
+                </h2>
+              </div>
+              <p className="text-xs text-[#557945]">
+                Paste a JSON object or array of destination records to upsert straight into Neon PostgreSQL.
+              </p>
+              <form onSubmit={handleBulkImport} className="space-y-4">
+                <textarea
+                  rows={7}
+                  value={jsonText}
+                  onChange={(e) => setJsonText(e.target.value)}
+                  placeholder='[{"name":"Saint Martin","division":"Chattogram","district":"Coxs Bazar","hotel_cost_per_room_night":3500,"food_cost_per_person_day":600}]'
+                  className="w-full rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] p-4 font-mono text-xs text-[#1F2A1F] focus:border-[#2F6B2F] focus:bg-white focus:outline-none"
+                />
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <span className="text-xs font-bold text-[#2F6B2F]">{importResult}</span>
+                  <button
+                    type="submit"
+                    disabled={importing || !jsonText.trim()}
+                    className="inline-flex h-11 items-center gap-2 rounded-full bg-[#2F6B2F] px-6 text-xs font-bold text-white hover:bg-[#145219] disabled:opacity-60"
+                  >
+                    {importing && <Loader2 className="h-4 w-4 animate-spin" />}
+                    Upload &amp; Upsert Records
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Metrics Cards */}
-      {stats && (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {[
-            { label: 'Destinations', value: stats.totals.destinations },
-            { label: 'Registered Users', value: stats.totals.users },
-            { label: 'Search Queries', value: stats.totals.queries },
-            { label: 'Shared Plans', value: stats.totals.shared_plans },
-          ].map((m) => (
-            <div
-              key={m.label}
-              className="rounded-[24px] bg-white p-5 shadow-soft border border-vromon-pill"
-            >
-              <span className="text-xs font-bold uppercase tracking-wider text-vromon-muted">
-                {m.label}
-              </span>
-              <p className="mt-2 text-3xl font-extrabold text-vromon-deep">{m.value}</p>
+      {/* Stitch 16_admin_dest Slide-Over Edit Drawer */}
+      {editingDest && (
+        <div className="fixed inset-0 z-50 flex justify-end bg-[#1F2A1F]/40 backdrop-blur-xs">
+          <div className="flex h-full w-full max-w-md flex-col justify-between overflow-y-auto bg-white p-7 shadow-2xl">
+            <div className="space-y-5">
+              <div className="flex items-center justify-between border-b border-[#E5F0E0] pb-4">
+                <div>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#2F6B2F]">
+                    Edit District Parameters
+                  </span>
+                  <h2 className="text-xl font-extrabold text-[#1F2A1F]">{editingDest.name}</h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setEditingDest(null)}
+                  className="rounded-full p-2 text-[#557945] hover:bg-[#F6FAF3]"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <form id="edit-dest-form" onSubmit={handleSaveDestination} className="space-y-4">
+                <div>
+                  <label className="mb-1 block text-xs font-bold text-[#557945]">
+                    Hotel Cost / Room / Night (BDT)
+                  </label>
+                  <input
+                    type="number"
+                    required
+                    value={editingDest.hotel_cost_per_room_night}
+                    onChange={(e) =>
+                      setEditingDest({ ...editingDest, hotel_cost_per_room_night: e.target.value })
+                    }
+                    className="h-11 w-full rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-sm font-bold text-[#1F2A1F]"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-xs font-bold text-[#557945]">
+                    Food Cost / Person / Day (BDT)
+                  </label>
+                  <input
+                    type="number"
+                    required
+                    value={editingDest.food_cost_per_person_day}
+                    onChange={(e) =>
+                      setEditingDest({ ...editingDest, food_cost_per_person_day: e.target.value })
+                    }
+                    className="h-11 w-full rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-sm font-bold text-[#1F2A1F]"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="mb-1 block text-xs font-bold text-[#557945]">
+                      Local Fees / Person
+                    </label>
+                    <input
+                      type="number"
+                      required
+                      value={editingDest.local_fees_per_person}
+                      onChange={(e) =>
+                        setEditingDest({ ...editingDest, local_fees_per_person: e.target.value })
+                      }
+                      className="h-11 w-full rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-sm font-bold text-[#1F2A1F]"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-xs font-bold text-[#557945]">
+                      Min Hours Needed
+                    </label>
+                    <input
+                      type="number"
+                      required
+                      value={editingDest.min_hours_needed}
+                      onChange={(e) =>
+                        setEditingDest({ ...editingDest, min_hours_needed: e.target.value })
+                      }
+                      className="h-11 w-full rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-sm font-bold text-[#1F2A1F]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-xs font-bold text-[#557945]">Cost Level</label>
+                  <select
+                    value={editingDest.cost_level}
+                    onChange={(e) =>
+                      setEditingDest({ ...editingDest, cost_level: e.target.value })
+                    }
+                    className="h-11 w-full rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] px-4 text-sm font-bold text-[#1F2A1F]"
+                  >
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-xs font-bold text-[#557945]">Description</label>
+                  <textarea
+                    rows={4}
+                    value={editingDest.description || ''}
+                    onChange={(e) =>
+                      setEditingDest({ ...editingDest, description: e.target.value })
+                    }
+                    className="w-full rounded-2xl border border-[#D5E6CF] bg-[#F6FAF3] p-3.5 text-xs leading-relaxed text-[#1F2A1F]"
+                  />
+                </div>
+
+                {editNotice && (
+                  <p className="flex items-center gap-1.5 text-xs font-bold text-[#2F6B2F]">
+                    <CheckCircle2 className="h-4 w-4" />
+                    {editNotice}
+                  </p>
+                )}
+              </form>
             </div>
-          ))}
+
+            <div className="flex items-center gap-3 border-t border-[#E5F0E0] pt-5">
+              <button
+                type="button"
+                onClick={() => setEditingDest(null)}
+                className="h-11 flex-1 rounded-full border border-[#D5E6CF] text-xs font-bold text-[#1F2A1F]"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                form="edit-dest-form"
+                disabled={savingEdit}
+                className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-full bg-[#2F6B2F] text-xs font-bold text-white hover:bg-[#145219] disabled:opacity-60"
+              >
+                {savingEdit && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
+                Update Destination
+              </button>
+            </div>
+          </div>
         </div>
       )}
-
-      {/* Bulk JSON Uploader (FR-17) */}
-      <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-soft border border-vromon-pill space-y-4">
-        <div className="flex items-center gap-2">
-          <Upload className="h-5 w-5 text-vromon-primary" />
-          <h2 className="text-xl font-extrabold text-vromon-dark">
-            Batch JSON Catalog Import (FR-17)
-          </h2>
-        </div>
-        <form onSubmit={handleBulkImport} className="space-y-3">
-          <textarea
-            rows={4}
-            value={jsonText}
-            onChange={(e) => setJsonText(e.target.value)}
-            placeholder='[{"name":"Saint Martin","division":"Chattogram","district":"Coxs Bazar","hotel_cost_per_room_night":3500}]'
-            className="w-full rounded-2xl border border-vromon-border/70 bg-vromon-leaf p-4 text-xs font-mono text-vromon-dark"
-          />
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-vromon-deep">{importResult}</span>
-            <button
-              type="submit"
-              disabled={importing || !jsonText.trim()}
-              className="inline-flex h-10 items-center gap-2 rounded-full bg-vromon-primary px-5 text-xs font-bold text-white hover:bg-vromon-deep disabled:opacity-60"
-            >
-              {importing && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
-              <span>Upload & Upsert Records</span>
-            </button>
-          </div>
-        </form>
-      </div>
-
-      {/* Destinations Table */}
-      <div className="overflow-x-auto rounded-[28px] bg-white shadow-soft border border-vromon-pill">
-        <div className="p-6 border-b border-vromon-pill">
-          <h2 className="text-xl font-extrabold text-vromon-dark">
-            Active Destinations ({destinations.length})
-          </h2>
-        </div>
-        <table className="w-full min-w-[700px] text-left text-sm">
-          <thead>
-            <tr className="bg-vromon-leaf text-xs uppercase tracking-wider text-vromon-muted">
-              <th className="p-4">Name</th>
-              <th className="p-4">Division</th>
-              <th className="p-4">Cost Tier</th>
-              <th className="p-4">Hotel/Night</th>
-              <th className="p-4">Food/Day</th>
-              <th className="p-4">Min Hours</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-vromon-pill">
-            {destinations.map((d) => (
-              <tr key={d.destination_id} className="hover:bg-vromon-canvas/40">
-                <td className="p-4 font-bold text-vromon-dark">
-                  {d.name} {d.name_bn ? `(${d.name_bn})` : ''}
-                </td>
-                <td className="p-4 text-vromon-muted">{d.division}</td>
-                <td className="p-4">
-                  <span className="rounded-full bg-vromon-pill px-2.5 py-0.5 text-xs font-bold text-vromon-deep">
-                    {d.cost_level}
-                  </span>
-                </td>
-                <td className="p-4 font-semibold">৳{d.hotel_cost_per_room_night}</td>
-                <td className="p-4">৳{d.food_cost_per_person_day}</td>
-                <td className="p-4">{d.min_hours_needed}h</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </div>
   );
 }

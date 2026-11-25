@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { Calendar, Clock, MapPin, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, Loader2, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
 import { apiFetch } from '@/lib/api';
 import { FeasibilityBadge } from '@/components/FeasibilityBadge';
 import { ScoreRing } from '@/components/ScoreRing';
@@ -24,15 +24,22 @@ export default function SharedPlanPage() {
   }, [shareId]);
 
   if (loading) {
-    return <div className="mx-auto max-w-4xl p-16 text-center text-sm">Loading shared itinerary...</div>;
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-[#2F6B2F]" />
+      </div>
+    );
   }
 
   if (error || !plan) {
     return (
-      <div className="mx-auto max-w-xl p-16 text-center space-y-4">
-        <h1 className="text-2xl font-extrabold text-vromon-dark">Shared Plan Unavailable</h1>
-        <p className="text-sm text-vromon-muted">{error}</p>
-        <Link href="/plan" className="inline-flex rounded-full bg-vromon-primary px-6 py-2.5 text-sm font-bold text-white">
+      <div className="mx-auto max-w-xl space-y-4 p-16 text-center">
+        <h1 className="text-2xl font-extrabold text-[#1F2A1F]">Shared Plan Unavailable</h1>
+        <p className="text-sm text-[#557945]">{error}</p>
+        <Link
+          href="/plan"
+          className="inline-flex rounded-full bg-[#2F6B2F] px-6 py-2.5 text-sm font-bold text-white"
+        >
           Plan Your Own Trip
         </Link>
       </div>
@@ -40,85 +47,144 @@ export default function SharedPlanPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-10 space-y-8">
-      <div className="rounded-[28px] bg-white p-6 sm:p-8 shadow-ambient border border-vromon-pill">
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-          <div className="space-y-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full bg-vromon-pill px-3 py-1 text-xs font-bold text-vromon-deep">
-                <ShieldCheck className="h-3.5 w-3.5" /> 30-Day Ephemeral Share
-              </span>
-              <FeasibilityBadge status={plan.feasibility_status} />
+    <div className="mx-auto max-w-[1160px] space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+      {/* Stitch 13_shared Hero Card */}
+      <div className="overflow-hidden rounded-[28px] border border-[#D5E6CF]/70 bg-white shadow-[0_18px_50px_-14px_rgba(31,42,31,0.12)]">
+        <div className="bg-gradient-to-r from-[#235425] via-[#2F6B2F] to-[#145219] p-7 text-white sm:p-9">
+          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+            <div className="space-y-2.5">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#FFCB3D]">
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  30-Day Read-Only Expedition
+                </span>
+                <FeasibilityBadge status={plan.feasibility_status} />
+              </div>
+
+              <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                {plan.days} Days in {plan.destination_name}{' '}
+                {plan.destination_name_bn ? `(${plan.destination_name_bn})` : ''}
+              </h1>
+
+              <p className="flex items-center gap-1.5 text-sm text-[#E5F0E0]">
+                <MapPin className="h-4 w-4 text-[#FFCB3D]" />
+                <span>
+                  {plan.district}, {plan.division} • From {plan.starting_city} • {plan.travelers}{' '}
+                  Traveler{plan.travelers > 1 ? 's' : ''}
+                </span>
+              </p>
             </div>
 
-            <h1 className="text-3xl font-extrabold text-vromon-dark">
-              {plan.days}-Day Plan: {plan.destination_name}{' '}
-              {plan.destination_name_bn ? `(${plan.destination_name_bn})` : ''}
-            </h1>
-            <p className="flex items-center gap-1.5 text-sm text-vromon-muted">
-              <MapPin className="h-4 w-4 text-vromon-primary" />
-              <span>
-                {plan.district}, {plan.division} • From {plan.starting_city} • {plan.travelers}{' '}
-                Traveler(s)
-              </span>
-            </p>
+            <div className="flex items-center gap-3 self-start rounded-2xl border border-white/20 bg-white/10 p-3 backdrop-blur-sm sm:self-auto">
+              <ScoreRing score={plan.final_score} size={64} />
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#D5E6CF]">
+                  Match Score
+                </p>
+                <p className="text-lg font-black text-[#FFCB3D]">{plan.final_score} / 100</p>
+              </div>
+            </div>
           </div>
-
-          <ScoreRing score={plan.final_score} />
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3 rounded-2xl bg-vromon-leaf p-4 border border-vromon-pill text-sm">
-          <div>
-            <span className="text-xs font-semibold text-vromon-muted block">Target Budget</span>
-            <strong className="text-vromon-dark">৳{plan.budget.toLocaleString()}</strong>
+        <div className="grid grid-cols-1 gap-4 bg-[#F6FAF3] p-5 text-sm sm:grid-cols-3">
+          <div className="rounded-2xl border border-[#E5F0E0] bg-white p-4">
+            <span className="block text-xs font-bold text-[#557945]">Target Budget Cap</span>
+            <strong className="mt-1 block text-lg font-black text-[#1F2A1F]">
+              ৳{Number(plan.budget).toLocaleString()}
+            </strong>
           </div>
-          <div>
-            <span className="text-xs font-semibold text-vromon-muted block">Estimated Total Cost</span>
-            <strong className="text-vromon-deep">৳{plan.total_cost.toLocaleString()}</strong>
+          <div className="rounded-2xl border border-[#E5F0E0] bg-white p-4">
+            <span className="block text-xs font-bold text-[#557945]">Estimated Total Cost</span>
+            <strong className="mt-1 block text-lg font-black text-[#2F6B2F]">
+              ৳{Number(plan.total_cost).toLocaleString()}
+            </strong>
           </div>
-          <div>
-            <span className="text-xs font-semibold text-vromon-muted block">Expires On</span>
-            <strong className="text-vromon-dark">
+          <div className="rounded-2xl border border-[#E5F0E0] bg-white p-4">
+            <span className="block text-xs font-bold text-[#557945]">Link Active Until</span>
+            <strong className="mt-1 block text-lg font-black text-[#1F2A1F]">
               {new Date(plan.expires_at).toLocaleDateString()}
             </strong>
           </div>
         </div>
       </div>
 
-      {/* Days */}
-      <div className="space-y-6">
-        {(plan.itinerary?.days || []).map((day: any) => (
-          <div
-            key={day.day_number}
-            className="rounded-[28px] bg-white p-6 shadow-soft border border-vromon-pill space-y-4"
-          >
-            <h2 className="flex items-center gap-2 text-lg font-extrabold text-vromon-dark">
-              <Calendar className="h-5 w-5 text-vromon-primary" />
-              <span>
-                Day {day.day_number}: {day.title}
-              </span>
-            </h2>
-            <div className="space-y-3">
-              {(day.slots || []).map((slot: any, idx: number) => (
-                <div
-                  key={idx}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-2xl bg-vromon-leaf p-4 border border-vromon-pill"
-                >
-                  <div>
-                    <span className="rounded-full bg-vromon-amber px-2.5 py-0.5 text-[11px] font-bold text-vromon-dark">
-                      {slot.time_of_day}
-                    </span>
-                    <h3 className="mt-1 text-sm font-bold text-vromon-dark">{slot.activity_name}</h3>
-                    <p className="text-xs text-vromon-muted">{slot.description}</p>
-                  </div>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-xs font-bold text-vromon-deep shrink-0">
-                    <Clock className="h-3.5 w-3.5" /> {slot.hours}h
+      {/* Main Split: Day Cards + Sticky Right Summary & CTA */}
+      <div className="grid grid-cols-1 gap-7 lg:grid-cols-12">
+        <div className="space-y-6 lg:col-span-8">
+          {(plan.itinerary?.days || []).map((day: any) => (
+            <div
+              key={day.day_number}
+              className="overflow-hidden rounded-[26px] border border-[#D5E6CF]/70 bg-white shadow-sm"
+            >
+              <div className="flex items-center justify-between bg-[#2F6B2F] px-6 py-4 text-white">
+                <div className="flex items-center gap-2.5">
+                  <span className="rounded-full bg-[#FFCB3D] px-3 py-0.5 text-xs font-black text-[#1F2A1F]">
+                    DAY {day.day_number}
                   </span>
+                  <h2 className="text-base font-extrabold">{day.title}</h2>
                 </div>
-              ))}
+                <Calendar className="h-4 w-4 text-[#D5E6CF]" />
+              </div>
+
+              <div className="space-y-3 p-6">
+                {(day.slots || []).map((slot: any, idx: number) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col justify-between gap-2 rounded-2xl border border-[#E5F0E0] bg-[#F6FAF3] p-4 sm:flex-row sm:items-start"
+                  >
+                    <div className="space-y-1">
+                      <span className="inline-block rounded-full border border-[#D5E6CF] bg-white px-2.5 py-0.5 text-[10px] font-extrabold uppercase text-[#2F6B2F]">
+                        {slot.time_of_day}
+                      </span>
+                      <h3 className="text-sm font-extrabold text-[#1F2A1F]">
+                        {slot.activity_name}
+                      </h3>
+                      {slot.description && (
+                        <p className="text-xs leading-relaxed text-[#557945]">{slot.description}</p>
+                      )}
+                    </div>
+
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#D5E6CF] bg-white px-3 py-1 text-xs font-bold text-[#1F2A1F]">
+                      <Clock className="h-3 w-3 text-[#2F6B2F]" />
+                      {slot.hours}h
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <aside className="space-y-6 lg:col-span-4">
+          <div className="sticky top-24 space-y-5">
+            {plan.reason_text && (
+              <div className="rounded-[26px] border border-[#D5E6CF] bg-white p-6 shadow-sm">
+                <div className="mb-2 flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[#2F6B2F]">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Route Summary
+                </div>
+                <p className="text-sm leading-relaxed text-[#1F2A1F]">{plan.reason_text}</p>
+              </div>
+            )}
+
+            <div className="rounded-[26px] bg-gradient-to-br from-[#235425] to-[#145219] p-6 text-white shadow-md">
+              <h3 className="text-xl font-extrabold">Want to customize this trip?</h3>
+              <p className="mt-2 text-xs leading-relaxed text-[#D5E6CF]">
+                Adjust starting city, group headcount, travel month, and live budget in the interactive VROMON planner.
+              </p>
+              <Link
+                href="/plan"
+                className="mt-5 flex h-12 w-full items-center justify-between rounded-full bg-[#FFCB3D] pl-5 pr-2 text-xs font-extrabold text-[#1F2A1F] hover:brightness-95"
+              >
+                <span>Open VROMON Planner</span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1F2A1F] text-white">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
             </div>
           </div>
-        ))}
+        </aside>
       </div>
     </div>
   );

@@ -3,24 +3,35 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   html,
   body {
-    background-color: #f0fdec;
-    color: #131e14;
+    background-color: #e5f0e0;
+    color: #1f2a1f;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 }
 
 .glass-surface {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.74);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-/* Crisp custom range slider following Stitch Amber Thumb & Bengal Green track */
+.glass-pill-dark {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* Stitch Amber Thumb & Bengal Green Track Range Slider */
 input[type='range'].vromon-slider {
   -webkit-appearance: none;
   appearance: none;
@@ -38,7 +49,7 @@ input[type='range'].vromon-slider::-webkit-slider-thumb {
   border-radius: 9999px;
   background: #ffcb3d;
   border: 2.5px solid #ffffff;
-  box-shadow: 0 3px 10px rgba(31, 42, 31, 0.22);
+  box-shadow: 0 3px 10px rgba(31, 42, 31, 0.25);
   cursor: pointer;
   transition: transform 0.15s ease;
 }
