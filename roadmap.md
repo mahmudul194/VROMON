@@ -146,7 +146,7 @@
 - [ ] Prepare production environment configs for Backend (Render/Railway/Fly) and Frontend (Vercel) + update CORS `WEB_ORIGIN` and `NEXT_PUBLIC_API_URL`
 - [ ] Register production Google OAuth callback URL (`https://<api-domain>/api/auth/google/callback`)
 - [ ] Add automated Playwright E2E smoke test script covering core capstone grading flows (`Khulna 10k 2-person` query, PDF export, Admin edit)
-- [ ] Update root `README.md` with clear local setup, test commands, architecture overview, and team credits
+- [x] Update root `README.md` with clear local setup, test commands, architecture overview, and team credits (`2026-11-26`, `rifat`)
 
 ---
 
@@ -166,7 +166,8 @@
 
 | Date | Commit / Ref | Author / Agent | Summary of Changes |
 |---|---|---|---|
-| 2026-11-26 | `rifat` -> `main` | Rifat + Agent | Synced latest `main` (Wasif's Phase 4.5 merge `c15217a`) into `rifat`, finalized `rifat` -> `main` branch workflow in `roadmap.md`, pushed `origin/rifat`, and merged cleanly into `main` |
+| 2026-11-26 | `rifat` -> `main` | Rifat + Agent | Wrote comprehensive professional `README.md` (architecture diagram, 6-factor math formulas, setup guide, API table, DIU Group 6 credits) and updated `roadmap.md` |
+| 2026-11-26 | `5043716` (`rifat` -> `main`) | Rifat + Agent | Synced latest `main` (Wasif's Phase 4.5 merge `c15217a`) into `rifat`, finalized `rifat` -> `main` branch workflow in `roadmap.md`, pushed `origin/rifat`, and merged cleanly into `main` |
 | 2026-11-26 | `c15217a` (`wasif` -> `main`) | Wasif + Agent | Completed Phase 4.5: added `error.tsx` (#26), `loading.tsx` (#30/#59), `OfflineBanner.tsx` (#27/#60/#62), `AuthStatusBanners.tsx` (#34/#35) with 401 interceptor, Logout modal/bottom sheet (#36/#58) & mobile drawer polish (#38) in `Navbar.tsx`, and `/results` skeleton loader (#31) + mobile filters bottom sheet (#52) |
 | 2026-11-26 | `bc503ec` | Rifat + Agent | Audited all **62** Stitch entries (`projects/3572637668389846387`) and added explicit screen-by-screen table + Phase 4.5 for missing Stitch utility/modal screens to `roadmap.md` |
 | 2026-11-26 | `ba8736a` | Rifat + Agent | Routed Navbar `Get started` button to `/register` and rebuilt `/login` & `/register` (with Step 2 Vibes/Budget Preferences) to exact Stitch `02_login`, `03_register_1`, and `04_register_2` visual layouts |
