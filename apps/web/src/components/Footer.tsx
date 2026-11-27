@@ -108,7 +108,9 @@ export function Footer() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center justify-between gap-4 pt-6 text-[14px] text-white/55 sm:flex-row">
-          <div>SE331 Software Engineering Design Capstone — Group 6</div>
+          <div>
+            SE331 Software Engineering Design Capstone — Group 6 • District photography via Wikimedia Commons (CC BY / CC BY-SA)
+          </div>
           <div className="flex gap-6">
             <Link href="/plan" className="hover:text-white">
               64 Districts

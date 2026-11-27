@@ -10,46 +10,102 @@ dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 
 const prisma = new PrismaClient();
 
-// Curated reliable Unsplash travel photography mapped by destination / dominant tag
+// Local 64-district Wikimedia Commons photography mapped by destination / district
 const SPECIFIC_IMAGES: Record<string, string> = {
-  Dhaka: 'https://images.unsplash.com/photo-1623941000232-3e2d3f039402?auto=format&fit=crop&w=1200&q=80',
-  'Cox\'s Bazar': 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-  Sylhet: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=1200&q=80',
-  Moulvibazar: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
-  Sreemangal: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80',
-  Rangamati: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80',
-  Bandarban: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
-  Khagrachhari: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80',
-  Sunamganj: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80',
-  Khulna: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
-  Bagerhat: 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
-  Patuakhali: 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1200&q=80',
-  Rajshahi: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1200&q=80',
-  Bogura: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80',
+  Dhaka: '/images/destinations/dhaka.jpg',
+  Gazipur: '/images/destinations/gazipur.jpg',
+  Sonargaon: '/images/destinations/sonargaon.jpg',
+  Narayanganj: '/images/destinations/sonargaon.jpg',
+  Narsingdi: '/images/destinations/narsingdi.jpg',
+  Manikganj: '/images/destinations/manikganj.jpg',
+  Munshiganj: '/images/destinations/munshiganj.jpg',
+  Tangail: '/images/destinations/tangail.jpg',
+  Kishoreganj: '/images/destinations/kishoreganj.jpg',
+  Faridpur: '/images/destinations/faridpur.jpg',
+  Gopalganj: '/images/destinations/gopalganj.jpg',
+  Madaripur: '/images/destinations/madaripur.jpg',
+  Rajbari: '/images/destinations/rajbari.jpg',
+  Shariatpur: '/images/destinations/shariatpur.jpg',
+  Chattogram: '/images/destinations/chattogram.jpg',
+  "Cox's Bazar": '/images/destinations/cox-s-bazar.jpg',
+  Bandarban: '/images/destinations/bandarban.jpg',
+  Brahmanbaria: '/images/destinations/brahmanbaria.jpg',
+  Chandpur: '/images/destinations/chandpur.jpg',
+  Cumilla: '/images/destinations/cumilla.jpg',
+  Feni: '/images/destinations/feni.jpg',
+  Khagrachhari: '/images/destinations/khagrachhari.jpg',
+  Lakshmipur: '/images/destinations/lakshmipur.jpg',
+  Noakhali: '/images/destinations/noakhali.jpg',
+  'Sajek Valley': '/images/destinations/sajek-valley.jpg',
+  Rangamati: '/images/destinations/sajek-valley.jpg',
+  Sylhet: '/images/destinations/sylhet.jpg',
+  Sreemangal: '/images/destinations/sreemangal.jpg',
+  Moulvibazar: '/images/destinations/sreemangal.jpg',
+  Habiganj: '/images/destinations/habiganj.jpg',
+  Sunamganj: '/images/destinations/sunamganj.jpg',
+  Barishal: '/images/destinations/barishal.jpg',
+  Barguna: '/images/destinations/barguna.jpg',
+  Bhola: '/images/destinations/bhola.jpg',
+  Jhalokathi: '/images/destinations/jhalokathi.jpg',
+  Kuakata: '/images/destinations/kuakata.jpg',
+  Patuakhali: '/images/destinations/kuakata.jpg',
+  Pirojpur: '/images/destinations/pirojpur.jpg',
+  Khulna: '/images/destinations/khulna.jpg',
+  Bagerhat: '/images/destinations/khulna.jpg',
+  Sundarbans: '/images/destinations/sundarbans.jpg',
+  Chuadanga: '/images/destinations/chuadanga.jpg',
+  Jashore: '/images/destinations/jashore.jpg',
+  Jhenaidah: '/images/destinations/jhenaidah.jpg',
+  Kushtia: '/images/destinations/kushtia.jpg',
+  Magura: '/images/destinations/magura.jpg',
+  Meherpur: '/images/destinations/meherpur.jpg',
+  Narail: '/images/destinations/narail.jpg',
+  Satkhira: '/images/destinations/satkhira.jpg',
+  Bogura: '/images/destinations/bogura.jpg',
+  Joypurhat: '/images/destinations/joypurhat.jpg',
+  Naogaon: '/images/destinations/naogaon.jpg',
+  Natore: '/images/destinations/natore.jpg',
+  Chapainawabganj: '/images/destinations/chapainawabganj.jpg',
+  Pabna: '/images/destinations/pabna.jpg',
+  Rajshahi: '/images/destinations/rajshahi.jpg',
+  Sirajganj: '/images/destinations/sirajganj.jpg',
+  Dinajpur: '/images/destinations/dinajpur.jpg',
+  Gaibandha: '/images/destinations/gaibandha.jpg',
+  Kurigram: '/images/destinations/kurigram.jpg',
+  Lalmonirhat: '/images/destinations/lalmonirhat.jpg',
+  Nilphamari: '/images/destinations/nilphamari.jpg',
+  Panchagarh: '/images/destinations/panchagarh.jpg',
+  Rangpur: '/images/destinations/rangpur.jpg',
+  Thakurgaon: '/images/destinations/thakurgaon.jpg',
+  Mymensingh: '/images/destinations/mymensingh.jpg',
+  Jamalpur: '/images/destinations/jamalpur.jpg',
+  Netrokona: '/images/destinations/netrokona.jpg',
+  Sherpur: '/images/destinations/sherpur.jpg',
 };
 
-function pickImageUrl(name: string, tags: string[]): string {
+function pickImageUrl(name: string, tags: string[], district?: string): string {
   if (SPECIFIC_IMAGES[name]) return SPECIFIC_IMAGES[name];
+  if (district && SPECIFIC_IMAGES[district]) return SPECIFIC_IMAGES[district];
   const tagSet = new Set(tags.map((t) => t.toLowerCase()));
   if (tagSet.has('sea-beach') || tagSet.has('beach') || tagSet.has('island')) {
-    return 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80';
+    return '/images/destinations/cox-s-bazar.jpg';
   }
   if (tagSet.has('hills') || tagSet.has('clouds') || tagSet.has('trekking')) {
-    return 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80';
+    return '/images/destinations/sajek-valley.jpg';
   }
   if (tagSet.has('tea-gardens') || tagSet.has('tea')) {
-    return 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80';
+    return '/images/destinations/sreemangal.jpg';
   }
   if (tagSet.has('mangrove') || tagSet.has('forest') || tagSet.has('wildlife')) {
-    return 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80';
+    return '/images/destinations/sundarbans.jpg';
   }
   if (tagSet.has('heritage') || tagSet.has('history') || tagSet.has('archaeology')) {
-    return 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80';
+    return '/images/destinations/sonargaon.jpg';
   }
   if (tagSet.has('wetlands') || tagSet.has('haor') || tagSet.has('river')) {
-    return 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80';
+    return '/images/destinations/sunamganj.jpg';
   }
-  return 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80';
+  return '/images/destinations/sylhet.jpg';
 }
 
 function normalizeCostLevel(val: string): CostLevel {
@@ -189,7 +245,7 @@ async function main() {
       .map((m) => parseInt(m.trim(), 10))
       .filter((n) => !Number.isNaN(n) && n >= 1 && n <= 12);
 
-    const imageUrl = pickImageUrl(name, tags);
+    const imageUrl = pickImageUrl(name, tags, String(row.district || '').trim());
     const embedText = `${name} (${row.name_bn || ''}), ${row.district}, ${row.division} division. ${row.description} Tags: ${tags.join(', ')}`;
 
     const existingDest = await prisma.destination.findUnique({ where: { name } });

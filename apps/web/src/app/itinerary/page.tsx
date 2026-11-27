@@ -178,14 +178,99 @@ function ItineraryInner() {
 
   if (loading) {
     return (
-      <div className="mx-auto max-w-4xl space-y-4 px-4 py-20 text-center">
-        <Loader2 className="mx-auto h-10 w-10 animate-spin text-[#2F6B2F]" />
-        <h2 className="text-xl font-extrabold text-[#1F2A1F]">
-          Building Your Day-by-Day Plan
-        </h2>
-        <p className="text-[16px] text-[#557945]">
-          Scheduling verified attractions within your {usableHours} usable daylight hours...
-        </p>
+      <div className="relative mx-auto flex min-h-[calc(100vh-180px)] w-full select-none flex-col items-center justify-center overflow-hidden px-4 py-12 text-center">
+        {/* Atmospheric Ambient Orbs (#29 Curating Expedition Loader) */}
+        <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#B0F3A8]/25 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 -right-32 h-[28rem] w-[28rem] rounded-full bg-[#FFCB3D]/20 blur-3xl" />
+
+        <div className="relative z-10 flex max-w-xl flex-col items-center">
+          {/* Editorial Monogram Centerpiece */}
+          <div className="relative mb-9 flex h-48 w-48 items-center justify-center">
+            <div
+              className="absolute inset-0 animate-[spin_8s_linear_infinite] rounded-full p-[2.5px]"
+              style={{
+                background:
+                  'conic-gradient(from 0deg, #2F6B2F 0%, #B0F3A8 35%, #FFCB3D 65%, #2F6B2F 100%)',
+              }}
+            >
+              <div className="h-full w-full rounded-full bg-[#E5F2E0]" />
+            </div>
+            <div className="absolute inset-3 animate-ping rounded-full bg-[#B0F3A8]/35 opacity-35" />
+
+            <div className="relative z-10 flex h-36 w-36 items-center justify-center rounded-full bg-white/95 shadow-xl backdrop-blur-md">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#145219]/10 via-transparent to-[#FFCB3D]/25" />
+              <div className="relative z-20 animate-pulse text-[#145219]">
+                <svg
+                  className="h-20 w-20 drop-shadow-sm"
+                  fill="none"
+                  viewBox="0 0 88 88"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M44 8C44 8 20 28 20 52C20 65.2548 30.7452 76 44 76C57.2548 76 68 65.2548 68 52C68 28 44 8 44 8Z"
+                    fill="#2F6B2F"
+                    fillOpacity="0.12"
+                  />
+                  <path d="M44 14L52 44L44 74L36 44L44 14Z" fill="#145219" />
+                  <path d="M44 14L52 44H44V14Z" fill="#FFCB3D" />
+                  <circle cx="44" cy="44" fill="#FFFFFF" r="5" />
+                  <circle cx="44" cy="44" fill="#FFCB3D" r="2.5" />
+                  <circle
+                    cx="44"
+                    cy="44"
+                    r="32"
+                    stroke="#2F6B2F"
+                    strokeDasharray="4 6"
+                    strokeOpacity="0.4"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </div>
+              <div className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full bg-[#FFCB3D] text-[#1F2A1F] shadow-md">
+                <Sparkles className="h-4 w-4" />
+              </div>
+            </div>
+          </div>
+
+          <span className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#1F511A]">
+            Curating Your Expedition
+          </span>
+          <h2 className="mt-2 text-[28px] font-bold leading-[34px] tracking-tight text-[#1F2A1F] sm:text-[40px] sm:leading-[48px]">
+            Discovering Bangladesh
+          </h2>
+
+          {/* Dynamic Status Pill */}
+          <div className="my-6 inline-flex items-center gap-3 rounded-full bg-white/85 px-6 py-3 shadow-sm backdrop-blur-md">
+            <span className="relative flex h-2.5 w-2.5 shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FFCB3D] opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#FFCB3D]" />
+            </span>
+            <p className="text-[15px] font-medium text-[#41493E]">
+              Scheduling verified attractions within your {usableHours} usable daylight hours...
+            </p>
+          </div>
+
+          {/* 3-Phase Stepper Capsule */}
+          <div className="mb-8 flex w-full max-w-md items-center justify-between rounded-full bg-[#DFECDB]/80 p-1.5 shadow-inner">
+            <div className="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#145219] shadow-sm">
+              <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
+              <span>Preferences</span>
+            </div>
+            <div className="h-0.5 w-3 rounded-full bg-[#C1C9BB]" />
+            <div className="flex items-center gap-1.5 rounded-full bg-[#145219] px-3.5 py-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-white shadow-sm">
+              <Loader2 className="h-3.5 w-3.5 animate-spin text-[#FFCB3D]" />
+              <span>Route Logic</span>
+            </div>
+            <div className="h-0.5 w-3 rounded-full bg-[#C1C9BB]" />
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#557945]">
+              <span>Day Plan</span>
+            </div>
+          </div>
+
+          <div className="h-1.5 w-64 overflow-hidden rounded-full bg-[#D9E6D5]">
+            <div className="h-full w-2/3 animate-pulse rounded-full bg-gradient-to-r from-[#145219] to-[#FFCB3D]" />
+          </div>
+        </div>
       </div>
     );
   }

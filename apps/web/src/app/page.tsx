@@ -39,40 +39,35 @@ const ARC_CARDS = [
     score: '91%',
     rotate: 'lg:-rotate-6 lg:translate-y-5',
     size: 'w-44 h-60 sm:w-52 sm:h-72',
-    image:
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80',
+    image: '/images/destinations/cox-s-bazar.jpg',
   },
   {
     name: 'Sundarbans',
     score: '88%',
     rotate: 'lg:-rotate-3 lg:translate-y-2',
     size: 'w-44 h-60 sm:w-52 sm:h-72',
-    image:
-      'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=700&q=80',
+    image: '/images/destinations/sundarbans.jpg',
   },
   {
     name: 'Sajek Valley',
     score: '97%',
     rotate: 'lg:rotate-0 lg:-translate-y-4 z-10',
     size: 'w-52 h-72 sm:w-64 sm:h-[340px] border-[5px]',
-    image:
-      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80',
+    image: '/images/destinations/sajek-valley.jpg',
   },
   {
-    name: 'Sylhet Gardens',
+    name: 'Sreemangal',
     score: '94%',
     rotate: 'lg:rotate-3 lg:translate-y-2',
     size: 'w-44 h-60 sm:w-52 sm:h-72',
-    image:
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=700&q=80',
+    image: '/images/destinations/sreemangal.jpg',
   },
   {
-    name: "Saint Martin's",
+    name: 'Kuakata',
     score: '93%',
     rotate: 'lg:rotate-6 lg:translate-y-5',
     size: 'w-44 h-60 sm:w-52 sm:h-72',
-    image:
-      'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=700&q=80',
+    image: '/images/destinations/kuakata.jpg',
   },
 ];
 

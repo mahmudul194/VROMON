@@ -1,4 +1,5 @@
 import { Body, Controller, Injectable, Module, NotFoundException, Post, UsePipes } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { z } from 'zod';
 import { AiService } from '../ai/ai.service';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
@@ -53,6 +54,7 @@ export class ItinerariesController {
   constructor(private readonly itinerariesService: ItinerariesService) {}
 
   @Post('generate')
+  @Throttle({ default: { limit: 25, ttl: 60000 } })
   @UsePipes(new ZodValidationPipe(GenerateItinerarySchema))
   generate(@Body() body: z.infer<typeof GenerateItinerarySchema>) {
     return this.itinerariesService.generate(body);

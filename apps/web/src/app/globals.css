@@ -58,3 +58,12 @@ input[type='range'].vromon-slider::-webkit-slider-thumb {
 input[type='range'].vromon-slider::-webkit-slider-thumb:hover {
   transform: scale(1.1);
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

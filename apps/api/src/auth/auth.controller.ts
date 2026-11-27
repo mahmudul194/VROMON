@@ -10,6 +10,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { Throttle } from '@nestjs/throttler';
 import { Response } from 'express';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
 import { AuthService } from './auth.service';
@@ -33,30 +34,35 @@ export class AuthController {
   ) {}
 
   @Post('register')
+  @Throttle({ default: { limit: 15, ttl: 60000 } })
   @UsePipes(new ZodValidationPipe(RegisterSchema))
   async register(@Body() body: any) {
     return this.authService.register(body);
   }
 
   @Post('verify-otp')
+  @Throttle({ default: { limit: 15, ttl: 60000 } })
   @UsePipes(new ZodValidationPipe(VerifyOtpSchema))
   async verifyOtp(@Body() body: { email: string; otp: string }) {
     return this.authService.verifyRegisterOtp(body.email, body.otp);
   }
 
   @Post('resend-otp')
+  @Throttle({ default: { limit: 6, ttl: 60000 } })
   @UsePipes(new ZodValidationPipe(ResendOtpSchema))
   async resendOtp(@Body() body: { email: string; purpose: 'REGISTER' | 'RESET_PASSWORD' }) {
     return this.authService.resendOtp(body.email, body.purpose);
   }
 
   @Post('login')
+  @Throttle({ default: { limit: 20, ttl: 60000 } })
   @UsePipes(new ZodValidationPipe(LoginSchema))
   async login(@Body() body: { email: string; password: string }) {
     return this.authService.login(body.email, body.password);
   }
 
   @Post('forgot-password')
+  @Throttle({ default: { limit: 6, ttl: 60000 } })
   @UsePipes(new ZodValidationPipe(ForgotPasswordSchema))
   async forgotPassword(@Body() body: { email: string }) {
     return this.authService.forgotPassword(body.email);

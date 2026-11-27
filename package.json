@@ -15,6 +15,7 @@
     "build": "npm run build:shared && npm run build:api && npm run build:web",
     "test:shared": "npm test --workspace=packages/shared",
     "test:api": "npm test --workspace=apps/api",
+    "test:e2e": "node scripts/e2e-smoke.cjs",
     "prisma:generate": "npm run prisma:generate --workspace=apps/api",
     "prisma:push": "npm run prisma:push --workspace=apps/api",
     "prisma:seed": "npm run prisma:seed --workspace=apps/api"

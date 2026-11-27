@@ -43,16 +43,43 @@ export class AiService {
   private readonly apiKey: string;
   private readonly llmModels: string[];
   private readonly embeddingModel: string;
+  private readonly modelCooldownUntil = new Map<string, number>();
   private genAiClient: GoogleGenAI | null = null;
 
   constructor(private readonly configService: ConfigService) {
     this.apiKey = this.configService.get<string>('GOOGLE_API_KEY', '');
     const primaryModel = this.configService.get<string>('LLM_MODEL', 'gemini-3-flash-preview');
-    this.llmModels = [primaryModel];
+    this.llmModels = Array.from(
+      new Set([
+        primaryModel,
+        'gemini-3.5-flash-lite',
+        'gemini-3.8-flash',
+      ]),
+    );
     this.embeddingModel = this.configService.get<string>('EMBEDDING_MODEL', 'gemini-embedding-001');
 
     if (this.apiKey) {
       this.genAiClient = new GoogleGenAI({ apiKey: this.apiKey });
+    }
+  }
+
+  private isModelCooledDown(modelName: string): boolean {
+    const until = this.modelCooldownUntil.get(modelName);
+    if (!until) return false;
+    if (Date.now() >= until) {
+      this.modelCooldownUntil.delete(modelName);
+      return false;
+    }
+    return true;
+  }
+
+  private markModelFailure(modelName: string, err: unknown) {
+    const msg = String(err || '');
+    if (msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED')) {
+      // Cool down quota-exhausted model for 5 minutes so subsequent requests use healthy fallback immediately
+      this.modelCooldownUntil.set(modelName, Date.now() + 5 * 60 * 1000);
+    } else if (msg.includes('503') || msg.includes('UNAVAILABLE') || msg.includes('404')) {
+      this.modelCooldownUntil.set(modelName, Date.now() + 60 * 1000);
     }
   }
 
@@ -79,12 +106,16 @@ export class AiService {
   private async generateFastJson<S extends z.ZodTypeAny>(
     prompt: string,
     schema: S,
-    timeoutMs = 10000,
+    timeoutMs = 8000,
     temperature = 0.15,
   ): Promise<z.infer<S> | null> {
     if (!this.genAiClient) return null;
     for (const modelName of this.llmModels) {
+      if (this.isModelCooledDown(modelName)) continue;
       try {
+        const useThinkingZero =
+          (modelName.includes('gemini-3') || modelName.includes('gemini-2.5')) &&
+          !modelName.includes('lite');
         const resp = await this.withTimeout(
           this.genAiClient.models.generateContent({
             model: modelName,
@@ -92,7 +123,7 @@ export class AiService {
             config: {
               temperature,
               responseMimeType: 'application/json',
-              thinkingConfig: { thinkingBudget: 0 },
+              ...(useThinkingZero ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
             },
           }),
           timeoutMs,
@@ -103,7 +134,8 @@ export class AiService {
         const parsed = JSON.parse(rawText);
         return schema.parse(parsed);
       } catch (err) {
-        this.logger.warn(`Fast JSON generation (${modelName}) failed: ${err}`);
+        this.markModelFailure(modelName, err);
+        this.logger.warn(`Fast JSON generation (${modelName}) failed, trying next model: ${err}`);
       }
     }
     return null;
@@ -111,19 +143,23 @@ export class AiService {
 
   private async generateFastText(
     prompt: string,
-    timeoutMs = 9000,
+    timeoutMs = 7500,
     temperature = 0.2,
   ): Promise<string | null> {
     if (!this.genAiClient) return null;
     for (const modelName of this.llmModels) {
+      if (this.isModelCooledDown(modelName)) continue;
       try {
+        const useThinkingZero =
+          (modelName.includes('gemini-3') || modelName.includes('gemini-2.5')) &&
+          !modelName.includes('lite');
         const resp = await this.withTimeout(
           this.genAiClient.models.generateContent({
             model: modelName,
             contents: prompt,
             config: {
               temperature,
-              thinkingConfig: { thinkingBudget: 0 },
+              ...(useThinkingZero ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
             },
           }),
           timeoutMs,
@@ -132,7 +168,8 @@ export class AiService {
         const text = (resp.text || '').trim();
         if (text.length > 20) return text;
       } catch (err) {
-        this.logger.warn(`Fast text generation (${modelName}) failed: ${err}`);
+        this.markModelFailure(modelName, err);
+        this.logger.warn(`Fast text generation (${modelName}) failed, trying next model: ${err}`);
       }
     }
     return null;
@@ -180,22 +217,6 @@ User Query: "${wishes}"`;
 
       const fastIntent = await this.generateFastJson(prompt, ParsedTravelIntentSchema, 8000, 0.1);
       if (fastIntent) return fastIntent;
-
-      for (const modelName of this.llmModels) {
-        try {
-          const structuredLlm = this.getChatModel(modelName, 0.1).withStructuredOutput(
-            ParsedTravelIntentSchema,
-          );
-          const result = await this.withTimeout(
-            structuredLlm.invoke(prompt),
-            8500,
-            `extractTravelIntent(${modelName})`,
-          );
-          return ParsedTravelIntentSchema.parse(result);
-        } catch (err) {
-          this.logger.warn(`LangChain intent extraction (${modelName}) failed/timed out: ${err}`);
-        }
-      }
     }
 
     return this.fallbackIntentExtraction(wishes, knownDestinationNames);
@@ -344,7 +365,7 @@ USER QUERY: "${userWishes}"
 
 ${contextBlocks}`;
 
-    const fastBatch = await this.generateFastJson(prompt, BatchReasonsSchema, 10000, 0.2);
+    const fastBatch = await this.generateFastJson(prompt, BatchReasonsSchema, 9000, 0.2);
     if (fastBatch) {
       for (const r of fastBatch.reasons || []) {
         if (r.reason && r.reason.trim().length > 15) {
@@ -354,24 +375,6 @@ ${contextBlocks}`;
       return resultMap;
     }
 
-    for (const modelName of this.llmModels) {
-      try {
-        const structuredLlm = this.getChatModel(modelName, 0.2).withStructuredOutput(BatchReasonsSchema);
-        const res = await this.withTimeout(
-          structuredLlm.invoke(prompt),
-          8000,
-          `generateGroundedReasonsBatch(${modelName})`,
-        );
-        for (const r of res.reasons || []) {
-          if (r.reason && r.reason.trim().length > 15) {
-            resultMap.set(r.destination_id, r.reason.trim());
-          }
-        }
-        return resultMap;
-      } catch (err) {
-        this.logger.warn(`Batch grounded reason (${modelName}) failed: ${err}`);
-      }
-    }
     return resultMap;
   }
 
@@ -425,22 +428,8 @@ VERIFIED CALCULATED FACTS:
 - Description: ${params.description}
 - Stored Attractions: ${params.attractions.map((a) => `${a.name}${a.description ? ` (${a.description})` : ''}`).join('; ')}`;
 
-    const fastReason = await this.generateFastText(prompt, 8500, 0.2);
+    const fastReason = await this.generateFastText(prompt, 7500, 0.2);
     if (fastReason) return fastReason;
-
-    for (const modelName of this.llmModels) {
-      try {
-        const response = await this.withTimeout(
-          this.getChatModel(modelName, 0.2).invoke(prompt),
-          6500,
-          `generateGroundedReason(${modelName})`,
-        );
-        const content = typeof response.content === 'string' ? response.content.trim() : '';
-        if (content.length > 20) return content;
-      } catch (err) {
-        this.logger.warn(`Grounded reason generation (${modelName}) failed: ${err}`);
-      }
-    }
     return fallback;
   }
 
@@ -541,24 +530,8 @@ Return ONLY valid JSON matching:
 Attractions:
 ${params.attractions.map((a) => `- ${a.name} (${a.est_hours}h): ${a.description || ''}`).join('\n')}`;
 
-    const fastPlan = await this.generateFastJson(prompt, ItineraryOutputSchema, 11000, 0.2);
+    const fastPlan = await this.generateFastJson(prompt, ItineraryOutputSchema, 9500, 0.2);
     if (fastPlan) return fastPlan;
-
-    for (const modelName of this.llmModels) {
-      try {
-        const structuredLlm = this.getChatModel(modelName, 0.2).withStructuredOutput(
-          ItineraryOutputSchema,
-        );
-        const result = await this.withTimeout(
-          structuredLlm.invoke(prompt),
-          6500,
-          `generateItinerary(${modelName})`,
-        );
-        return result;
-      } catch (err) {
-        this.logger.warn(`Itinerary generation (${modelName}) failed: ${err}`);
-      }
-    }
     return fallback;
   }
 

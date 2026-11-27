@@ -1,5 +1,7 @@
 import { Controller, Get, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import * as path from 'path';
 import { AdminModule } from './admin/admin.module';
 import { AiModule } from './ai/ai.module';
@@ -26,6 +28,13 @@ class HealthController {
       isGlobal: true,
       envFilePath: [path.resolve(process.cwd(), '../../.env'), path.resolve(process.cwd(), '.env')],
     }),
+    ThrottlerModule.forRoot([
+      {
+        name: 'default',
+        ttl: 60000,
+        limit: 120,
+      },
+    ]),
     DatabaseModule,
     MailModule,
     AuthModule,
@@ -38,5 +47,11 @@ class HealthController {
     AdminModule,
   ],
   controllers: [HealthController],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule {}

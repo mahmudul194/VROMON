@@ -266,6 +266,9 @@ npm run test:shared
 # Backend recommendation benchmark tests (@vromon/api)
 npm run test:api
 
+# Automated live end-to-end Capstone smoke suite (Auth, AI, Trips, Share, Admin, Throttler)
+npm run test:e2e
+
 # Frontend ESLint validation
 npm run lint --workspace=apps/web
 

@@ -31,6 +31,7 @@ import { ClimateChart } from '@/components/ClimateChart';
 import { CostChart } from '@/components/CostChart';
 import { FeasibilityBadge } from '@/components/FeasibilityBadge';
 import { ScoreRing } from '@/components/ScoreRing';
+import { getPhotoCredit } from '@/lib/photo-credits';
 
 const MONTH_SHORT = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -188,24 +189,41 @@ export default function DestinationDetailPage() {
           </div>
         </div>
 
-        {/* Sticky Sub-Nav Pill Strip */}
-        <div className="flex flex-wrap items-center gap-2 border-t border-[#E5F0E0] bg-[#F6FAF3] px-6 py-3">
-          {[
-            { href: '#overview', label: 'Overview' },
-            { href: '#budget', label: 'Budget' },
-            { href: '#feasibility', label: 'Feasibility' },
-            { href: '#climate', label: 'Climate & Crowd' },
-            { href: '#attractions', label: 'Attractions' },
-            { href: '#map', label: 'Map' },
-          ].map((tab) => (
-            <a
-              key={tab.href}
-              href={tab.href}
-              className="rounded-full border border-[#D5E6CF] bg-white px-4 py-1.5 text-[14px] font-bold text-[#1F2A1F] transition hover:bg-[#2F6B2F] hover:text-white"
-            >
-              {tab.label}
-            </a>
-          ))}
+        {/* Sticky Sub-Nav Pill Strip + Photographer Credit */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#E5F0E0] bg-[#F6FAF3] px-6 py-3">
+          <div className="flex flex-wrap items-center gap-2">
+            {[
+              { href: '#overview', label: 'Overview' },
+              { href: '#budget', label: 'Budget' },
+              { href: '#feasibility', label: 'Feasibility' },
+              { href: '#climate', label: 'Climate & Crowd' },
+              { href: '#attractions', label: 'Attractions' },
+              { href: '#map', label: 'Map' },
+            ].map((tab) => (
+              <a
+                key={tab.href}
+                href={tab.href}
+                className="rounded-full border border-[#D5E6CF] bg-white px-4 py-1.5 text-[14px] font-bold text-[#1F2A1F] transition hover:bg-[#2F6B2F] hover:text-white"
+              >
+                {tab.label}
+              </a>
+            ))}
+          </div>
+
+          {(() => {
+            const credit = getPhotoCredit(dest.name, dest.district);
+            if (!credit) return null;
+            return (
+              <a
+                href={credit.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[14px] font-medium text-[#557945] underline-offset-4 hover:text-[#145219] hover:underline"
+              >
+                Photo: {credit.author} ({credit.license})
+              </a>
+            );
+          })()}
         </div>
       </div>
 

@@ -2,7 +2,16 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Bookmark, Compass, Loader2, MapPin, Plus, Trash2 } from 'lucide-react';
+import {
+  ArrowRight,
+  Bookmark,
+  Compass,
+  Loader2,
+  MapPin,
+  Plus,
+  Trash2,
+  WifiOff,
+} from 'lucide-react';
 import { apiFetch } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import { FeasibilityBadge } from '@/components/FeasibilityBadge';
@@ -12,30 +21,77 @@ export default function TripsPage() {
   const { user, loading: authLoading } = useAuth();
   const [trips, setTrips] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [usingOfflineCache, setUsingOfflineCache] = useState(false);
   const [statusFilter, setStatusFilter] = useState<string>('All');
 
   useEffect(() => {
+    const loadCached = () => {
+      if (typeof window === 'undefined') return [];
+      try {
+        const parsed = JSON.parse(localStorage.getItem('vromon_cached_trips') || '[]');
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    };
+
     if (!user) {
+      const cached = loadCached();
+      if (typeof navigator !== 'undefined' && !navigator.onLine && cached.length > 0) {
+        setTrips(cached);
+        setUsingOfflineCache(true);
+      }
       setLoading(false);
       return;
     }
+
     apiFetch<any[]>('/trips')
-      .then(setTrips)
-      .catch(() => {})
+      .then((list) => {
+        setTrips(list);
+        setUsingOfflineCache(false);
+        if (typeof window !== 'undefined') {
+          try {
+            localStorage.setItem('vromon_cached_trips', JSON.stringify(list));
+          } catch {
+            // ignore storage quota
+          }
+        }
+      })
+      .catch(() => {
+        const cached = loadCached();
+        if (cached.length > 0) {
+          setTrips(cached);
+          setUsingOfflineCache(true);
+        }
+      })
       .finally(() => setLoading(false));
   }, [user]);
 
   const handleDelete = async (id: string) => {
     await apiFetch(`/trips/${id}`, { method: 'DELETE' });
-    setTrips((prev) => prev.filter((t) => t.id !== id));
+    setTrips((prev) => {
+      const next = prev.filter((t) => t.id !== id);
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem('vromon_cached_trips', JSON.stringify(next));
+        } catch {
+          // ignore
+        }
+      }
+      return next;
+    });
   };
 
   const metrics = useMemo(() => {
-    const fitsCount = trips.filter((t) => t.recommendation_snapshot?.feasibility_status === 'Fits').length;
+    const fitsCount = trips.filter(
+      (t) => t.recommendation_snapshot?.feasibility_status === 'Fits',
+    ).length;
     const costs = trips
       .map((t) => Number(t.recommendation_snapshot?.cost_breakdown?.total_cost || 0))
       .filter((n) => n > 0);
-    const avgCost = costs.length ? Math.round(costs.reduce((a, b) => a + b, 0) / costs.length) : 0;
+    const avgCost = costs.length
+      ? Math.round(costs.reduce((a, b) => a + b, 0) / costs.length)
+      : 0;
     return { total: trips.length, fitsCount, avgCost };
   }, [trips]);
 
@@ -52,13 +108,15 @@ export default function TripsPage() {
     );
   }
 
-  if (!user) {
+  if (!user && !usingOfflineCache) {
     return (
       <div className="mx-auto max-w-xl space-y-4 p-16 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#eaf7e6] text-[#2F6B2F]">
           <Bookmark className="h-7 w-7" />
         </div>
-        <h1 className="text-[36px] md:text-[40px] font-extrabold text-[#1F2A1F]">Sign in to view Saved Trips</h1>
+        <h1 className="text-[36px] font-extrabold text-[#1F2A1F] md:text-[40px]">
+          Sign in to view Saved Trips
+        </h1>
         <p className="text-[16px] text-[#557945]">
           Save evaluated trip recommendations to compare budgets and revisit routes anytime.
         </p>
@@ -72,17 +130,24 @@ export default function TripsPage() {
     );
   }
 
-  const firstName = user.name.split(' ')[0] || 'Traveler';
+  const firstName = user?.name?.split(' ')[0] || 'Traveler';
 
   return (
     <div className="mx-auto max-w-[1220px] space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+      {usingOfflineCache && (
+        <div className="flex items-center gap-3 rounded-2xl border border-[#FFCB3D] bg-[#FFF6D6] px-5 py-3.5 text-[14px] font-semibold text-[#1F2A1F]">
+          <WifiOff className="h-4 w-4 shrink-0 text-[#9A6B00]" />
+          <span>Offline Mode Active: Showing locally cached saved trip dossiers.</span>
+        </div>
+      )}
+
       {/* Header (No Waving Emoji) */}
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <span className="inline-block rounded-full bg-[#eaf7e6] px-3.5 py-1 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#2F6B2F]">
             Expedition Registry
           </span>
-          <h1 className="mt-2 text-[36px] md:text-[40px] font-extrabold tracking-tight text-[#1F2A1F] sm:text-4xl">
+          <h1 className="mt-2 text-[36px] font-extrabold tracking-tight text-[#1F2A1F] sm:text-4xl md:text-[40px]">
             Hi {firstName}, your saved trips
           </h1>
           <p className="mt-1 text-[16px] text-[#557945]">
@@ -126,7 +191,9 @@ export default function TripsPage() {
           <p className="mt-2 text-4xl font-black text-[#2F6B2F]">
             ৳{metrics.avgCost.toLocaleString()}
           </p>
-          <p className="mt-1 text-[14px] text-[#557945]">Includes transport, rooms, meals &amp; buffer</p>
+          <p className="mt-1 text-[14px] text-[#557945]">
+            Includes transport, rooms, meals &amp; buffer
+          </p>
         </div>
       </div>
 
@@ -180,7 +247,7 @@ export default function TripsPage() {
                     src={
                       trip.destination?.image_url ||
                       snap.image_url ||
-                      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80'
+                      '/images/destinations/sajek-valley.jpg'
                     }
                     alt={trip.title}
                     className="h-full w-full object-cover"
@@ -233,14 +300,16 @@ export default function TripsPage() {
                       )}
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => handleDelete(trip.id)}
-                      aria-label="Delete saved trip"
-                      className="rounded-full p-2 text-[#557945] hover:bg-red-50 hover:text-red-600"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </button>
+                    {!usingOfflineCache && (
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(trip.id)}
+                        aria-label="Delete saved trip"
+                        className="rounded-full p-2 text-[#557945] hover:bg-red-50 hover:text-red-600"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

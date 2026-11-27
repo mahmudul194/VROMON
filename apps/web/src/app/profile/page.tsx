@@ -27,7 +27,7 @@ const CITIES = [
 ];
 
 export default function ProfilePage() {
-  const { user, loading, refreshUser, logout } = useAuth();
+  const { user, loading, refreshUser, openLogoutModal } = useAuth();
   const [name, setName] = useState('');
   const [preferredCity, setPreferredCity] = useState('Dhaka');
   const [budgetTier, setBudgetTier] = useState<'Low' | 'Medium' | 'High'>('Medium');
@@ -265,7 +265,7 @@ export default function ProfilePage() {
               </Link>
               <button
                 type="button"
-                onClick={logout}
+                onClick={openLogoutModal}
                 className="inline-flex h-10 items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-4 text-[14px] font-bold text-red-700 hover:bg-red-100"
               >
                 <LogOut className="h-3.5 w-3.5" />

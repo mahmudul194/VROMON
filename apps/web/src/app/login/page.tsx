@@ -34,7 +34,11 @@ function LoginInner() {
 
   useEffect(() => {
     const oauthErr = searchParams.get('error');
-    if (oauthErr) {
+    if (oauthErr === 'google_not_configured') {
+      setError(
+        'Google OAuth credentials are not configured yet. Please sign in with email and password or add GOOGLE_CLIENT_ID in .env.',
+      );
+    } else if (oauthErr) {
       setError('Google sign-in could not be completed. Please try again or use email sign in.');
     }
   }, [searchParams]);
