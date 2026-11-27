@@ -206,7 +206,10 @@ function RegisterInner() {
       });
       setSession(res.access_token, res.user);
       setStep('success');
-      setTimeout(() => router.push('/plan'), 1400);
+      const nextUrl = searchParams.get('next');
+      const target =
+        nextUrl && nextUrl.startsWith('/') && !nextUrl.startsWith('//') ? nextUrl : '/plan';
+      setTimeout(() => router.push(target), 1400);
     } catch (err: any) {
       setError(err.message || 'Invalid verification code.');
     } finally {

@@ -23,6 +23,7 @@ import {
   Waves,
 } from 'lucide-react';
 import { apiFetch } from '@/lib/api';
+import { useAuth } from '@/context/AuthContext';
 
 const DIVISIONS = [
   'All',
@@ -106,6 +107,7 @@ const PRESET_SCENARIOS = [
 
 export default function PlanPage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [wishes, setWishes] = useState('');
   const [budget, setBudget] = useState(10000);
   const [travelers, setTravelers] = useState(2);
@@ -117,6 +119,14 @@ export default function PlanPage() {
   const [destinations, setDestinations] = useState<any[]>([]);
   const [activeDivision, setActiveDivision] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    if (!user) return;
+    if (user.preferred_city) setStartingCity(user.preferred_city);
+    if (user.budget_tier === 'Low') setBudget(8000);
+    else if (user.budget_tier === 'Medium') setBudget(15000);
+    else if (user.budget_tier === 'High') setBudget(30000);
+  }, [user]);
 
   useEffect(() => {
     apiFetch<any[]>('/destinations')
@@ -138,8 +148,13 @@ export default function PlanPage() {
   }, [wishes]);
 
   const toggleVibe = (keyword: string) => {
-    if (wishes.toLowerCase().includes(keyword.toLowerCase())) return;
-    setWishes((prev) => `${prev.trim().replace(/[.,]+$/, '')}, ${keyword}`);
+    setWishes((prev) => {
+      const trimmed = prev.trim().replace(/^[,\s]+|[.,\s]+$/g, '');
+      if (trimmed.toLowerCase().includes(keyword.toLowerCase())) {
+        return trimmed;
+      }
+      return trimmed ? `${trimmed}, ${keyword}` : keyword;
+    });
   };
 
   const applyPreset = (p: (typeof PRESET_SCENARIOS)[number]) => {
@@ -153,8 +168,12 @@ export default function PlanPage() {
 
   const handlePlan = (e: React.FormEvent) => {
     e.preventDefault();
+    const activeMonthLabel = MONTHS.find((m) => m.num === travelMonth)?.full || 'December';
+    const finalWishes =
+      wishes.trim() ||
+      `Best places in Bangladesh for ${travelers} traveler${travelers > 1 ? 's' : ''} over ${days} day${days > 1 ? 's' : ''} in ${activeMonthLabel} under ${budget} BDT`;
     const params = new URLSearchParams({
-      wishes: wishes.trim(),
+      wishes: finalWishes,
       budget: String(budget),
       travelers: String(travelers),
       days: String(days),
@@ -220,10 +239,9 @@ export default function PlanPage() {
 
             <textarea
               rows={3}
-              required
               value={wishes}
               onChange={(e) => setWishes(e.target.value)}
-              placeholder="e.g. Quiet tea gardens in Sylhet under 15,000 BDT for 2 people in December..."
+              placeholder="e.g. Quiet tea gardens in Sylhet under 15,000 BDT for 2 people in December (or leave blank to match sliders below)..."
               className="w-full rounded-2xl border border-[#D5E6CF] bg-[#eaf7e6]/55 p-4 text-[14px] font-medium leading-relaxed text-[#1F2A1F] placeholder-[#557945]/60 focus:border-[#2F6B2F] focus:bg-white focus:outline-none sm:text-base"
             />
 

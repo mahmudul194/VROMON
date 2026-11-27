@@ -53,9 +53,13 @@ function CompareInner() {
           setSelectedIds(paramIds.slice(0, 3));
         } else if (list.length >= 3) {
           const defaults = list
-            .filter((d) => ['Khulna', 'Moulvibazar', 'Rangamati'].includes(d.name))
+            .filter((d) => ['Sajek Valley', 'Sreemangal', "Cox's Bazar"].includes(d.name))
             .map((d) => d.destination_id);
-          setSelectedIds(defaults.length >= 2 ? defaults : list.slice(0, 3).map((d) => d.destination_id));
+          setSelectedIds(
+            defaults.length >= 2
+              ? defaults.slice(0, 3)
+              : list.slice(0, 3).map((d) => d.destination_id),
+          );
         }
       })
       .finally(() => setLoading(false));
@@ -250,10 +254,7 @@ function CompareInner() {
                     <div className="space-y-3">
                       <div className="relative h-28 overflow-hidden rounded-2xl bg-[#E5F0E0]">
                         <img
-                          src={
-                            e.dest.image_url ||
-                            'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80'
-                          }
+                          src={e.dest.image_url || '/images/destinations/sajek-valley.jpg'}
                           alt={e.dest.name}
                           className="h-full w-full object-cover"
                         />

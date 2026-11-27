@@ -9,7 +9,6 @@ import {
   Check,
   Clock,
   Compass,
-  Copy,
   Leaf,
   Link2,
   MapPin,
@@ -25,6 +24,7 @@ import {
   Users,
 } from 'lucide-react';
 import { apiFetch } from '@/lib/api';
+import { useAuth } from '@/context/AuthContext';
 
 const QUICK_CHIPS = [
   { label: 'Weekend in Sylhet under 8000', tag: 'budget' },
@@ -88,6 +88,7 @@ const SEASONAL_MONTHS = [
 
 export default function HomePage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [wishes, setWishes] = useState('');
   const [ctaWishes, setCtaWishes] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -98,7 +99,14 @@ export default function HomePage() {
   const [startingCity, setStartingCity] = useState('Dhaka');
   const [destinations, setDestinations] = useState<any[]>([]);
   const [carouselOffset, setCarouselOffset] = useState(0);
-  const [copiedDemoLink, setCopiedDemoLink] = useState(false);
+
+  useEffect(() => {
+    if (!user) return;
+    if (user.preferred_city) setStartingCity(user.preferred_city);
+    if (user.budget_tier === 'Low') setBudget(8000);
+    else if (user.budget_tier === 'Medium') setBudget(15000);
+    else if (user.budget_tier === 'High') setBudget(30000);
+  }, [user]);
 
   useEffect(() => {
     apiFetch<any[]>('/destinations')
@@ -674,7 +682,7 @@ export default function HomePage() {
           {/* Tile F: Shareable Trip Plan */}
           <div className="lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-[#1B3519] p-7 text-white shadow-[0_20px_48px_rgba(31,42,31,0.25)]">
             <img
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
+              src="/images/destinations/bandarban.jpg"
               alt="Hills"
               className="absolute inset-0 h-full w-full object-cover opacity-35"
             />
@@ -690,17 +698,17 @@ export default function HomePage() {
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                setCopiedDemoLink(true);
-                setTimeout(() => setCopiedDemoLink(false), 2000);
-              }}
-              className="relative z-10 mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white text-[14px] font-semibold text-[#1F2A1F] shadow-lg hover:bg-[#F6FAF3]"
+            <Link
+              href={
+                destinations[0]
+                  ? `/itinerary?destId=${destinations[0].destination_id}&days=3&usable=22&totalCost=14850&status=Fits&score=94&budget=18000&travelers=2&month=12&city=${encodeURIComponent(startingCity)}`
+                  : '/plan'
+              }
+              className="relative z-10 mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white text-[14px] font-semibold text-[#1F2A1F] shadow-lg transition hover:bg-[#F6FAF3]"
             >
-              {copiedDemoLink ? <Copy className="h-4 w-4 text-[#2F6B2F]" /> : <Link2 className="h-4 w-4" />}
-              <span>{copiedDemoLink ? 'Ready on any trip plan!' : 'Try trip plan builder'}</span>
-            </button>
+              <Link2 className="h-4 w-4 text-[#2F6B2F]" />
+              <span>Try trip plan builder</span>
+            </Link>
           </div>
         </div>
       </section>

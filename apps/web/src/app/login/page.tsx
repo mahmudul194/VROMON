@@ -53,7 +53,12 @@ function LoginInner() {
         body: JSON.stringify({ email, password }),
       });
       setSession(res.access_token, res.user);
-      router.push(res.user.role === 'ADMIN' ? '/admin' : '/plan');
+      const nextUrl = searchParams.get('next');
+      if (nextUrl && nextUrl.startsWith('/') && !nextUrl.startsWith('//')) {
+        router.push(nextUrl);
+      } else {
+        router.push(res.user.role === 'ADMIN' ? '/admin' : '/plan');
+      }
     } catch (err: any) {
       if (err.data?.requiresVerification) {
         router.push(`/register?verify=${encodeURIComponent(email)}`);

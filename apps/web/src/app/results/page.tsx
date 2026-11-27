@@ -202,7 +202,11 @@ function ResultsInner() {
 
   const handleSaveTrip = async (item: RecommendationItem) => {
     if (!user) {
-      router.push('/login');
+      const returnPath =
+        typeof window !== 'undefined'
+          ? `${window.location.pathname}${window.location.search}`
+          : '/results';
+      router.push(`/login?next=${encodeURIComponent(returnPath)}`);
       return;
     }
     try {

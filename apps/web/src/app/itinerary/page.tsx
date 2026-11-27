@@ -139,7 +139,11 @@ function ItineraryInner() {
 
   const handleSaveTrip = async () => {
     if (!user) {
-      router.push('/login');
+      const returnPath =
+        typeof window !== 'undefined'
+          ? `${window.location.pathname}${window.location.search}`
+          : '/itinerary';
+      router.push(`/login?next=${encodeURIComponent(returnPath)}`);
       return;
     }
     if (!itinerary) return;
