@@ -253,6 +253,15 @@ npm run dev:api
 npm run dev:web
 ```
 
+### 5. Pre-Provisioned Demo & Administrator Accounts
+
+Public registration (`/register`) creates verified `TRAVELER` accounts only. The standalone **Admin Console** (`/admin/login` -> `/admin`) uses an isolated session (`vromon_admin_token`) and accepts only pre-provisioned `ADMIN` accounts:
+
+| Portal & Route | Email | Password | Role |
+|---|---|---|---|
+| **Admin Console** (`http://localhost:3000/admin/login`) | `admin@vromon.bd` | `VromonAdmin2026!` | `ADMIN` |
+| **Demo Traveler** (`http://localhost:3000/login`) | `traveler@vromon.bd` | `Traveler123!` | `TRAVELER` |
+
 ---
 
 ## Testing & Verification Commands
@@ -287,7 +296,8 @@ All backend routes are served under `http://localhost:4000/api`:
 | **Health** | `GET /api/health` | Public | Service & database readiness probe |
 | **Auth** | `POST /api/auth/register` | Public | Create account & dispatch 6-digit email OTP |
 | **Auth** | `POST /api/auth/verify-otp` | Public | Activate account & issue JWT access token |
-| **Auth** | `POST /api/auth/login` | Public | Authenticate via email & password |
+| **Auth** | `POST /api/auth/login` | Public | Authenticate traveler via email & password |
+| **Auth** | `POST /api/auth/admin/login` | Admin | Dedicated Admin Console sign-in (pre-provisioned `ADMIN` accounts only) |
 | **Auth** | `GET /api/auth/google` | Public | Initiate Google OAuth 2.0 login flow |
 | **Auth** | `POST /api/auth/forgot-password` | Public | Send 6-digit password recovery OTP |
 | **Auth** | `POST /api/auth/reset-password` | Public | Verify recovery OTP & update password |

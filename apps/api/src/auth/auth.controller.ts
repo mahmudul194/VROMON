@@ -61,6 +61,13 @@ export class AuthController {
     return this.authService.login(body.email, body.password);
   }
 
+  @Post('admin/login')
+  @Throttle({ default: { limit: 15, ttl: 60000 } })
+  @UsePipes(new ZodValidationPipe(LoginSchema))
+  async adminLogin(@Body() body: { email: string; password: string }) {
+    return this.authService.adminLogin(body.email, body.password);
+  }
+
   @Post('forgot-password')
   @Throttle({ default: { limit: 6, ttl: 60000 } })
   @UsePipes(new ZodValidationPipe(ForgotPasswordSchema))

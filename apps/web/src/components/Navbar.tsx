@@ -13,6 +13,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isLanding = pathname === '/';
+  const isAdminRoute = pathname?.startsWith('/admin');
 
   const navLinks = isLanding
     ? [
@@ -21,14 +22,12 @@ export function Navbar() {
         { href: '/plan', label: 'Destinations' },
         { href: '/compare', label: 'Compare' },
         ...(user ? [{ href: '/trips', label: 'My Trips' }] : []),
-        ...(user?.role === 'ADMIN' ? [{ href: '/admin', label: 'Admin' }] : []),
       ]
     : [
         { href: '/plan', label: 'Plan' },
         { href: '/results', label: 'Results' },
         { href: '/compare', label: 'Compare' },
         ...(user ? [{ href: '/trips', label: 'My Trips' }] : []),
-        ...(user?.role === 'ADMIN' ? [{ href: '/admin', label: 'Admin' }] : []),
       ];
 
   useEffect(() => {
@@ -54,6 +53,10 @@ export function Navbar() {
   };
 
   const initial = user?.name?.trim().charAt(0).toUpperCase() || 'V';
+
+  if (isAdminRoute) {
+    return null;
+  }
 
   return (
     <header
@@ -103,9 +106,6 @@ export function Navbar() {
                 href="/profile"
                 className="flex h-11 items-center gap-2.5 rounded-full border border-[#D5E6CF] bg-[#F6FAF3] pl-3.5 pr-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[#1F2A1F] transition-colors hover:bg-[#E5F0E0]"
               >
-                {user.role === 'ADMIN' && (
-                  <ShieldCheck className="h-3.5 w-3.5 text-[#2F6B2F]" />
-                )}
                 <span className="max-w-[110px] truncate">{user.name.split(' ')[0]}</span>
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FFCB3D] font-extrabold text-[#1F2A1F]">
                   {initial}

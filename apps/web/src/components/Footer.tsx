@@ -1,8 +1,16 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 
 export function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <footer className="relative overflow-hidden bg-[#1F2A1F] px-6 pb-10 pt-16 text-white sm:px-10 lg:px-16">
       <div className="mx-auto max-w-7xl">

@@ -160,9 +160,12 @@ flowchart TD
 
 ---
 
-### WF-10: Admin Console (`/admin`)
-1. **Access Control:** Non-admin travelers visiting `/admin` or calling `/api/admin/*` receive `HTTP 403 Forbidden` (verified live) and see the `"Administrator Access Only"` screen.
-2. **Admin Capabilities Verified Live (`mahmudulhaquerifat@gmail.com`):**
+### WF-10: Standalone Admin Portal (`/admin/login` -> `/admin`)
+1. **Strict Portal & Navbar Isolation:**
+   - The public/traveler `Navbar` never displays an `Admin` link, and consumer `Navbar`, `Footer`, and `AuthStatusBanners` are completely hidden on all `/admin*` routes so the Admin Console renders standalone per Stitch (`#23` & `#24`).
+   - Traveler sessions (`vromon_token` via `/login`) and Admin Console sessions (`vromon_admin_token` via `/admin/login` -> `POST /api/auth/admin/login`) are strictly isolated. Non-admin accounts attempting `/api/auth/admin/login` or `/api/admin/*` receive `HTTP 403 Forbidden` (verified live).
+   - No public admin sign-up exists; administrator accounts (`admin@vromon.bd` / `VromonAdmin2026!` and `mahmudulhaquerifat@gmail.com`) are pre-provisioned in PostgreSQL via `prisma/seed.ts`.
+2. **Admin Capabilities Verified Live (`admin@vromon.bd`):**
    - **Overview & Telemetry:** Live KPIs (`70` destinations, users, query logs, shared plans), Cost Tier bar chart, and Recent Query Budget area chart.
    - **Slide-Over Destination Rate Editor:** Editing hotel/food/local fee rates (`PUT /api/admin/destinations/:id`) immediately persists in Neon PostgreSQL and updates future trip calculations.
    - **Bulk JSON Import:** Uploading destination JSON (`POST /api/admin/destinations/bulk`) upserts records into PostgreSQL and records an audit entry in `import_log`.

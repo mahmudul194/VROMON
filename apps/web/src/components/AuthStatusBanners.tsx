@@ -228,6 +228,9 @@ export function AuthStatusBanners() {
 
   const onDedicatedLoggedOut = pathname === '/logged-out';
   const onDedicatedExpired = pathname === '/session-expired';
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   return (
     <>

@@ -57,7 +57,7 @@ function LoginInner() {
       if (nextUrl && nextUrl.startsWith('/') && !nextUrl.startsWith('//')) {
         router.push(nextUrl);
       } else {
-        router.push(res.user.role === 'ADMIN' ? '/admin' : '/plan');
+        router.push('/plan');
       }
     } catch (err: any) {
       if (err.data?.requiresVerification) {

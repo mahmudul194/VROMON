@@ -213,6 +213,32 @@ export class AuthService {
     };
   }
 
+  async adminLogin(emailRaw: string, password: string) {
+    const email = emailRaw.trim().toLowerCase();
+    const user = await this.prisma.user.findUnique({ where: { email } });
+
+    if (!user || !user.password_hash) {
+      throw new UnauthorizedException('Invalid administrator email or password.');
+    }
+
+    const isValid = await bcrypt.compare(password, user.password_hash);
+    if (!isValid) {
+      throw new UnauthorizedException('Invalid administrator email or password.');
+    }
+
+    if (user.role !== UserRole.ADMIN) {
+      throw new ForbiddenException(
+        'Access denied. Only pre-provisioned administrator accounts can sign in to the Admin Console.',
+      );
+    }
+
+    const accessToken = this.signAccessToken(user);
+    return {
+      access_token: accessToken,
+      user: this.sanitizeUser(user),
+    };
+  }
+
   async handleGoogleLogin(googleUser: {
     googleId: string;
     email: string;

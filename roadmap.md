@@ -1,6 +1,6 @@
 # VROMON — Project Roadmap & Multi-Agent Collaboration Guide
 
-> **Last Updated:** 2026-11-27  
+> **Last Updated:** 2026-11-28  
 > **Active Branch:** `rifat` -> `main`  
 > **Project:** Bangladesh Smart Trip Feasibility & Risk-Aware Travel Recommender (SE331 Capstone — Group 6)
 
@@ -75,7 +75,7 @@
 | 20 | My Trips Dashboard (`1432698f...`) + Mobile (`6bafdf4a...`) | `/trips` (`apps/web/src/app/trips/page.tsx`) | `[x]` | Zero emoji header, 3 KPI cards, filter tabs, offline `localStorage` fallback |
 | 21 | Shared Trip Plan (`dbe0ccef...`) | `/plan/[shareId]` (`apps/web/src/app/plan/[shareId]/page.tsx`) | `[x]` | Read-only 30-day public expedition view |
 | 22 | Profile & Settings (`795f3f1d...`) + Mobile (`82a41a6a...`) | `/profile` (`apps/web/src/app/profile/page.tsx`) | `[x]` | 2-col settings nav + preferences + shared Logout confirmation modal/sheet |
-| 23–24 | Admin Dashboard & Destinations Management (`acba8657...`, `6e0c7912...`) | `/admin` (`apps/web/src/app/admin/page.tsx`) | `[x]` | 40px title, 44px KPIs, Recharts, slide-over editor, bulk JSON import |
+| 23–24 | Admin Dashboard, Destinations Management & Standalone Admin Portal (`acba8657...`, `6e0c7912...`) | `/admin` (`apps/web/src/app/admin/page.tsx`) + `/admin/login` (`apps/web/src/app/admin/login/page.tsx`) | `[x]` | Standalone portal (no consumer Navbar/Footer), isolated `vromon_admin_token`, pre-provisioned `admin@vromon.bd`, 40px title, 44px KPIs, Recharts, slide-over editor, bulk JSON import |
 | 25, 61 | 404 Page Not Found (`3bdde069...`, `c2e1ef3d...`) | `not-found.tsx` (`apps/web/src/app/not-found.tsx`) | `[x]` | Giant `4 [Interactive Amber Compass SVG] 4` + Suggested Detours strip |
 
 ### B. Remaining Stitch States, Dedicated Utility Pages, Modals & Mobile Sheets (`[x]` Built)
@@ -160,7 +160,8 @@
 
 | Date | Commit / Ref | Author / Agent | Summary of Changes |
 |---|---|---|---|
-| 2026-11-27 | `rifat` -> `main` | Rifat + Agent | Audited all 10 end-to-end user-perspective workflows (`WORKFLOW_VERIFICATION.md`), polished 5 UX transitions (profile hub/budget auto-sync on `/` & `/plan`, slider-only `/plan` submit + clean vibe chips, `?next=` login return flow on Save Trip, live landing Trip Plan Builder link, iconic `/compare` defaults), and verified all 18 Next.js routes + live SMTP/OAuth/AI/DB journeys |
+| 2026-11-28 | `rifat` -> `main` | Rifat + Agent | Removed `Admin` link/badge from public `Navbar`, hid consumer `Navbar`/`Footer`/`AuthStatusBanners` on `/admin*`, built dedicated `/admin/login` + `POST /api/auth/admin/login` with isolated `vromon_admin_token` session, and provisioned pre-created `admin@vromon.bd` (`VromonAdmin2026!`) account in Neon DB & `seed.ts` (`19/19` Next.js routes, `7/7` E2E suites) |
+| 2026-11-27 | `b7660fe` (`rifat` -> `main`) | Rifat + Agent | Audited all 10 end-to-end user-perspective workflows (`WORKFLOW_VERIFICATION.md`), polished 5 UX transitions (profile hub/budget auto-sync on `/` & `/plan`, slider-only `/plan` submit + clean vibe chips, `?next=` login return flow on Save Trip, live landing Trip Plan Builder link, iconic `/compare` defaults), and verified all 18 Next.js routes + live SMTP/OAuth/AI/DB journeys |
 | 2026-11-27 | `d6bf22e` (`rifat` -> `main`) | Rifat + Agent | Completed Stitch 62-screen exact audit & rebuild (`/logged-out`, `/session-expired`, `/offline`, Stitch `404` compass, `500` server spark + live health drawer, `#28` magnifier empty state, `#29` curating loader, `#33` 4-step AI thinking card, `#38` numbered mobile nav, `#52` weather-star mobile filter sheet), wired all 64 optimized Wikimedia district photos + photographer credits (`Phase 6`), added `@nestjs/throttler` + HTTP security headers + multi-model Gemini failover (`gemini-3-flash-preview` / `gemini-3.8-flash` / `gemini-3.5-flash-lite`), and added 7-suite live E2E smoke test (`npm run test:e2e`) (`Phase 5` & `Phase 7` pre-deploy) |
 | 2026-11-27 | `ce816d0` (`rifat` -> `main`) | Rifat + Agent | Optimized `AiService` (`thinkingBudget: 0` fast Gemini 3 Flash JSON mode for `<3.5s` intent, Top-4 batch grounded reasons & day plans) + honored explicit prompt budget/travelers/days across `/` and `/plan` |
 | 2026-11-26 | `a0ce489` (`rifat` -> `main`) | Rifat + Agent | Wrote comprehensive professional UTF-8 `README.md` (architecture diagram, 6-factor math formulas, setup guide, API table, DIU Group 6 credits) and updated `roadmap.md` |

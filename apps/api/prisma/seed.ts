@@ -168,8 +168,21 @@ async function main() {
     `Parsed Excel: ${destRows.length} destinations, ${attrRows.length} attractions, ${transRows.length} transports, ${monthRows.length} monthly conditions.`,
   );
 
-  // Seed default Admin and Demo Traveler accounts
+  // Seed pre-provisioned System Admin, Lead Admin, and Demo Traveler accounts
   const adminPasswordHash = await bcrypt.hash('VromonAdmin2026!', 10);
+  await prisma.user.upsert({
+    where: { email: 'admin@vromon.bd' },
+    update: { password_hash: adminPasswordHash, role: UserRole.ADMIN, is_verified: true },
+    create: {
+      email: 'admin@vromon.bd',
+      name: 'VROMON System Admin',
+      password_hash: adminPasswordHash,
+      role: UserRole.ADMIN,
+      is_verified: true,
+      preferred_city: 'Dhaka',
+    },
+  });
+
   await prisma.user.upsert({
     where: { email: 'mahmudulhaquerifat@gmail.com' },
     update: { role: UserRole.ADMIN, is_verified: true },

@@ -216,15 +216,29 @@ async function request(baseUrl, route, opts = {}) {
     assert.strictEqual(publicShareRes.json.destination_name, 'Khulna');
     console.log(`[PASS] 5. Day-by-Day Trip Plan & 30-day public Shared Link (/plan/${shareId}) verified`);
 
-    // 6. Admin Live QA (Stats, Edit Rate Persistence, Bulk Import & Cleanup)
-    const adminLogin = await request(baseUrl, '/auth/login', {
+    // 6. Dedicated Admin Login (/auth/admin/login), Traveler Block (403), Stats, Edit Rate & Bulk Import
+    const nonAdminAttempt = await request(baseUrl, '/auth/admin/login', {
       method: 'POST',
       body: JSON.stringify({
-        email: 'mahmudulhaquerifat@gmail.com',
+        email: 'traveler@vromon.bd',
+        password: 'Traveler123!',
+      }),
+    });
+    assert.strictEqual(
+      nonAdminAttempt.status,
+      403,
+      `Expected 403 when non-admin logs into /auth/admin/login, got ${nonAdminAttempt.status}`,
+    );
+
+    const adminLogin = await request(baseUrl, '/auth/admin/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: 'admin@vromon.bd',
         password: 'VromonAdmin2026!',
       }),
     });
-    assert(adminLogin.status === 200 || adminLogin.status === 201, 'Admin login failed');
+    assert(adminLogin.status === 200 || adminLogin.status === 201, 'Dedicated Admin login failed');
+    assert.strictEqual(adminLogin.json.user.role, 'ADMIN');
     const adminToken = adminLogin.json.access_token;
 
     const statsRes = await request(baseUrl, '/admin/stats', {
