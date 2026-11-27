@@ -76,6 +76,68 @@ export class AiService {
     }
   }
 
+  private async generateFastJson<S extends z.ZodTypeAny>(
+    prompt: string,
+    schema: S,
+    timeoutMs = 10000,
+    temperature = 0.15,
+  ): Promise<z.infer<S> | null> {
+    if (!this.genAiClient) return null;
+    for (const modelName of this.llmModels) {
+      try {
+        const resp = await this.withTimeout(
+          this.genAiClient.models.generateContent({
+            model: modelName,
+            contents: prompt,
+            config: {
+              temperature,
+              responseMimeType: 'application/json',
+              thinkingConfig: { thinkingBudget: 0 },
+            },
+          }),
+          timeoutMs,
+          `generateFastJson(${modelName})`,
+        );
+        const rawText = (resp.text || '').trim();
+        if (!rawText) continue;
+        const parsed = JSON.parse(rawText);
+        return schema.parse(parsed);
+      } catch (err) {
+        this.logger.warn(`Fast JSON generation (${modelName}) failed: ${err}`);
+      }
+    }
+    return null;
+  }
+
+  private async generateFastText(
+    prompt: string,
+    timeoutMs = 9000,
+    temperature = 0.2,
+  ): Promise<string | null> {
+    if (!this.genAiClient) return null;
+    for (const modelName of this.llmModels) {
+      try {
+        const resp = await this.withTimeout(
+          this.genAiClient.models.generateContent({
+            model: modelName,
+            contents: prompt,
+            config: {
+              temperature,
+              thinkingConfig: { thinkingBudget: 0 },
+            },
+          }),
+          timeoutMs,
+          `generateFastText(${modelName})`,
+        );
+        const text = (resp.text || '').trim();
+        if (text.length > 20) return text;
+      } catch (err) {
+        this.logger.warn(`Fast text generation (${modelName}) failed: ${err}`);
+      }
+    }
+    return null;
+  }
+
   /**
    * AI-1: Extract structured intent, destination hints, and compound user questions.
    */
@@ -87,17 +149,37 @@ export class AiService {
       const prompt = `You are a travel query analyzer for Bangladesh tourism (VROMON).
 Extract structured parameters from the user's natural language request (which may be in English, Bengali, or Banglish).
 
+Return ONLY valid JSON with these exact keys:
+{
+  "target_destination_hint": string | null,
+  "inferred_budget": number | null,
+  "inferred_travelers": number | null,
+  "inferred_days": number | null,
+  "detected_tags": string[],
+  "detected_mood": string,
+  "seasonal_hints": string[],
+  "user_questions": {
+    "asks_places": boolean,
+    "asks_food": boolean,
+    "asks_budget_sufficiency": boolean,
+    "asks_hotel_rates": boolean
+  }
+}
+
 Known Bangladesh destinations list (match exactly if the user explicitly mentions one):
 ${knownDestinationNames.join(', ')}
 
 Examples:
 1) Input: "quiet hill place with tea gardens, good in winter, under 15,000 taka for two people"
-   -> target_destination_hint: null, inferred_budget: 15000, inferred_travelers: 2, detected_tags: ["hills", "tea-gardens", "quiet", "winter-optimal"], detected_mood: "tranquil", seasonal_hints: ["winter"], user_questions: { asks_places: false, asks_food: false, asks_budget_sufficiency: true, asks_hotel_rates: false }
+   -> {"target_destination_hint": null, "inferred_budget": 15000, "inferred_travelers": 2, "inferred_days": null, "detected_tags": ["hills", "tea-gardens", "quiet", "winter-optimal"], "detected_mood": "tranquil", "seasonal_hints": ["winter"], "user_questions": { "asks_places": false, "asks_food": false, "asks_budget_sufficiency": true, "asks_hotel_rates": false }}
 
 2) Input: "hey i want to go to khulna what are the places to see around, what kind of food i can explore there, i have 10k budget will it be suffecient and we are 2 people where can we stay what are the hotel price rates"
-   -> target_destination_hint: "Khulna", inferred_budget: 10000, inferred_travelers: 2, detected_tags: ["food", "city", "heritage", "river"], detected_mood: "cultural-food", seasonal_hints: [], user_questions: { asks_places: true, asks_food: true, asks_budget_sufficiency: true, asks_hotel_rates: true }
+   -> {"target_destination_hint": "Khulna", "inferred_budget": 10000, "inferred_travelers": 2, "inferred_days": null, "detected_tags": ["food", "city", "heritage", "river"], "detected_mood": "cultural-food", "seasonal_hints": [], "user_questions": { "asks_places": true, "asks_food": true, "asks_budget_sufficiency": true, "asks_hotel_rates": true }}
 
 User Query: "${wishes}"`;
+
+      const fastIntent = await this.generateFastJson(prompt, ParsedTravelIntentSchema, 8000, 0.1);
+      if (fastIntent) return fastIntent;
 
       for (const modelName of this.llmModels) {
         try {
@@ -106,7 +188,7 @@ User Query: "${wishes}"`;
           );
           const result = await this.withTimeout(
             structuredLlm.invoke(prompt),
-            6500,
+            8500,
             `extractTravelIntent(${modelName})`,
           );
           return ParsedTravelIntentSchema.parse(result);
@@ -255,11 +337,22 @@ User Query: "${wishes}"`;
       .join('\n\n');
 
     const prompt = `You are VROMON's grounded travel advisor. For each destination below, write a crisp 2-4 sentence factual explanation answering the user's query.
-STRICT RULES: Use ONLY numbers and attractions provided below. Never invent prices, travel times, or spots. No emojis.
+STRICT RULES: Use ONLY numbers and attractions provided below. Never invent prices, travel times, or spots. Never use internal enum words like "Discard" or "discarded" (instead state naturally that the estimated total exceeds the budget). No emojis.
+Return ONLY valid JSON matching: { "reasons": [{ "destination_id": number, "reason": string }] }
 
 USER QUERY: "${userWishes}"
 
 ${contextBlocks}`;
+
+    const fastBatch = await this.generateFastJson(prompt, BatchReasonsSchema, 10000, 0.2);
+    if (fastBatch) {
+      for (const r of fastBatch.reasons || []) {
+        if (r.reason && r.reason.trim().length > 15) {
+          resultMap.set(r.destination_id, r.reason.trim());
+        }
+      }
+      return resultMap;
+    }
 
     for (const modelName of this.llmModels) {
       try {
@@ -315,6 +408,7 @@ ${contextBlocks}`;
 STRICT RULES (NO HALLUCINATIONS):
 - Use ONLY the numbers and attractions listed below. Do NOT invent any prices, travel times, restaurants, or locations not present here.
 - Directly answer any specific questions the user asked (places to see, food mentions from attractions/description, whether the budget is sufficient, hotel nightly rate).
+- Never use internal enum words like "Discard" or "discarded" (instead state naturally that the estimated total exceeds the budget).
 - Do NOT use emojis or markdown headings. Keep it conversational, helpful, and concise.
 
 USER QUERY: "${params.userWishes}"
@@ -330,6 +424,9 @@ VERIFIED CALCULATED FACTS:
 - Weather & Crowd: Rating ${params.weatherRating}/5 (${params.weatherNote || 'Seasonal estimate'}), Crowd: ${params.effectiveCrowd}
 - Description: ${params.description}
 - Stored Attractions: ${params.attractions.map((a) => `${a.name}${a.description ? ` (${a.description})` : ''}`).join('; ')}`;
+
+    const fastReason = await this.generateFastText(prompt, 8500, 0.2);
+    if (fastReason) return fastReason;
 
     for (const modelName of this.llmModels) {
       try {
@@ -426,10 +523,26 @@ VERIFIED CALCULATED FACTS:
     const fallback = this.buildFallbackItinerary(params);
     if (!this.apiKey || params.attractions.length === 0) return fallback;
 
-    const prompt = `Create a ${params.days}-day itinerary for ${params.destinationName} within ${params.usableHours} total usable hours (max 12h/day).
-Use ONLY the following stored attractions. Do NOT invent spots or fake prices.
+    const prompt = `Create a ${params.days}-day trip plan for ${params.destinationName} within ${params.usableHours} total usable hours (max 12h/day).
+Use ONLY the following stored attractions. Do NOT invent spots or fake prices. No emojis.
+Return ONLY valid JSON matching:
+{
+  "days": [
+    {
+      "day_number": number,
+      "title": string,
+      "slots": [
+        { "time_of_day": "Morning" | "Afternoon" | "Evening", "activity_name": string, "description": string, "hours": number }
+      ]
+    }
+  ]
+}
+
 Attractions:
 ${params.attractions.map((a) => `- ${a.name} (${a.est_hours}h): ${a.description || ''}`).join('\n')}`;
+
+    const fastPlan = await this.generateFastJson(prompt, ItineraryOutputSchema, 11000, 0.2);
+    if (fastPlan) return fastPlan;
 
     for (const modelName of this.llmModels) {
       try {

@@ -43,17 +43,19 @@ export class RecommendationsService {
       this.aiService.generateQueryEmbedding(input.wishes),
     ]);
 
-    // Apply inferred parameters from conversational prompt if user left defaults or mentioned explicit values
+    // Apply inferred parameters whenever the user explicitly stated numbers in their prompt text
     const effectiveBudget =
-      intent.inferred_budget && intent.inferred_budget > 0 && input.budget === 15000
+      intent.inferred_budget && intent.inferred_budget > 0
         ? intent.inferred_budget
         : input.budget;
     const effectiveTravelers =
-      intent.inferred_travelers && intent.inferred_travelers > 0 && input.travelers === 2
+      intent.inferred_travelers && intent.inferred_travelers > 0
         ? intent.inferred_travelers
         : input.travelers;
     const effectiveDays =
-      intent.inferred_days && intent.inferred_days > 0 ? intent.inferred_days : input.days;
+      intent.inferred_days && intent.inferred_days > 0
+        ? intent.inferred_days
+        : input.days;
 
     // Evaluate all candidates using pure math calculators
     const evaluated: Array<{
@@ -198,36 +200,52 @@ export class RecommendationsService {
         e.item.effective_crowd !== 'High',
     );
 
-    // Generate AI-3 Grounded Reason via LangChain for Top #1 match, crisp grounded templates for #2+
+    // Generate AI-3 Grounded Reasons via single batch Gemini call for Top 4 matches (or single call for 1 match)
+    const candidateParams = topCandidates.map(({ item, rawDest }) => ({
+      destination_id: item.destination_id,
+      userWishes: input.wishes,
+      intent,
+      destinationName: item.name,
+      district: item.district,
+      division: item.division,
+      description: item.description,
+      hotelRatePerNight: Number(rawDest.hotel_cost_per_room_night),
+      transportMode: item.selected_transport.mode,
+      oneWayFare: item.selected_transport.fare_per_person,
+      usableHours: item.usable_hours,
+      budget: effectiveBudget,
+      travelers: effectiveTravelers,
+      days: effectiveDays,
+      costBreakdown: item.cost_breakdown,
+      feasibilityStatus: item.feasibility_status,
+      weatherRating: item.weather_rating,
+      weatherNote: item.weather_note,
+      effectiveCrowd: item.effective_crowd,
+      attractions: item.attractions,
+    }));
+
+    let batchReasonsMap = new Map<number, string>();
+    if (
+      topCandidates.length > 1 &&
+      typeof (this.aiService as any).generateGroundedReasonsBatch === 'function'
+    ) {
+      batchReasonsMap = await this.aiService.generateGroundedReasonsBatch(
+        input.wishes,
+        intent,
+        candidateParams.slice(0, 4),
+      );
+    }
+
     const results: RecommendationItem[] = await Promise.all(
       topCandidates.map(async (entry, idx) => {
-        const { item, rawDest } = entry;
-        const params = {
-          userWishes: input.wishes,
-          intent,
-          destinationName: item.name,
-          district: item.district,
-          division: item.division,
-          description: item.description,
-          hotelRatePerNight: Number(rawDest.hotel_cost_per_room_night),
-          transportMode: item.selected_transport.mode,
-          oneWayFare: item.selected_transport.fare_per_person,
-          usableHours: item.usable_hours,
-          budget: effectiveBudget,
-          travelers: effectiveTravelers,
-          days: effectiveDays,
-          costBreakdown: item.cost_breakdown,
-          feasibilityStatus: item.feasibility_status,
-          weatherRating: item.weather_rating,
-          weatherNote: item.weather_note,
-          effectiveCrowd: item.effective_crowd,
-          attractions: item.attractions,
-        };
+        const { item } = entry;
+        const params = candidateParams[idx];
 
         const aiReason =
-          idx === 0
+          batchReasonsMap.get(item.destination_id) ||
+          (idx === 0
             ? await this.aiService.generateGroundedReason(params)
-            : this.aiService.buildFallbackReason(params);
+            : this.aiService.buildFallbackReason(params));
 
         const hasConstraint =
           item.feasibility_status !== 'Fits' || item.effective_crowd === 'High';

@@ -1,7 +1,7 @@
 # VROMON — Project Roadmap & Multi-Agent Collaboration Guide
 
-> **Last Updated:** 2026-11-26  
-> **Active Branch:** `main`  
+> **Last Updated:** 2026-11-27  
+> **Active Branch:** `rifat` -> `main`  
 > **Project:** Bangladesh Smart Trip Feasibility & Risk-Aware Travel Recommender (SE331 Capstone — Group 6)
 
 ---
@@ -166,7 +166,8 @@
 
 | Date | Commit / Ref | Author / Agent | Summary of Changes |
 |---|---|---|---|
-| 2026-11-26 | `rifat` -> `main` | Rifat + Agent | Wrote comprehensive professional `README.md` (architecture diagram, 6-factor math formulas, setup guide, API table, DIU Group 6 credits) and updated `roadmap.md` |
+| 2026-11-27 | `rifat` -> `main` | Rifat + Agent | Optimized `AiService` (`thinkingBudget: 0` fast Gemini 3 Flash JSON mode for `<3.5s` intent, Top-4 batch grounded reasons & day plans) + honored explicit prompt budget/travelers/days across `/` and `/plan` |
+| 2026-11-26 | `a0ce489` (`rifat` -> `main`) | Rifat + Agent | Wrote comprehensive professional UTF-8 `README.md` (architecture diagram, 6-factor math formulas, setup guide, API table, DIU Group 6 credits) and updated `roadmap.md` |
 | 2026-11-26 | `5043716` (`rifat` -> `main`) | Rifat + Agent | Synced latest `main` (Wasif's Phase 4.5 merge `c15217a`) into `rifat`, finalized `rifat` -> `main` branch workflow in `roadmap.md`, pushed `origin/rifat`, and merged cleanly into `main` |
 | 2026-11-26 | `c15217a` (`wasif` -> `main`) | Wasif + Agent | Completed Phase 4.5: added `error.tsx` (#26), `loading.tsx` (#30/#59), `OfflineBanner.tsx` (#27/#60/#62), `AuthStatusBanners.tsx` (#34/#35) with 401 interceptor, Logout modal/bottom sheet (#36/#58) & mobile drawer polish (#38) in `Navbar.tsx`, and `/results` skeleton loader (#31) + mobile filters bottom sheet (#52) |
 | 2026-11-26 | `bc503ec` | Rifat + Agent | Audited all **62** Stitch entries (`projects/3572637668389846387`) and added explicit screen-by-screen table + Phase 4.5 for missing Stitch utility/modal screens to `roadmap.md` |
